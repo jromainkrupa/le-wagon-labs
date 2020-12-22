@@ -9,6 +9,5 @@ class Alumni < ApplicationRecord
   has_many :candidacies, dependent: :destroy
   has_many :specialties, dependent: :destroy
 
-  validates :first_name, presence: true
-  validates :last_name,  presence: true
+  validates :first_name, :last_name, presence: true
 end

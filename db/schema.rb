@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_22_090144) do
+ActiveRecord::Schema.define(version: 2020_12_22_100032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -66,6 +66,21 @@ ActiveRecord::Schema.define(version: 2020_12_22_090144) do
     t.index ["reset_password_token"], name: "index_entrepreneurs_on_reset_password_token", unique: true
   end
 
+  create_table "language_alumnis", force: :cascade do |t|
+    t.bigint "language_id", null: false
+    t.bigint "alumni_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["alumni_id"], name: "index_language_alumnis_on_alumni_id"
+    t.index ["language_id"], name: "index_language_alumnis_on_language_id"
+  end
+
+  create_table "languages", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -103,6 +118,8 @@ ActiveRecord::Schema.define(version: 2020_12_22_090144) do
   add_foreign_key "articles", "alumnis"
   add_foreign_key "candidacies", "alumnis"
   add_foreign_key "candidacies", "projects"
+  add_foreign_key "language_alumnis", "alumnis"
+  add_foreign_key "language_alumnis", "languages"
   add_foreign_key "projects", "entrepreneurs"
   add_foreign_key "specialties", "alumnis"
   add_foreign_key "tickets", "alumnis"
