@@ -1,5 +1,5 @@
 require 'rails_helper'
 
-RSpec.describe Language, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Language do
+  it { should have_many(:language_alumnis)}
 end

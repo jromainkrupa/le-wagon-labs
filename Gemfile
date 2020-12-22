@@ -38,15 +38,11 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara', '>= 2.15'
+  gem 'capybara'
   gem 'launchy'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
   gem 'webdrivers'
-end
-
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
 end
 
 group :development do

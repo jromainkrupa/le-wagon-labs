@@ -278,7 +278,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
-  capybara (>= 2.15)
+  capybara
   devise (~> 4.7)
   dotenv-rails
   factory_bot_rails
