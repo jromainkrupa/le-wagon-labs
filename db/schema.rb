@@ -40,8 +40,7 @@ ActiveRecord::Schema.define(version: 2020_12_22_100032) do
   end
 
   create_table "candidacies", force: :cascade do |t|
-    t.string "status"
-    t.boolean "is_validated"
+    t.string "status", default: "pending"
     t.bigint "alumni_id", null: false
     t.bigint "project_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -83,26 +82,19 @@ ActiveRecord::Schema.define(version: 2020_12_22_100032) do
 
   create_table "projects", force: :cascade do |t|
     t.string "name"
+    t.text "pain"
+    t.text "target"
+    t.text "solution"
     t.text "description"
-    t.string "status"
-    t.string "duration"
-    t.string "compensation"
-    t.integer "progression"
-    t.boolean "is_validated"
+    t.string "status", default: "pending"
+    t.integer "duration"
+    t.integer "compensation_in_cents"
+    t.integer "progression", default: 0
+    t.boolean "is_validated", default: false
     t.bigint "entrepreneur_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["entrepreneur_id"], name: "index_projects_on_entrepreneur_id"
-  end
-
-  create_table "specialties", force: :cascade do |t|
-    t.string "language"
-    t.string "type"
-    t.integer "rating"
-    t.bigint "alumni_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["alumni_id"], name: "index_specialties_on_alumni_id"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -121,7 +113,6 @@ ActiveRecord::Schema.define(version: 2020_12_22_100032) do
   add_foreign_key "language_alumnis", "alumnis"
   add_foreign_key "language_alumnis", "languages"
   add_foreign_key "projects", "entrepreneurs"
-  add_foreign_key "specialties", "alumnis"
   add_foreign_key "tickets", "alumnis"
   add_foreign_key "tickets", "projects"
 end
