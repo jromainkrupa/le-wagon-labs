@@ -1,5 +1,8 @@
 require 'rails_helper'
 
-# RSpec.describe Ticket, type: :model do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# end
+describe Ticket do
+  context 'test des associations' do
+    it { should belong_to(:project) }
+    it { should belong_to(:alumni) }
+  end
+end

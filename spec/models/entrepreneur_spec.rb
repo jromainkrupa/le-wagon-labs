@@ -1,5 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Entrepreneur, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Entrepreneur do
+  context 'test des associations' do
+    it { should have_many(:projects) }
+  end
 end

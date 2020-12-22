@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe Article, type: :model do
+describe Article do
   context 'test des associations' do
-
+    it { should belong_to(:alumni) }
   end
 end

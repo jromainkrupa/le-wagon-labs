@@ -1,5 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe Project, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe Project do
+  context 'test des associations' do
+    # it { should belong_to(:alumni) }
+    # it { should have_many(:alumni) }
+    it { should belong_to(:entrepreneur) }
+  end
 end
