@@ -283,6 +283,7 @@ DEPENDENCIES
   dotenv-rails
   factory_bot_rails
   guard-rspec
+  i18n (~> 1.8)
   jbuilder (~> 2.7)
   launchy
   letter_opener
