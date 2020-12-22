@@ -14,6 +14,11 @@ class DeviseCreateAlumnis < ActiveRecord::Migration[6.0]
       ## Rememberable
       t.datetime :remember_created_at
 
+      # nos champs
+      t.string :first_name
+      t.string :last_name
+      t.boolean :is_mentor, default: false
+
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
       # t.datetime :current_sign_in_at
