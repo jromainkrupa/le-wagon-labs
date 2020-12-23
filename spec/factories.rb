@@ -8,8 +8,15 @@ FactoryBot.define do
   factory :alumni do
     first_name { 'toto' }
     last_name  { 'jojo' }
-    email      { 'test@email.com'}
+    email      { 'test@email.com' }
     password   { '123456'}
+
+    factory :alumni_empty do
+      first_name { }
+      last_name  { }
+      email      { 'test2@email.com' }
+      password   { '123456'}
+    end
   end
 
   factory :article do
