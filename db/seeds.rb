@@ -41,7 +41,6 @@ project = Project.create!(
   pain: 'Les alumnis qui sortent du wagon ont du mal à trouver une première expérience',
   target: 'Les alumnis qui sortent du wagon',
   solution: 'Le wagon labs une app web ou des entrepreneurs propose des projets',
-  alumni: alumni_mentor,
   entrepreneur_id: xavier.id
 )
 

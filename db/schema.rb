@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_23_081751) do
+ActiveRecord::Schema.define(version: 2020_12_23_104014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,12 +41,12 @@ ActiveRecord::Schema.define(version: 2020_12_23_081751) do
 
   create_table "candidacies", force: :cascade do |t|
     t.string "status", default: "pending"
-    t.bigint "project_id", null: false
     t.bigint "alumni_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "role_id"
     t.index ["alumni_id"], name: "index_candidacies_on_alumni_id"
-    t.index ["project_id"], name: "index_candidacies_on_project_id"
+    t.index ["role_id"], name: "index_candidacies_on_role_id"
   end
 
   create_table "entrepreneurs", force: :cascade do |t|
@@ -92,11 +92,19 @@ ActiveRecord::Schema.define(version: 2020_12_23_081751) do
     t.integer "progression", default: 0
     t.boolean "is_validated", default: false
     t.bigint "entrepreneur_id", null: false
-    t.bigint "alumni_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["alumni_id"], name: "index_projects_on_alumni_id"
     t.index ["entrepreneur_id"], name: "index_projects_on_entrepreneur_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.integer "number"
+    t.string "status"
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_roles_on_project_id"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -111,11 +119,11 @@ ActiveRecord::Schema.define(version: 2020_12_23_081751) do
 
   add_foreign_key "articles", "alumnis"
   add_foreign_key "candidacies", "alumnis"
-  add_foreign_key "candidacies", "projects"
+  add_foreign_key "candidacies", "roles"
   add_foreign_key "language_alumnis", "alumnis"
   add_foreign_key "language_alumnis", "languages"
-  add_foreign_key "projects", "alumnis"
   add_foreign_key "projects", "entrepreneurs"
+  add_foreign_key "roles", "projects"
   add_foreign_key "tickets", "alumnis"
   add_foreign_key "tickets", "projects"
 end
