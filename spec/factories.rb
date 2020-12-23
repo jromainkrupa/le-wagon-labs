@@ -24,9 +24,7 @@ FactoryBot.define do
       email      { 'test2@email.com'}
       password   { '123456'}
     end
-
   end
-
 
   factory :article do
     title   { 'Ceci est un titre valide' }
@@ -37,6 +35,16 @@ FactoryBot.define do
     first_name { 'Jean' }
     last_name  { 'Boche'}
     phone      { '0601020304' }
+    email      { 'test_ent@email.com'}
+    password   { '123456'}
+
+    factory :entrepreneur_empty do
+      first_name { '' }
+      last_name  { ''}
+      phone      { '' }
+      email      { 'test_ent2@email.com'}
+      password   { '123456'}
+    end
   end
 
   factory :language do
