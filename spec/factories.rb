@@ -1,4 +1,11 @@
 FactoryBot.define do
+  factory :role do
+    name { "MyString" }
+    number { 1 }
+    status { "MyString" }
+    project { nil }
+  end
+
   factory :candidacy do
     status { "MyString" }
     project { nil }
@@ -12,12 +19,13 @@ FactoryBot.define do
     password   { '123456'}
 
     factory :alumni_empty do
-      first_name { }
-      last_name  { }
-      email      { 'test2@email.com' }
+      first_name {  }
+      last_name  {  }
+      email      { 'test2@email.com'}
       password   { '123456'}
     end
   end
+
 
   factory :article do
     title   { 'Ceci est un titre valide' }
