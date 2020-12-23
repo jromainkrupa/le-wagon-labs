@@ -1,5 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe LanguageAlumni, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+describe LanguageAlumni do
+  context 'test des associations' do
+    it { should belong_to(:alumni) }
+    it { should belong_to(:language) }
+  end
 end

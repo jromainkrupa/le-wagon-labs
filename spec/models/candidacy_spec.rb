@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-describe Project do
+
+describe Candidacy do
   context 'test des associations' do
     it { should belong_to(:alumni) }
-    it { should have_many(:alumnis) }
-    it { should belong_to(:entrepreneur) }
+    it { should belong_to(:project) }
   end
 end
