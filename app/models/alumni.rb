@@ -8,6 +8,7 @@ class Alumni < ApplicationRecord
   has_many :articles,         dependent: :destroy
   has_many :candidacies,      dependent: :destroy
   has_many :language_alumnis, dependent: :destroy
+  has_many :projects
 
   validates :first_name, :last_name, presence: true
 end

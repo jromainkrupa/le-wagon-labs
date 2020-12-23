@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :candidacy do
+    status { "MyString" }
+    project { nil }
+    alumni { nil }
+  end
+
   factory :alumni do
     first_name { 'toto' }
     last_name  { 'jojo' }
@@ -9,11 +15,6 @@ FactoryBot.define do
   factory :article do
     title   { 'Ceci est un titre valide' }
     content { 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores ipsum ea aliquid nisi odio. Voluptatem atque voluptates, assumenda dolorem error temporibus perferendis. Ipsa, quidem alias laboriosam temporibus consequuntur impedit eos.' }
-  end
-
-  factory :candicacie do
-    # alumni  { create(:alumni) }
-    # project { create(:project) }
   end
 
   factory :entrepreneur do

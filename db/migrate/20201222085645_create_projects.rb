@@ -12,6 +12,7 @@ class CreateProjects < ActiveRecord::Migration[6.0]
       t.integer :progression, default: 0
       t.boolean :is_validated, default: false
       t.references :entrepreneur, null: false, foreign_key: true
+      t.references :alumni, foreign_key: true
 
       t.timestamps
     end
