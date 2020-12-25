@@ -1,46 +1,75 @@
 FactoryBot.define do
   factory :task do
-    name { "MyString" }
+    name { 'MyString' }
     completed { false }
-    project { nil }
+    project { build(:project) }
+
+    factory :task_name_empty do
+      name {}
+      completed { false }
+      project { build(:project) }
+    end
   end
 
   factory :role do
-    name { "MyString" }
+    name { 'MyString' }
     number { 1 }
-    status { "MyString" }
-    project { nil }
+    status { 'MyString' }
+    project { build(:project) }
+
+    factory :role_name_empty do
+      name {}
+      number { 1 }
+      status { 'MyString' }
+      project { build(:project) }
+    end
   end
 
   factory :candidacy do
-    status { "MyString" }
-    project { nil }
-    alumni { nil }
+    status { 'MyString' }
+    project { build(:project) }
+    alumni { build(:alumni) }
   end
 
   factory :alumni do
     first_name { 'toto' }
     last_name  { 'jojo' }
     email      { 'test@email.com' }
-    password   { '123456'}
+    password   { '123456' }
 
     factory :alumni_empty do
-      first_name {  }
-      last_name  {  }
-      email      { 'test2@email.com'}
-      password   { '123456'}
+      first_name {}
+      last_name  {}
+      email      { 'test2@email.com' }
+      password   { '123456' }
     end
   end
 
   factory :article do
     title   { 'Ceci est un titre valide' }
     content { 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores ipsum ea aliquid nisi odio. Voluptatem atque voluptates, assumenda dolorem error temporibus perferendis. Ipsa, quidem alias laboriosam temporibus consequuntur impedit eos.' }
+
+    factory :article_title_2 do
+      title { 'de' }
+      content { 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores ipsum ea aliquid nisi odio. Voluptatem atque voluptates, assumenda dolorem error temporibus perferendis. Ipsa, quidem alias laboriosam temporibus consequuntur impedit eos.' }
+    end
+
+    factory :article_content_less_100 do
+      title { 'Ceci est un titre valide' }
+      content { 'Contenu de moins de 100 caractères' }
+    end
   end
 
   factory :entrepreneur do
     first_name { 'Jean' }
-    last_name  { 'Boche'}
+    last_name  { 'Boche' }
     phone      { '0601020304' }
+
+    factory :entrepreneur_phone_empty do
+      first_name { 'Jean' }
+      last_name  { 'Boche' }
+      phone      {}
+    end
   end
 
   factory :language do
@@ -48,20 +77,20 @@ FactoryBot.define do
   end
 
   factory :language_alumni do
-    # language { create(:language) }
-    # alumni   { create(:alumni) }
+    language { build(:language) }
+    alumni   { build(:alumni) }
   end
 
   factory :project do
     name      { 'Le Wagon Labs' }
-    pain      { 'Les alumnis qui sortent du wagon ont du mal à trouver une première expérience'}
+    pain      { 'Les alumnis qui sortent du wagon ont du mal à trouver une première expérience' }
     target    { 'Les alumnis qui sortent du wagon' }
     solution  { 'Le wagon labs une app web ou des entrepreneurs propose des projets' }
   end
 
   factory :ticket do
     description { 'Problème avec la création des factory ! besoin daide @Jeanro' }
-    # alumni    { create(:alumni) }
-    # project   { create(:project) }
+    alumni    { build(:alumni) }
+    project   { build(:project) }
   end
 end
