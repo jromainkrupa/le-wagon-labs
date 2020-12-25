@@ -32,7 +32,6 @@ FactoryBot.define do
     end
   end
 
-
   factory :article do
     title   { 'Ceci est un titre valide' }
     content { 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores ipsum ea aliquid nisi odio. Voluptatem atque voluptates, assumenda dolorem error temporibus perferendis. Ipsa, quidem alias laboriosam temporibus consequuntur impedit eos.' }

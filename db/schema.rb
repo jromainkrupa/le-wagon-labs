@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_23_104014) do
+ActiveRecord::Schema.define(version: 2020_12_25_175203) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,6 +107,15 @@ ActiveRecord::Schema.define(version: 2020_12_23_104014) do
     t.index ["project_id"], name: "index_roles_on_project_id"
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string "name"
+    t.boolean "completed", default: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["project_id"], name: "index_tasks_on_project_id"
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.text "description"
     t.bigint "alumni_id", null: false
@@ -124,6 +133,7 @@ ActiveRecord::Schema.define(version: 2020_12_23_104014) do
   add_foreign_key "language_alumnis", "languages"
   add_foreign_key "projects", "entrepreneurs"
   add_foreign_key "roles", "projects"
+  add_foreign_key "tasks", "projects"
   add_foreign_key "tickets", "alumnis"
   add_foreign_key "tickets", "projects"
 end
