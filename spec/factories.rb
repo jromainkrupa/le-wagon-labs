@@ -89,10 +89,19 @@ FactoryBot.define do
   end
 
   factory :project do
-    name      { 'Le Wagon Labs' }
-    pain      { 'Les alumnis qui sortent du wagon ont du mal à trouver une première expérience' }
-    target    { 'Les alumnis qui sortent du wagon' }
-    solution  { 'Le wagon labs une app web ou des entrepreneurs propose des projets' }
+    name         { 'Le Wagon Labs' }
+    pain         { 'Les alumnis qui sortent du wagon ont du mal à trouver une première expérience' }
+    target       { 'Les alumnis qui sortent du wagon' }
+    solution     { 'Le wagon labs une app web ou des entrepreneurs propose des projets' }
+    entrepreneur { build(:entrepreneur) }
+
+    factory :project_empty do
+      name         {}
+      pain         {}
+      target       {}
+      solution     {}
+      entrepreneur { build(:entrepreneur) }
+    end
   end
 
   factory :ticket do
