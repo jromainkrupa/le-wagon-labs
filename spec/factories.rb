@@ -1,33 +1,33 @@
 FactoryBot.define do
   factory :task do
-    name { 'MyString' }
+    name      { 'MyString' }
     completed { false }
-    project { build(:project) }
+    project   { build(:project) }
 
     factory :task_name_empty do
-      name {}
+      name      {}
       completed { false }
-      project { build(:project) }
+      project   { build(:project) }
     end
   end
 
   factory :role do
-    name { 'MyString' }
-    number { 1 }
-    status { 'MyString' }
+    name    { 'MyString' }
+    number  { 1 }
+    status  { 'MyString' }
     project { build(:project) }
 
     factory :role_name_empty do
-      name {}
-      number { 1 }
-      status { 'MyString' }
+      name    {}
+      number  { 1 }
+      status  { 'MyString' }
       project { build(:project) }
     end
   end
 
   factory :candidacy do
     status { 'MyString' }
-    project { build(:project) }
+    role   { build(:role) }
     alumni { build(:alumni) }
   end
 
@@ -51,13 +51,13 @@ FactoryBot.define do
     alumni  { build(:alumni) }
 
     factory :article_title_2 do
-      title { 'de' }
+      title   { 'de' }
       content { 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores ipsum ea aliquid nisi odio. Voluptatem atque voluptates, assumenda dolorem error temporibus perferendis. Ipsa, quidem alias laboriosam temporibus consequuntur impedit eos.' }
       alumni  { build(:alumni) }
     end
 
     factory :article_content_less_100 do
-      title { 'Ceci est un titre valide' }
+      title   { 'Ceci est un titre valide' }
       content { 'Contenu de moins de 100 caractères' }
       alumni  { build(:alumni) }
     end
