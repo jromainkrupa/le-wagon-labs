@@ -105,8 +105,14 @@ FactoryBot.define do
   end
 
   factory :ticket do
-    description { 'Problème avec la création des factory ! besoin daide @Jeanro' }
-    alumni    { build(:alumni) }
-    project   { build(:project) }
+    description { 'Problème avec la création des factory ! on arrive pas a mettre en place la bonne donfig pour factory_bot et shoulda_matcher besoin daide @Jeanro' }
+    alumni      { build(:alumni) }
+    project     { build(:project) }
+
+    factory :ticket_desciption_empty do
+      description {}
+      alumni      { build(:alumni) }
+      project     { build(:project) }
+    end
   end
 end
