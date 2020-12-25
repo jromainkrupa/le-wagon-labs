@@ -77,6 +77,10 @@ FactoryBot.define do
 
   factory :language do
     name { 'Ruby' }
+
+    factory :language_empty do
+      name {}
+    end
   end
 
   factory :language_alumni do
