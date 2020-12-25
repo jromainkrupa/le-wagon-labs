@@ -1,4 +1,10 @@
 FactoryBot.define do
+  factory :task do
+    name { "MyString" }
+    completed { false }
+    project { nil }
+  end
+
   factory :role do
     name { "MyString" }
     number { 1 }
