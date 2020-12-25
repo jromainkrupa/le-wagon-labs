@@ -1,4 +1,5 @@
 FactoryBot.define do
+  # on a besoin de cree plus de factory et de test pour les models
   factory :task do
     name      { 'MyString' }
     completed { false }
