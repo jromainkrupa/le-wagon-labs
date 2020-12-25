@@ -48,15 +48,18 @@ FactoryBot.define do
   factory :article do
     title   { 'Ceci est un titre valide' }
     content { 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores ipsum ea aliquid nisi odio. Voluptatem atque voluptates, assumenda dolorem error temporibus perferendis. Ipsa, quidem alias laboriosam temporibus consequuntur impedit eos.' }
+    alumni  { build(:alumni) }
 
     factory :article_title_2 do
       title { 'de' }
       content { 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores ipsum ea aliquid nisi odio. Voluptatem atque voluptates, assumenda dolorem error temporibus perferendis. Ipsa, quidem alias laboriosam temporibus consequuntur impedit eos.' }
+      alumni  { build(:alumni) }
     end
 
     factory :article_content_less_100 do
       title { 'Ceci est un titre valide' }
       content { 'Contenu de moins de 100 caractères' }
+      alumni  { build(:alumni) }
     end
   end
 
