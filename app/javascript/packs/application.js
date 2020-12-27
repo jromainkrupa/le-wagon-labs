@@ -14,6 +14,7 @@ require("channels")
 // or the `imagePath` JavaScript helper below.
 // import tailwind
 import '../stylesheets/application.scss';
+import '../controllers'
 
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
