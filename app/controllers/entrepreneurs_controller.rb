@@ -1,0 +1,2 @@
+class EntrepreneursController < ApplicationController
+end

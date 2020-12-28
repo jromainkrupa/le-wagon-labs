@@ -2,6 +2,26 @@ Rails.application.routes.draw do
   devise_for :alumnis
   devise_for :entrepreneurs
 
+  resources :alumnis, only: [:index, :show, :update, :edit] do
+    collection do
+      get 'dashboard', to: 'alumnis#dashboard'
+    end
+  end
+
+  resources :entrepreneurs, only: [:index, :show, :update, :edit] do
+    collection do
+      get 'dashboard', to: 'entrepreneurs#dashboard'
+    end
+  end
+
   root to: 'pages#home'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  resources :projects, expect: :destroy do
+    resources :tasks
+    resources :roles do
+      resources :candidacies
+    end
+  end
+
+  resources :articles
 end

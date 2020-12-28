@@ -6,3 +6,5 @@ describe LanguageAlumni do
     it { should belong_to(:language) }
   end
 end
+
+# joint table not other test needed
