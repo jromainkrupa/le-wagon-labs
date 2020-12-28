@@ -116,16 +116,6 @@ ActiveRecord::Schema.define(version: 2020_12_25_175203) do
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
-  create_table "tickets", force: :cascade do |t|
-    t.text "description"
-    t.bigint "alumni_id", null: false
-    t.bigint "project_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["alumni_id"], name: "index_tickets_on_alumni_id"
-    t.index ["project_id"], name: "index_tickets_on_project_id"
-  end
-
   add_foreign_key "articles", "alumnis"
   add_foreign_key "candidacies", "alumnis"
   add_foreign_key "candidacies", "roles"
@@ -134,6 +124,4 @@ ActiveRecord::Schema.define(version: 2020_12_25_175203) do
   add_foreign_key "projects", "entrepreneurs"
   add_foreign_key "roles", "projects"
   add_foreign_key "tasks", "projects"
-  add_foreign_key "tickets", "alumnis"
-  add_foreign_key "tickets", "projects"
 end
