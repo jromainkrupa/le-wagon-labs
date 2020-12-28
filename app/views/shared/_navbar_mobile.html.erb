@@ -1,4 +1,5 @@
-<header>
+<header class="relative">
+  <div>
     <div class="flex justify-center space-x-12 items-center">
       <div class="flex items-center space-x-4">
         <span class="text-red-600">LeWagon Labs by</span>
@@ -6,18 +7,21 @@
       </div>
       <div data-controller="menu" class="relative outline-none">
         <button data-action="click->menu#toggle" id="options-menu" class="focus:outline-none hover:text-gray-600">
-          <svg class="w-8" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg class="w-8 z-40" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
-        <div data-menu-target="toggleable" class="hidden absolute right-0 -mt-3 mr-1 w-60 flex flex-col items-start space-y-4 px-4 py-4 bg-white rounded border-2 border-black">
+        <div data-menu-target="toggleable" class="hidden absolute z-40 right-0 -mt-3 mr-1 w-60 flex flex-col items-start space-y-4 px-4 py-4 bg-white rounded border-2 border-black">
           <button>My dashboard</button>
           <button>My profile</button>
           <button>Post a project</button>
           <button>Log out</button>
         </div>
+        <button data-action="click->menu#toggle" data-menu-target="invisible" class="hidden fixed inset-0 w-full h-full cursor-default focus:outline-none"></button>
       </div>
     </div>
     <div>
       <div class="h-60 bg-cover bg-center" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://samarew.com/wp-content/uploads/2019/10/Sa-voiture-sent-le-brule%CC%81-noix-Etats-Unis.jpeg);"></div>
     </div>
+
+  </div>
 </header>
 
