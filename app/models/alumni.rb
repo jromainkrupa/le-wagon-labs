@@ -4,7 +4,6 @@ class Alumni < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :tickets,          dependent: :destroy
   has_many :articles,         dependent: :destroy
   has_many :candidacies,      dependent: :destroy
   has_many :language_alumnis, dependent: :destroy
