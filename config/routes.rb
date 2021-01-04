@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :projects, expect: :destroy do
+  resources :projects, except: :destroy do
     resources :tasks
     resources :roles do
       resources :candidacies
