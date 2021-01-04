@@ -7,4 +7,6 @@ class Entrepreneur < ApplicationRecord
   has_many :projects
 
   validates :first_name, :last_name, :phone, presence: true
+  validates :first_name, :last_name, length: { minimum: 2, maximum: 25 }
+  validates :phone, length: { is: 10 }
 end

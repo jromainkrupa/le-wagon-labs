@@ -68,23 +68,39 @@ FactoryBot.define do
     first_name { 'Jean' }
     last_name  { 'Boche' }
     phone      { '0601020304' }
-<<<<<<< HEAD
-    email      { 'test_ent@email.com'}
+    email      { 'test_ent@email.com' }
     password   { '123456'}
 
     factory :entrepreneur_empty do
       first_name { '' }
-      last_name  { ''}
+      last_name  { '' }
       phone      { '' }
       email      { 'test_ent2@email.com'}
       password   { '123456'}
-=======
+    end
+
+    factory :entrepreneur_first_name_empty do
+      first_name { '' }
+      last_name  { 'Boche'}
+      phone      { '0601020304' }
+      email      { 'test_ent2@email.com'}
+      password   { '123456'}
+    end
+
+    factory :entrepreneur_last_name_empty do
+      first_name { 'Jean' }
+      last_name  { '' }
+      phone      { '0601020304' }
+      email      { 'test_ent2@email.com'}
+      password   { '123456'}
+    end
 
     factory :entrepreneur_phone_empty do
       first_name { 'Jean' }
       last_name  { 'Boche' }
-      phone      {}
->>>>>>> master
+      phone      { '06235468' }
+      email      { 'test_ent2@email.com'}
+      password   { '123456'}
     end
   end
 
