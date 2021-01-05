@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_alumni!
+  before_action :authenticate_alumni! || :authenticate_entrepreneur!, except: :home
   include Pundit
 
   # Pundit: white-list approach.
