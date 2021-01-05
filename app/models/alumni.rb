@@ -9,5 +9,5 @@ class Alumni < ApplicationRecord
   has_many :language_alumnis, dependent: :destroy
   has_many :projects
 
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, presence: true, length: { minimum: 2, maximum: 25 }
 end
