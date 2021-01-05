@@ -6,7 +6,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def index?
-    current_user.class == 'Alumni'
+    current_alumni
   end
 
   def show?
