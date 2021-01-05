@@ -17,16 +17,19 @@
                       placeholder: 'Phone number',
                       input_html: { class: "px-2 py-2 border-2 border-gray-200 w-full"} %>
       <% end %>
+
       <%= f.input :first_name,
                     required: false,
                     label: false,
                     placeholder: 'First name*',
                     input_html: { class: "px-2 py-2 border-2 border-gray-200 w-full"} %>
+
       <%= f.input :last_name,
                     required: false,
                     label: false,
                     placeholder: 'Last name*',
                     input_html: { class: "px-2 py-2 border-2 border-gray-200 w-full"} %>
+
       <%= f.input :email,
                     required: false,
                     autofocus: true,
@@ -34,30 +37,34 @@
                     label: false,
                     placeholder: 'Email*',
                     input_html: { class: "px-2 py-2 border-2 border-gray-200 w-full"} %>
+
       <%= f.input :password,
                     required: false,
                     input_html: { autocomplete: "current-password" },
                     label: false,
                     placeholder: 'Password*',
                     input_html: { class: "px-2 py-2 border-2 border-gray-200 w-full"} %>
+
       <%= f.input :password_confirmation,
                     required: true,
                     input_html: { autocomplete: "new-password" },
                     placeholder: 'Confirm password*',
                     label: false,
                     input_html: { class: "px-2 py-2 border-2 border-gray-200 w-full"} %>
+
       <%= f.input :photo, as: :file,
                     label: false,
                     input_html: { class:"w-full"},
                     id: "file-upload" %>
-
     </div>
 
     <div class="form-actions py-4">
       <%= f.button :submit, "Sign up", class:"w-full py-4 rounded bg-red-500 text-white font-bold text-lg" %>
     </div>
+
   <% end %>
   <%= render "devise/shared/links" %>
+
 </div>
 
 <div class="pt-36 pb-6 text-center">

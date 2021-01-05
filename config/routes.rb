@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   root to: 'pages#home'
+  get '/contact', to: 'pages#contact'
 
   resources :projects, except: :destroy do
     resources :tasks
