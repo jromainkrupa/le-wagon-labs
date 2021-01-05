@@ -63,3 +63,5 @@ gem "i18n", "~> 1.8"
 gem 'pundit'
 
 
+
+gem "simple_form", "~> 5.0"
