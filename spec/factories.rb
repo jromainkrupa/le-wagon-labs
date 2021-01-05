@@ -13,21 +13,21 @@ FactoryBot.define do
   end
 
   factory :role do
-    name    { 'MyString' }
+    name    { 'mentor' }
     number  { 1 }
-    status  { 'MyString' }
+    status  { 'pending' }
     project { build(:project) }
 
     factory :role_name_empty do
       name    {}
       number  { 1 }
-      status  { 'MyString' }
+      status  { 'pending' }
       project { build(:project) }
     end
   end
 
   factory :candidacy do
-    status { 'MyString' }
+    status { 'pending' }
     role   { build(:role) }
     alumni { build(:alumni) }
   end
@@ -120,7 +120,7 @@ FactoryBot.define do
   factory :project do
     name         { 'Le Wagon Labs' }
     pain         { 'Les alumnis qui sortent du wagon ont du mal à trouver une première expérience' }
-    target       { 'Les alumnis qui sortent du wagon' }
+    target       { 'Les alumnis qui sortent du wagon et qui sont trop beaux' }
     solution     { 'Le wagon labs une app web ou des entrepreneurs propose des projets' }
     entrepreneur { build(:entrepreneur) }
 

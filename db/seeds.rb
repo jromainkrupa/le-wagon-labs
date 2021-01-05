@@ -39,17 +39,17 @@ xavier = Entrepreneur.create(
 project = Project.create!(
   name: 'Le Wagon Labs',
   pain: 'Les alumnis qui sortent du wagon ont du mal à trouver une première expérience',
-  target: 'Les alumnis qui sortent du wagon',
+  target: 'Les alumnis qui sortent du wagon et qui sont trop beaux',
   solution: 'Le wagon labs une app web ou des entrepreneurs propose des projets',
   entrepreneur_id: xavier.id
 )
 
 Candidacy.create!(
   alumni_id: alumni_one.id,
-  project_id: project.id
+  role_id: role.id
 )
 
 Candidacy.create!(
   alumni_id: alumni_two.id,
-  project_id: project.id
+  role_id: role.id
 )

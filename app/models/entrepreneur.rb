@@ -8,5 +8,6 @@ class Entrepreneur < ApplicationRecord
 
   validates :first_name, :last_name, :phone, presence: true
   validates :first_name, :last_name, length: { minimum: 2, maximum: 25 }
+  validates :company_name, length: { minimum: 2, maximum: 25 }, allow_blank: true
   validates :phone, length: { is: 10 }
 end

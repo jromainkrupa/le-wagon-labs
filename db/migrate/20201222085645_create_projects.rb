@@ -9,7 +9,6 @@ class CreateProjects < ActiveRecord::Migration[6.0]
       t.string :status, default: 'pending'
       t.integer :duration
       t.integer :compensation_in_cents
-      t.integer :progression, default: 0
       t.boolean :is_validated, default: false
       t.references :entrepreneur, null: false, foreign_key: true
 

@@ -89,7 +89,6 @@ ActiveRecord::Schema.define(version: 2020_12_25_175203) do
     t.string "status", default: "pending"
     t.integer "duration"
     t.integer "compensation_in_cents"
-    t.integer "progression", default: 0
     t.boolean "is_validated", default: false
     t.bigint "entrepreneur_id", null: false
     t.datetime "created_at", precision: 6, null: false
