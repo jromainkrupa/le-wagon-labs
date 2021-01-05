@@ -13,21 +13,21 @@ FactoryBot.define do
   end
 
   factory :role do
-    name    { 'MyString' }
+    name    { 'mentor' }
     number  { 1 }
-    status  { 'MyString' }
+    status  { 'pending' }
     project { build(:project) }
 
     factory :role_name_empty do
       name    {}
       number  { 1 }
-      status  { 'MyString' }
+      status  { 'pending' }
       project { build(:project) }
     end
   end
 
   factory :candidacy do
-    status { 'MyString' }
+    status { 'pending' }
     role   { build(:role) }
     alumni { build(:alumni) }
   end
