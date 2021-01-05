@@ -6,4 +6,5 @@ class EntrepreneursController < ApplicationController
 
   def show
   end
+
 end

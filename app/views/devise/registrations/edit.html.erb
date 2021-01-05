@@ -1,35 +1,69 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
+<div class="px-12 py-4">
+  <div>
+    <div class="flex flex-col items-center space-y-3">
+      <svg class="w-20" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67 67"><circle cx="33.5" cy="33.5" r="33.5" fill="#C4C4C4"/></svg>
+      <h1 class="font-bold text-3xl">Company Name</h1>
+    </div>
+  </div>
+  <div class="pt-12">
+    <h2 class="text-xl text-center font-medium">ABOUT</h2>
+    <p class="pt-2 text-justify text-gray-400">Short description of the company Short description of the company Short description of the company Short description of the company Short description of the company Short description of the company Short description of the company Short description of the company Short description of the company.</p>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
-<% end %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    <%= f.error_notification %>
 
-<h3>Cancel my account</h3>
+    <div class="form-inputs pt-8 space-y-4">
+      <% if resource_name == :entrepreneur %>
+        <%= f.input :company_name,
+                      required: false,
+                      label: 'Company name*',
+                      placeholder: 'Company name*',
+                      input_html: { class: "px-2 my-2 py-2 border-2 border-gray-200 w-full text-sm"} %>
+        <%= f.input :phone,
+                      required: false,
+                      label: 'Phone number*',
+                      placeholder: 'Phone number*',
+                      input_html: { class: "px-2 my-2 py-2 border-2 border-gray-200 w-full text-sm"} %>
+      <% end %>
 
-<p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+      <%= f.input :first_name,
+                    required: false,
+                    label: 'First name*',
+                    placeholder: 'First name*',
+                    input_html: { class: "px-2 my-2 py-2 border-2 border-gray-200 w-full text-sm"} %>
 
-<%= link_to "Back", :back %>
+      <%= f.input :last_name,
+                    required: false,
+                    label: 'Last name*',
+                    placeholder: 'Last name*',
+                    input_html: { class: "px-2 my-2 py-2 border-2 border-gray-200 w-full text-sm"} %>
+
+      <%= f.input :email,
+                    required: false,
+                    autofocus: true,
+                    input_html: { autocomplete: "email" },
+                    label: 'Email*',
+                    placeholder: 'Email*',
+                    input_html: { class: "px-2 my-2 py-2 border-2 border-gray-200 w-full text-sm"} %>
+
+      <%= f.input :password,
+                    required: false,
+                    input_html: { autocomplete: "current-password" },
+                    label: 'Password',
+                    placeholder: 'Password*',
+                    input_html: { class: "px-2 my-2 py-2 border-2 border-gray-200 w-full text-sm"} %>
+
+      <%= f.input :password_confirmation,
+                    required: true,
+                    input_html: { autocomplete: "new-password" },
+                    placeholder: 'Confirm password*',
+                    label: 'Confirm password',
+                    input_html: { class: "px-2 my-2 py-2 border-2 border-gray-200 w-full text-sm"} %>
+    </div>
+
+    <div class="form-actions py-4">
+      <%= f.button :submit, "Save changes", class:"w-full py-3 rounded bg-red-500 text-white font-bold text-lg" %>
+    </div>
+  <% end %>
+</div>
