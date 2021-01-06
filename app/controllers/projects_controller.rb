@@ -12,4 +12,7 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:pain, :target, :solution, :name)
   end
+
+  def show
+  end
 end
