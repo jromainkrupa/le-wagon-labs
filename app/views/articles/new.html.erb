@@ -1,1 +1,7 @@
 <h1>New article</h1>
+
+<%= simple_form_for @article do |f| %>
+  <%= f.input :title %>
+  <%= f.input :content %>
+  <%= f.submit 'New' %>
+<% end %>

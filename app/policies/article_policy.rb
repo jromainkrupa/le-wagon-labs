@@ -6,15 +6,15 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def index?
-    current_alumni
+    user.class == Alumni
   end
 
   def show?
-    current_user.class == 'Alumni'
+    user.class == Alumni
   end
 
   def create?
-    current_user.class == 'Alumni'
+    user.class == Alumni
   end
 
   def new?
@@ -22,7 +22,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def update?
-    current_user.class == 'Alumni'
+    user.class == Alumni && user.id == record.alumni_id
   end
 
   def edit?
@@ -30,6 +30,6 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def destroy?
-    current_user.class == 'Alumni'
+    user.class == Alumni && user.id == record.alumni_id
   end
 end
