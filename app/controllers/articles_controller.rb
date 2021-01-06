@@ -6,12 +6,12 @@ class ArticlesController < ApplicationController
   end
 
   def show
-    @article = policy_scope(Article).find(params[:id])
+    @article = Article.find(params[:id])
     authorize @article
   end
 
   def create
-    @article = policy_scope(Article).new(article_params)
+    @article = Article.new(article_params)
     @article.alumni = pundit_user
     authorize @article
     if @article.save
@@ -22,12 +22,12 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = policy_scope(Article).new
+    @article = Article.new
     authorize @article
   end
 
   def update
-    @article = policy_scope(Article).find(params[:id])
+    @article = Article.find(params[:id])
     if @article.update(article_params)
       redirect_to article_path(@article)
     else
@@ -36,12 +36,12 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    @article = policy_scope(Article).find(params[:id])
+    @article = Article.find(params[:id])
     authorize @article
   end
 
   def destroy
-    @article = policy_scope(Article).find(params[:id])
+    @article = Article.find(params[:id])
     authorize @article
     @article.destroy
     redirect_to dashboard_alumnis_path
