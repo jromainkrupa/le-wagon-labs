@@ -11,7 +11,8 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    @article = Article.new(article_params)
+    @article = policy_scope(Article).new(article_params)
+    @article.alumni = pundit_user
     authorize @article
     if @article.save
       redirect_to article_path(@article)
@@ -21,7 +22,7 @@ class ArticlesController < ApplicationController
   end
 
   def new
-    @article = Article.new
+    @article = policy_scope(Article).new
     authorize @article
   end
 

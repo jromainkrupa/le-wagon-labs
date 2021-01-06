@@ -22,7 +22,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def update?
-    user.class == Alumni && user.id == record.user_id
+    user.class == Alumni && user.id == record.alumni_id
   end
 
   def edit?
@@ -30,6 +30,6 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.class == Alumni && user.id == record.user_id
+    user.class == Alumni && user.id == record.alumni_id
   end
 end
