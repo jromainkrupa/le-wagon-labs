@@ -3,4 +3,7 @@ class AlumnisController < ApplicationController
 
   def dashboard
   end
+
+  def show
+  end
 end
