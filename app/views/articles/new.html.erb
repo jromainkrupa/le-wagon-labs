@@ -1,7 +1,29 @@
-<h1>New article</h1>
 
-<%= simple_form_for @article do |f| %>
-  <%= f.input :title %>
-  <%= f.input :content %>
-  <%= f.submit 'New' %>
-<% end %>
+<div class="px-8 py-6">
+  <div>
+    <h1 class="text-center font-bold text-2xl">Write my article</h1>
+  </div>
+
+  <div class="pt-8">
+    <%= simple_form_for @article do |f| %>
+    <div class="space-y-4">
+      <%= f.input :title,
+                      label: false,
+                      placeholder: 'Article name*',
+                      input_html: { class: "px-2 py-2 border-2 border-gray-200 w-full"} %>
+      <%= f.input :content,
+                      required: false,
+                      label: false,
+                      placeholder: 'Write your article here...',
+                      input_html: { class: "px-2 pt-2 pb-80 border-2 border-gray-200 w-full"} %>
+
+      <div class=" py-2">
+        <%= f.submit 'Post my article', class:"w-full py-3 rounded bg-red-500 text-white font-bold text-lg"  %>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+
+</div>
+
