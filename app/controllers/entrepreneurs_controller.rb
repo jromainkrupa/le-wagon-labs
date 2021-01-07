@@ -1,6 +1,4 @@
 class EntrepreneursController < ApplicationController
-  skip_before_action :authenticate_entrepreneur! || :authenticate_entrepreneur!
-
   def dashboard
   end
 

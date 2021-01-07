@@ -3,8 +3,6 @@ class Project < ApplicationRecord
   has_many :roles
   has_many :candidacies, through: :roles
   has_many :alumnis, through: :candidacies
-  # has_many :project_alumnis, -> { where("candidacies.status='accepted'") }, through: :roles, through: :candidacies, class_name: 'Project', source: :project
-  # has_one :mentor, -> { where("project_alumnis.is_mentor=true") }
   has_many :tasks
 
   validates :name, :pain, :target, :solution, presence: true
@@ -12,4 +10,16 @@ class Project < ApplicationRecord
   validates :pain, :target, :solution, length: { minimum: 20 }
   validates :description, length: { minimum: 20 }, allow_blank: true
   validates :status, inclusion: { in: ['pending', 'progress', 'done'] }
+
+  def project_alumnis
+    candidacies.select { |candidacy| candidacy.accepted? }
+               .map { |candidacy| candidacy.alumni }
+               .reject { |alumni| alumni.is_mentor? }
+  end
+
+  def mentor
+    candidacies.select { |candidacy| candidacy.accepted? && candidacy.alumni.is_mentor? }
+               .first
+               .alumni
+  end
 end

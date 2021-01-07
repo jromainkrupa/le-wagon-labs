@@ -1,6 +1,4 @@
 class AlumnisController < ApplicationController
-  # skip_before_action :authenticate_alumni! || :authenticate_entrepreneur!, only: [:index]
-
   def dashboard
   end
 

@@ -23,6 +23,4 @@ class ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:pain, :target, :solution, :name, :description, :compensation_in_cents)
   end
-
-
 end
