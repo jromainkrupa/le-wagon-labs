@@ -8,12 +8,12 @@ class EntrepreneursController < ApplicationController
   end
 
   def show
-    @entrepreneur = policy_scope(Entrepreneur).find(params[:id])
+    @entrepreneur = Entrepreneur.find(params[:id])
     authorize @entrepreneur
   end
 
   def edit
-    @entrepreneur = policy_scope(Entrepreneur).find(params[:id])
+    @entrepreneur = Entrepreneur.find(params[:id])
     authorize @entrepreneur
   end
 

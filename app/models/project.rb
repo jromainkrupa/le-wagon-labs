@@ -22,4 +22,8 @@ class Project < ApplicationRecord
                .first
                .alumni
   end
+
+  def all_users
+    project_alumnis + [mentor, entrepreneur]
+  end
 end
