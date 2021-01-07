@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_alumni! || :authenticate_entrepreneur!, only: [:home, :contact]
+  skip_before_action :authenticate_alumni! || :authenticate_entrepreneur!
 
   def home
   end
