@@ -1,4 +1,4 @@
-class TaskPolicy < ApplicationPolicy
+class RolePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
@@ -6,7 +6,7 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def index?
-    record.project.all_users.include?(user)
+    true
   end
 
   def create?
@@ -22,6 +22,6 @@ class TaskPolicy < ApplicationPolicy
   end
 
   def update?
-    user == record.project.mentor
+    false
   end
 end

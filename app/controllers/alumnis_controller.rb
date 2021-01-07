@@ -8,12 +8,12 @@ class AlumnisController < ApplicationController
   end
 
   def show
-    @alumni = policy_scope(Alumni).find(params[:id])
+    @alumni = Alumni.find(params[:id])
     authorize @alumni
   end
 
   def edit
-    @alumni = policy_scope(Alumni).find(params[:id])
+    @alumni = Alumni.find(params[:id])
     authorize @alumni
   end
 

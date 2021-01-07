@@ -1,5 +1,4 @@
 class ArticlesController < ApplicationController
-
   def index
     @articles = policy_scope(Article)
     authorize @articles
