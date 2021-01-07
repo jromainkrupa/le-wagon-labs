@@ -7,13 +7,22 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
   end
 
+  def show
+    @project = Project.find(params[:id])
+  end
+
+  def edit
+    @project = Project.find(params[:id])
+  end
+
+  def update
+  end
+
   private
 
   def project_params
-    params.require(:project).permit(:pain, :target, :solution, :name)
+    params.require(:project).permit(:pain, :target, :solution, :name, :description, :compensation_in_cents)
   end
 
-  def show
-  end
 
 end
