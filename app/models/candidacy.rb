@@ -8,4 +8,12 @@ class Candidacy < ApplicationRecord
   def accepted?
     status == 'accepted'
   end
+
+  def refused?
+    status == 'refused'
+  end
+
+  def pending?
+    status == 'pending'
+  end
 end

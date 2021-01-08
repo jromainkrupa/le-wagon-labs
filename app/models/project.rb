@@ -26,4 +26,16 @@ class Project < ApplicationRecord
   def all_users
     project_alumnis + [mentor, entrepreneur]
   end
+
+  def progress?
+    status == 'progress'
+  end
+
+  def done?
+    status == 'done'
+  end
+
+  def pending?
+    status == 'pending'
+  end
 end
