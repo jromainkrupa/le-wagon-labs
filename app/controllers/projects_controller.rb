@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
     @project.entrepreneur = pundit_user
     authorize @project
     if @project.save
+      creation_roles
       redirect_to project_path(@project)
     else
       render :new
@@ -27,6 +28,7 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
+    @lr = LanguageRole.new
     authorize @project
   end
 
@@ -53,5 +55,11 @@ class ProjectsController < ApplicationController
       :is_validated,
       :duration
     )
+  end
+
+  def creation_roles
+    Role.ROLES.each do |role|
+      Role.create(name: role, number: 0, status: "pending", project: self)
+    end
   end
 end
