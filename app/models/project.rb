@@ -38,4 +38,8 @@ class Project < ApplicationRecord
   def pending?
     status == 'pending'
   end
+
+  def completion
+    tasks.where(completed: true).size.fdiv(tasks.size) * 100
+  end
 end
