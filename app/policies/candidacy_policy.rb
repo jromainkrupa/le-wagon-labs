@@ -30,6 +30,6 @@ class CandidacyPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user.instance_of?(Alumni) && user.id == record.alumni_id
+    user == record.alumni && record.pending?
   end
 end
