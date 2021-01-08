@@ -2,8 +2,8 @@
   <div class="bg-gray-100 py-4">
     <div class="flex flex-col items-center space-y-3">
       <svg class="w-20" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67 67"><circle cx="33.5" cy="33.5" r="33.5" fill="#C4C4C4"/></svg>
-      <h1 class="font-bold text-3xl">Thomas Farre</h1>
-      <button class="underline font-medium">Profile</button>
+      <h1 class="font-bold text-3xl"><%= current_alumni.name %></h1>
+      <%= link_to "Profile", alumni_path(current_alumni), class:"underline font-medium" %>
     </div>
   </div>
 
@@ -16,27 +16,18 @@
 
   <div class="mt-6 py-8 border-2 border-gray-100 shadow rounded">
     <div class="px-4 flex flex-col space-y-4">
-        <h2 class="text-xl font-medium text-center">MY ARTICLES</h2>
+      <h2 class="text-xl font-medium text-center">MY ARTICLES</h2>
+      <% current_alumni.articles.each do |article| %>
         <div class="flex justify-between">
-          <button class="text-red-500 font-medium">Article name</button>
+          <button class="text-red-500 font-medium"><%= article.title %></button>
           <div class="space-x-1">
-            <button class="font-medium px-2 py-1">✏️</button>
-            <button class="font-medium px-2 py-1">🗑️</button>
+            <%= link_to "✏️", edit_article_path(article) %>
+            <%= link_to '🗑️',  article ,  method: :delete, data: { confirm: 'Are you sure?' } %>
           </div>
         </div>
-        <div class="flex justify-between">
-          <button class="text-red-500 font-medium">Article name</button>
-          <div class="space-x-1">
-            <button class="font-medium px-2 py-1">✏️</button>
-            <button class="font-medium px-2 py-1">🗑️</button>
-          </div>
-        </div>
-      <div class="pt-4 w-full text-center">
-        <button class="underline font-medium">+ Write a new article</button>
-      </div>
-      <div class="pt-4 w-full">
-        <button class="w-full py-2 bg-red-500 text-white font-bold text-lg rounded">Library</button>
-      </div>
+      <% end %>
+      <%= link_to '+ Write a new article', new_article_path, class:"w-full text-center underline font-medium"  %>
+      <%= link_to "Library", articles_path, class:"w-full py-2 bg-red-500 text-white text-center font-bold text-lg rounded"  %>
     </div>
   </div>
 </div>
