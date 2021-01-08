@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_08_135907) do
+ActiveRecord::Schema.define(version: 2021_01_08_143743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -77,10 +77,21 @@ ActiveRecord::Schema.define(version: 2021_01_08_135907) do
     t.index ["language_id"], name: "index_language_alumnis_on_language_id"
   end
 
+  create_table "language_roles", force: :cascade do |t|
+    t.bigint "role_id", null: false
+    t.bigint "language_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["language_id"], name: "index_language_roles_on_language_id"
+    t.index ["role_id"], name: "index_language_roles_on_role_id"
+  end
+
   create_table "languages", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "svg"
+    t.string "category"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -123,6 +134,8 @@ ActiveRecord::Schema.define(version: 2021_01_08_135907) do
   add_foreign_key "candidacies", "roles"
   add_foreign_key "language_alumnis", "alumnis"
   add_foreign_key "language_alumnis", "languages"
+  add_foreign_key "language_roles", "languages"
+  add_foreign_key "language_roles", "roles"
   add_foreign_key "projects", "entrepreneurs"
   add_foreign_key "roles", "projects"
   add_foreign_key "tasks", "projects"

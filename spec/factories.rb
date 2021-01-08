@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :language_role do
+    role { nil }
+    language { nil }
+  end
+
   # on a besoin de cree plus de factory et de test pour les models
   factory :task do
     name      { 'MyString' }
