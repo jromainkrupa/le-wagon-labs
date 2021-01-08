@@ -1,20 +1,20 @@
 <% if current_entrepreneur %>
 
   <div data-menu-target="toggleable" class="hidden absolute z-40 right-0 -mt-3 mr-1 w-60 flex flex-col items-start space-y-4 px-4 py-4 bg-white rounded border-2 border-black">
-    <%= link_to "My dashboard", new_alumni_registration_path %>
-    <%= link_to "My profile", new_entrepreneur_registration_path %>
-    <%= link_to "Post a project", new_alumni_session_path %>
+    <%= link_to "My dashboard", dashboard_entrepreneurs_path %>
+    <%= link_to "My profile", entrepreneur_path(current_entrepreneur) %>
+    <%= link_to "Post a project", new_project_path %>
     <%= pundit_user.class == 'Alumni' ? (link_to "Log out", destroy_alumni_session_path, method: :delete, class: "dropdown-item") : (link_to "Log out", destroy_entrepreneur_session_path, method: :delete, class: "dropdown-item") %>
   </div>
 
 <% else %>
 
   <div data-menu-target="toggleable" class="hidden absolute z-40 right-0 -mt-3 mr-1 w-60 flex flex-col items-start space-y-4 px-4 py-4 bg-white rounded border-2 border-black">
-    <%= link_to "My dashboard", new_alumni_registration_path %>
-    <%= link_to "My profile", new_entrepreneur_registration_path %>
-    <%= link_to "Projects", new_alumni_session_path %>
-    <%= link_to "Alumni", new_alumni_session_path %>
-    <%= link_to "Library", new_alumni_session_path %>
+    <%= link_to "My dashboard", dashboard_alumnis_path %>
+    <%= link_to "My profile", alumni_path(current_alumni) %>
+    <%= link_to "Projects", projects_path %>
+    <%= link_to "Alumnis", alumnis_path %>
+    <%= link_to "Library", articles_path %>
     <%= pundit_user.class == 'Alumni' ? (link_to "Log out", destroy_alumni_session_path, method: :delete, class: "dropdown-item") : (link_to "Log out", destroy_entrepreneur_session_path, method: :delete, class: "dropdown-item") %>
   </div>
 <% end %>

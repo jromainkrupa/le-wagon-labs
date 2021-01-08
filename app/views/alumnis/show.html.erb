@@ -2,7 +2,7 @@
   <div class="py-4">
     <div class="flex flex-col items-center space-y-3">
       <svg class="w-20" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67 67"><circle cx="33.5" cy="33.5" r="33.5" fill="#C4C4C4"/></svg>
-      <h1 class="font-bold text-3xl">Thomas Farre</h1>
+      <h1 class="font-bold text-3xl"><%= @alumni.name %></h1>
     </div>
   </div>
 
@@ -37,13 +37,15 @@
     <h2 class="text-center text-xl">ABOUT</h2>
   </div>
   <div class="pt-4">
-    <p class="text-justify tracking-tight">Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni .</p>
+    <p class="text-justify tracking-tight"><%= @alumni.about %></p>
   </div>
+
 
   <div class="pt-8">
     <button class="w-full py-3 rounded bg-red-500 text-white font-bold text-lg">Edit my profile</button>
   </div>
 
+  <%#= link_to "Edit my profile", edit_alumni_path(@alumni), class:"w-full bg-red-500 text-white font-bold text-lg text-center rounded items-center" %>
 
 </div>
 
