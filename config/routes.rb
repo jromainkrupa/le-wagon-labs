@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :alumnis
-  devise_for :entrepreneurs
+  devise_for :alumnis, controllers: {
+    sessions: 'alumnis/sessions',
+    registrations: 'alumnis/registrations'
+  }
+
+  devise_for :entrepreneurs, controllers: {
+    sessions: 'entrepreneurs/sessions',
+    registrations: 'entrepreneurs/registrations'
+  }
 
   resources :alumnis, only: [:index, :show, :update, :edit] do
     collection do
