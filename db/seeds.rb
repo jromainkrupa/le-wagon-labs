@@ -61,6 +61,14 @@ project = Project.create!(
   entrepreneur_id: xavier.id
 )
 
+project2 = Project.create!(
+  name: 'Le Wagon Labs 2',
+  pain: 'Les alumnis qui sortent du wagon ont du mal à trouver une première expérience',
+  target: 'Les alumnis qui sortent du wagon et qui sont trop beaux',
+  solution: 'Le wagon labs une app web ou des entrepreneurs propose des projets',
+  entrepreneur_id: xavier.id
+)
+
 puts "Creating Roles..."
 
 role_mentor = Role.create!(
@@ -68,6 +76,13 @@ role_mentor = Role.create!(
   status: 'done',
   number: 1,
   project_id: project.id
+)
+
+role_mentor2 = Role.create!(
+  name: 'mentor',
+  status: 'done',
+  number: 1,
+  project_id: project2.id
 )
 
 role_back = Role.create!(
@@ -80,6 +95,12 @@ role_back = Role.create!(
 Candidacy.create!(
   alumni_id: alumni_mentor.id,
   role_id: role_mentor.id,
+  status: 'accepted'
+)
+
+Candidacy.create!(
+  alumni_id: alumni_mentor.id,
+  role_id: role_mentor2.id,
   status: 'accepted'
 )
 
