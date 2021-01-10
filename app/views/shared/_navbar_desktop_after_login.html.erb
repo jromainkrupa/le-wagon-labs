@@ -1,0 +1,21 @@
+<% if current_entrepreneur %>
+
+  <div class="hidden lg:flex lg:flex lg:space-x-8 lg:text-lg lg:font-semibold">
+    <%= link_to "My dashboard", dashboard_entrepreneurs_path %>
+    <%= link_to "My profile", entrepreneur_path(current_entrepreneur) %>
+    <%= link_to "Post a project", new_project_path %>
+    <%= pundit_user.class == 'Alumni' ? (link_to "Log out", destroy_alumni_session_path, method: :delete, class: "dropdown-item") : (link_to "Log out", destroy_entrepreneur_session_path, method: :delete, class: "dropdown-item") %>
+  </div>
+
+<% else %>
+
+  <div class="hidden lg:flex lg:space-x-8 lg:text-lg lg:font-semibold">
+
+    <%= link_to "My dashboard", dashboard_alumnis_path %>
+    <%= link_to "My profile", alumni_path(current_alumni) %>
+    <%= link_to "Projects", projects_path %>
+    <%= link_to "Alumnis", alumnis_path %>
+    <%= link_to "Library", articles_path %>
+    <%= pundit_user.class == 'Alumni' ? (link_to "Log out", destroy_alumni_session_path, method: :delete, class: "dropdown-item") : (link_to "Log out", destroy_entrepreneur_session_path, method: :delete, class: "dropdown-item") %>
+  </div>
+<% end %>

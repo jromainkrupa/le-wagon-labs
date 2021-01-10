@@ -1,0 +1,7 @@
+<div class="hidden lg:flex lg:flex lg:space-x-8 lg:text-lg lg:font-semibold">
+  <%= link_to "Sign up Alumni", new_alumni_registration_path %>
+  <%= link_to "Sign up Entrepreneur", new_entrepreneur_registration_path %>
+  <%= link_to "Log in Alumni", new_alumni_session_path %>
+  <%= link_to "Log in Entrepreneur", new_entrepreneur_session_path %>
+  <%= (current_alumni ? (link_to "Log out", destroy_alumni_session_path, method: :delete, class: "dropdown-item") : (link_to "Log out", destroy_entrepreneur_session_path, method: :delete, class: "dropdown-item")) unless (current_alumni.nil? && current_entrepreneur.nil?) %>
+</div>
