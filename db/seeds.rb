@@ -36,7 +36,8 @@ alumni_mentor = Alumni.create(
   email: "test@test.com",
   password: '123456',
   is_mentor: true,
-  city: "Lyon"
+  city: "Lyon",
+  about: "Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni ."
 )
 
 alumni_one = Alumni.create(
