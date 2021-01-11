@@ -1,33 +1,36 @@
-<div class="px-8">
-  <div class="bg-gray-100 py-4">
-    <div class="flex flex-col items-center space-y-3">
-      <svg class="w-20" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67 67"><circle cx="33.5" cy="33.5" r="33.5" fill="#C4C4C4"/></svg>
-      <h1 class="font-bold text-3xl"><%= current_alumni.name %></h1>
-      <%= link_to "Profile", alumni_path(current_alumni), class:"underline font-medium" %>
-    </div>
-  </div>
+<div class="px-8 xl:px-56">
+  <div class="lg:flex lg:space-x-8 lg:pt-32 lg:justify-center lg:h-screen">
 
-  <% if current_alumni.is_mentor == false  %>
-    <%= render 'alumnis/shared/alumnis_projects' %>
-  <% else %>
-    <%= render 'alumnis/shared/mentors_projects' %>
-  <% end %>
+    <% if current_alumni.is_mentor == false  %>
+      <%= render 'alumnis/shared/alumnis_projects' %>
+    <% else %>
+      <%= render 'alumnis/shared/mentors_projects' %>
+    <% end %>
 
 
-  <div class="mt-6 py-8 border-2 border-gray-100 shadow rounded">
-    <div class="px-4 flex flex-col space-y-4">
-      <h2 class="text-xl font-medium text-center">MY ARTICLES</h2>
-      <% current_alumni.articles.each do |article| %>
-        <div class="flex justify-between">
-          <button class="text-red-500 font-medium"><%= article.title %></button>
-          <div class="space-x-1">
-            <%= link_to "✏️", edit_article_path(article) %>
-            <%= link_to '🗑️',  article ,  method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
+    <div class="mt-6 pt-8 pb-3 border-2 border-gray-100 shadow rounded lg:mt-0 lg:w-1/2 lg:h-2/3">
+      <div class="h-full px-4 flex flex-col items-center space-y-8">
+        <div>
+          <h2 class="flex-shrink text-xl font-medium text-center">MY ARTICLES</h2>
         </div>
-      <% end %>
-      <%= link_to '+ Write a new article', new_article_path, class:"w-full text-center underline font-medium"  %>
-      <%= link_to "Library", articles_path, class:"w-full py-2 bg-red-500 text-white text-center font-bold text-lg rounded"  %>
+        <div class="flex-grow space-y-3 w-full">
+          <% current_alumni.articles.each do |article| %>
+            <div class="w-full flex justify-between">
+              <div>
+                <button class="text-red-500 font-medium"><%= article.title %></button>
+              </div>
+              <div class="space-x-1">
+                <%= link_to "✏️", edit_article_path(article) %>
+                <%= link_to '🗑️',  article ,  method: :delete, data: { confirm: 'Are you sure?' } %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+          <%= link_to '+ Write a new article', new_article_path, class:"w-full text-center underline font-medium"  %>
+          <%= link_to "Library", articles_path, class:"w-full py-2 bg-red-500 text-white text-center font-bold text-lg rounded"  %>
+
+      </div>
     </div>
   </div>
 </div>

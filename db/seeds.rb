@@ -207,3 +207,21 @@ Article.create!(
   content: "Ceci est un content Ceci est un content Ceci est un content Ceci est un content Ceci est un content Ceci est un content Ceci est un content"
 )
 
+Article.create!(
+  alumni_id: alumni_mentor.id,
+  title: "Ceci est un titre",
+  content: "Ceci est un content Ceci est un content Ceci est un content Ceci est un content Ceci est un content Ceci est un content Ceci est un content"
+)
+
+Article.create!(
+  alumni_id: alumni_mentor.id,
+  title: "Ceci est un titre",
+  content: "Ceci est un content Ceci est un content Ceci est un content Ceci est un content Ceci est un content Ceci est un content Ceci est un content"
+)
+
+Article.create!(
+  alumni_id: alumni_mentor.id,
+  title: "Ceci est un titre",
+  content: "Ceci est un content Ceci est un content Ceci est un content Ceci est un content Ceci est un content Ceci est un content Ceci est un content"
+)
+
