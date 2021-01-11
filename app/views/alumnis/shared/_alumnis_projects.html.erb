@@ -1,17 +1,19 @@
-<div class="mt-6 pt-8 pb-3 border-2 border-gray-100 shadow rounded lg:mt-0 lg:w-1/3">
-  <div class="px-4 flex flex-col items-center space-y-4">
+<div class="mt-6 pt-8 pb-3 border-2 border-gray-100 shadow rounded lg:mt-0 lg:w-1/2 lg:h-2/3">
+  <div class="h-full px-4 flex flex-col items-center space-y-8">
     <div>
-      <h2 class="text-xl font-medium">MY PROJECTS (not mentor)</h2>
+      <h2 class="flex-shrink text-xl font-medium">MY PROJECTS (not mentor)</h2>
     </div>
-    <% current_alumni.projects.each do |project| %>
-      <div class="w-full flex justify-between">
-        <%= link_to "#{project.name}", project_path(project), class:"text-red-500 underline font-semibold" %>
-        <%#= link_to "Le button en dessous", chat_path(project.chat)  %>
-        <button><svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 22"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.966.167C4.5.167-.587 7.732 2.23 14.647l1.204 2.955a.646.646 0 01-.193.747L.694 20.395a.646.646 0 00.405 1.149h10.1c6.23 0 11.28-5.05 11.28-11.28C22.48 4.689 17.96.168 12.381.168h-.415z" fill="#10182B"/></svg></button>
-      </div>
-    <% end %>
-    <div>
-      <%= link_to "All projects", projects_path, class:"py-2 w-full bg-red-500 text-white font-bold text-lg text-center rounded items-center"  %>
+    <div class="flex-grow space-y-3 w-full">
+      <% current_alumni.projects.each do |project| %>
+        <div class="w-full flex justify-between">
+          <%= link_to "#{project.name}", project_path(project), class:"text-red-500 underline font-semibold" %>
+          <%#= link_to "Le button en dessous", chat_path(project.chat)  %>
+          <button><svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 22"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.966.167C4.5.167-.587 7.732 2.23 14.647l1.204 2.955a.646.646 0 01-.193.747L.694 20.395a.646.646 0 00.405 1.149h10.1c6.23 0 11.28-5.05 11.28-11.28C22.48 4.689 17.96.168 12.381.168h-.415z" fill="#10182B"/></svg></button>
+        </div>
+      <% end %>
+    </div>
+    <div class="flex-shrink py-2 w-full bg-red-500 text-white font-bold text-lg text-center rounded items-center">
+      <%= link_to "All projects", projects_path  %>
     </div>
   </div>
 </div>

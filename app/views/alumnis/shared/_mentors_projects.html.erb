@@ -1,13 +1,13 @@
-<div class="mt-6 pt-8 pb-3 border-2 border-gray-100 shadow rounded lg:mt-0 lg:w-2/5">
+<div class="mt-6 pt-8 pb-3 border-2 border-gray-100 shadow rounded lg:mt-0 lg:w-1/2 lg:h-2/3">
   <div class="h-full px-4 flex flex-col items-center space-y-8">
-    <div class="">
+    <div>
       <h2 class="flex-shrink text-xl font-medium">MY PROJECTS (mentor)</h2>
     </div>
     <div class="flex-grow space-y-3 w-full">
       <% current_alumni.projects.each do |project| %>
-        <div class="w-full flex justify-between items-center space-x-4">
-          <div>
-            <%= link_to "#{project.name}", project_path(project), class:"text-red-500 underline font-semibold" %>
+        <div class="w-full flex justify-between items-baseline space-x-4">
+          <div class="w-1/2">
+            <%= link_to "#{project.name}", project_path(project), class:"flex truncate text-red-500 underline font-semibold" %>
             <% if project.status == 'progress' %>
               <span>: 70<%#= project.completion %>% completion </span>
             <% end %>
@@ -19,7 +19,7 @@
           <% when "pending" %>
             <%= link_to "Review this project", edit_project_path(project), class:"underline font-medium"  %>
           <% when "done" %>
-            <div class="text-sm text-right">Waiting for validation from Company Name</div>
+            <div class="w-1/2 text-sm text-right">Waiting for validation from Company Name</div>
           <% end %>
         </div>
       <% end %>
