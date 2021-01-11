@@ -1,6 +1,8 @@
+<div class="lg:w-2/5 lg:pt-14 xl:w-1/3 m-auto xl:px-24">
+
 <h1 class="text-center text-3xl font-bold">Log in</h1>
 
-<div class="px-10 py-12 text-center">
+<div class="px-10 py-6 text-center">
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs space-y-2">
       <%= f.input :email,
@@ -27,7 +29,8 @@
   <%= render "devise/shared/links" %>
 
 </div>
-
-  <div class="pt-80 pb-6 text-center">
-  <button class="text-red-500 font-bold">Back to homepage</button>
+  <div class="pb-6 text-center">
+    <button class="text-red-500 font-bold">Back to homepage</button>
   </div>
+</div>
+
