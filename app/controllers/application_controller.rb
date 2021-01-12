@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_alumni! || :authenticate_entrepreneur!
+  before_action :authenticate_user
   before_action :configure_permitted_parameters, if: :devise_controller?
   include Pundit
 
@@ -24,6 +24,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def authenticate_user
+    pundit_user.instance_of?(Alumni) ? authenticate_alumni! : authenticate_entrepreneur!
+  end
 
   def skip_pundit?
     devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/

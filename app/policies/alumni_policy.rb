@@ -5,6 +5,10 @@ class AlumniPolicy < ApplicationPolicy
     end
   end
 
+  def dashboard?
+    user.instance_of?(Alumni)
+  end
+
   def index?
     true
   end

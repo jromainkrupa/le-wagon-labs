@@ -5,6 +5,10 @@ class EntrepreneurPolicy < ApplicationPolicy
     end
   end
 
+  def dashboard?
+    user.instance_of?(Entrepreneur)
+  end
+
   def index?
     true
   end
