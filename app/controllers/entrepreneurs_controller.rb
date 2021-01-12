@@ -1,5 +1,6 @@
 class EntrepreneursController < ApplicationController
   def dashboard
+    authorize current_entrepreneur
   end
 
   def index

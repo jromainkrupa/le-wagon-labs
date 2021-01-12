@@ -1,5 +1,6 @@
 class AlumnisController < ApplicationController
   def dashboard
+    authorize current_alumni
   end
 
   def index
