@@ -14,6 +14,6 @@ class LanguageRolePolicy < ApplicationPolicy
   end
 
   def destroy?
-    user == record.alumni
+    user == record.role.project.mentor
   end
 end

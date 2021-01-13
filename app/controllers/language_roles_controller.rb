@@ -7,10 +7,10 @@ class LanguageRolesController < ApplicationController
 
   def create
     @language_role = LanguageRole.new
-    @language_role.role = pundit_user
-    @language_role.language = language_role_params # on essaye de trouver une meilleure façon de faire ça
+    @language_role.role = Role.find(params[:role_id])
+    @language_role.language = Language.find(language_role_params[:language_id])  # on essaye de trouver une meilleure façon de faire ça
     if @language_role.save
-      redirect_to language_role_path(@language_role)
+      redirect_to edit_project_path(@language_role.role.project)
     else
       render :new
     end
@@ -20,12 +20,12 @@ class LanguageRolesController < ApplicationController
     @language_role = LanguageRole.find(params[:id])
     authorize @language_role
     @language_role.destroy
-    redirect_to alumni_path(pundit_user)
+    redirect_to edit_project_path(@language_role.role.project)
   end
 
   private
 
   def language_role_params
-    params.require(:language_role).permit(:language)
+    params.require(:language_role).permit(:language_id)
   end
 end
