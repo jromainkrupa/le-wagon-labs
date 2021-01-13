@@ -60,8 +60,11 @@
       <div data-project-target="backend_languages" class="hidden">
         <div class="pt-6 inline-flex space-x-8 justify-center w-full">
 
-
-
+          <%= simple_form_for [@project, @project.roles.first] do |f|%>
+          <%= simple_form_for [@project, @project.roles.first, @project.roles.first.language_roles.first] do |f| %>
+          <% end %>
+          <%= f.input :number %>
+          <% end %>
           <%#= simple_form_for @lr do |f| %>
 
           <%#= f.association :language, as: :radio_buttons, collection: Language.where(category:"back"), legend_tag: false,
