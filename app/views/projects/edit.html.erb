@@ -60,11 +60,25 @@
       <div data-project-target="backend_languages" class="hidden">
         <div class="pt-6 inline-flex space-x-8 justify-center w-full">
 
-          <%= simple_form_for [@project, @project.roles.first] do |f|%>
-          <%= simple_form_for [@project, @project.roles.first, @project.roles.first.language_roles.first] do |f| %>
-          <% end %>
+          <%= simple_form_for [@project, @project.roles.second] do |f|%>
           <%= f.input :number %>
           <% end %>
+
+          <% Language.where(category: "back").each do |lang| %>
+
+            <% if lang.language_roles.where(role: @project.roles.second).empty? %>
+              <%= simple_form_for [@project, @project.roles.second, LanguageRole.new(language: lang)] do |f|%>
+              <%= f.association :language, input_html: {class:"invisible"}, label: content_tag(:div, lang.svg.html_safe, class:'w-8')  %>
+              <%= f.submit %>
+              <% end %>
+            <% else %>
+              <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8'), project_role_language_role_path(@project, @project.roles.second, lang.language_roles.where(role: @project.roles.second).first), method: :delete %>
+            <% end %>
+          <% end %>
+
+          <%#= simple_form_for [@project, @project.roles.second, LanguageRole.new] do |f| %>
+          <%#= f.association :language, as: :check_boxes, collection: Language.where(category: "back"), label: false,
+          label_method: lambda {|lang| content_tag(:div, lang.svg.html_safe, class:'w-8')  } %>
           <%#= simple_form_for @lr do |f| %>
 
           <%#= f.association :language, as: :radio_buttons, collection: Language.where(category:"back"), legend_tag: false,

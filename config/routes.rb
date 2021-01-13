@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :projects, except: :destroy do
     resources :tasks
     resources :roles do
+      resources :language_roles
       resources :candidacies
     end
   end
