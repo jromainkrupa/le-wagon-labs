@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe LanguageAlumnisPolicy, type: :policy do
+RSpec.describe LanguageRolePolicy, type: :policy do
   let(:user) { User.new }
 
   subject { described_class }
