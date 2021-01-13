@@ -27,7 +27,8 @@ alumni_gagou = Alumni.create(
   email: 'gag@ou.co',
   password: 'gagaga',
   is_mentor: true,
-  city: "Paris"
+  city: "Paris",
+  about: "Gagou is a very happy alumni with a positive attitude all the time. Strong in both Back and Front end."
 )
 
 alumni_mentor = Alumni.create(
@@ -90,7 +91,6 @@ language6 = LanguageAlumni.create!(
   language_id: js.id
 )
 
-
 puts "Creating Entrepreneurs..."
 
 xavier = Entrepreneur.create(
@@ -99,7 +99,8 @@ xavier = Entrepreneur.create(
   email: "xav@test.com",
   password: '123456',
   phone: '0601020304',
-  company_name: 'Anphibia'
+  company_name: 'Anphibia',
+  about: "Anphibia is a very dynamic company with tied relationships with companies like Decathlon and is now looking to better their app"
 )
 
 puts "Creating Projects..."
@@ -109,6 +110,9 @@ project = Project.create!(
   pain: 'Les alumnis qui sortent du wagon ont du mal à trouver une première expérience',
   target: 'Les alumnis qui sortent du wagon et qui sont trop beaux',
   solution: 'Le wagon labs une app web ou des entrepreneurs propose des projets',
+  description: 'Le wagon labs est une app web pour mettre en relation des entrepreneurs et des développeurs du Wagon',
+  duration: 5,
+  compensation_in_cents:  25_000,
   entrepreneur_id: xavier.id
 )
 
@@ -117,6 +121,7 @@ project2 = Project.create!(
   pain: 'Les alumnis qui sortent du wagon ont du mal à trouver une première expérience',
   target: 'Les alumnis qui sortent du wagon et qui sont trop beaux',
   solution: 'Le wagon labs une app web ou des entrepreneurs propose des projets',
+  description: 'Le wagon labs 2 est une app web pour mettre en relation des entrepreneurs et des développeurs du Wagon',
   entrepreneur_id: xavier.id
 )
 

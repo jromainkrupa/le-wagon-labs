@@ -4,8 +4,10 @@
     <div class="bg-gray-100 py-4 lg:h-2/3 lg:w-1/4">
       <div class="flex flex-col items-center space-y-3">
         <svg class="w-20" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67 67"><circle cx="33.5" cy="33.5" r="33.5" fill="#C4C4C4"/></svg>
-        <h1 class="font-bold text-3xl">Company Name</h1>
-        <button class="underline font-medium">Profile</button>
+        <h1 class="font-bold text-3xl"><%= current_entrepreneur.company_name %></h1>
+        <%= link_to entrepreneur_path(current_entrepreneur) do %>
+          <button class="underline font-medium">Profile</button>
+        <% end %>
       </div>
     </div>
 
@@ -14,37 +16,38 @@
         <div class="">
           <h2 class="text-xl font-medium flex-shrink">MY PROJECTS</h2>
         </div>
+
         <div class="w-full flex-grow space-y-4">
-          <div class="w-full flex justify-between items-baseline">
-            <button class="text-red-500 underline font-semibold flex-shrink-0">Projet name</button>
-            <button><svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 22"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.966.167C4.5.167-.587 7.732 2.23 14.647l1.204 2.955a.646.646 0 01-.193.747L.694 20.395a.646.646 0 00.405 1.149h10.1c6.23 0 11.28-5.05 11.28-11.28C22.48 4.689 17.96.168 12.381.168h-.415z" fill="#10182B"/></svg></button>
-          </div>
-          <div class="w-full flex justify-between items-baseline">
-            <button class="text-red-500 underline font-semibold flex-shrink-0">Projet name</button>
-            <button><svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 22"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.966.167C4.5.167-.587 7.732 2.23 14.647l1.204 2.955a.646.646 0 01-.193.747L.694 20.395a.646.646 0 00.405 1.149h10.1c6.23 0 11.28-5.05 11.28-11.28C22.48 4.689 17.96.168 12.381.168h-.415z" fill="#10182B"/></svg></button>
-          </div>
-          <div class="w-full flex justify-between items-baseline">
-            <button class="text-red-500 underline font-semibold flex-shrink-0">Projet name</button>
-            <button><svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 22"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.966.167C4.5.167-.587 7.732 2.23 14.647l1.204 2.955a.646.646 0 01-.193.747L.694 20.395a.646.646 0 00.405 1.149h10.1c6.23 0 11.28-5.05 11.28-11.28C22.48 4.689 17.96.168 12.381.168h-.415z" fill="#10182B"/></svg></button>
-          </div>
-          <div class="w-full flex justify-between items-baseline">
-            <button class="text-red-500 underline font-semibold flex-shrink-0">Projet name</button>
-            <div>
-              <span>reviewing by &nbsp;</span>
-              <button class="text-red-500 font-medium">Fanny</button>
-            </div>
-          </div>
-          <div class="w-full flex justify-between items-baseline">
-            <button class="text-red-500 underline font-semibold flex-shrink-0">Projet name</button>
-            <div>
-              <span>reviewing by &nbsp;</span>
-              <button class="text-red-500 font-medium">Jean-Romain</button>
-            </div>
-          </div>
+          <% current_entrepreneur.projects.each do |project| %>
+            <% case project.status %>
+            <% when "progress" %>
+              <div class="w-full flex justify-between items-baseline">
+                <%= link_to project_path(project) do %>
+                  <button class="text-red-500 underline font-semibold flex-shrink-0"><%= project.name %></button>
+                <% end %>
+                <button><svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 22"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.966.167C4.5.167-.587 7.732 2.23 14.647l1.204 2.955a.646.646 0 01-.193.747L.694 20.395a.646.646 0 00.405 1.149h10.1c6.23 0 11.28-5.05 11.28-11.28C22.48 4.689 17.96.168 12.381.168h-.415z" fill="#10182B"/></svg></button>
+              </div>
+            <% when "pending" %>
+              <div class="w-full flex justify-between items-baseline">
+                <%= link_to project_path(project) do %>
+                  <button class="text-red-500 underline font-semibold flex-shrink-0"><%= project.name %></button>
+                <% end %>
+                <div>
+                  <span>is being reviewed by &nbsp;</span>
+                  <%= link_to alumni_path(project.mentor) do %>
+                    <button class="text-red-500 font-medium"><%= project.mentor.name %></button>
+                  <% end %>
+                </div>
+              </div>
+            <% end %>
+
+          <% end %>
         </div>
-        <div class="pt-4 w-full flex-shrink">
-         <button class="w-full py-2 bg-red-500 text-white font-bold text-lg rounded">All projects</button>
-        </div>
+
+
+        <%= link_to projects_path, class:"group w-full" do %>
+          <button class="group-hover:opacity-80 w-full py-2 bg-red-500 text-white font-bold text-lg rounded">All projects</button>
+        <% end %>
       </div>
     </div>
   </div>

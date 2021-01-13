@@ -7,21 +7,14 @@
         </div>
         <div>
           <span class="text-lg font-medium">by</span>
-          <span class="text-lg font-bold">Alumni Name</span>
+          <span class="text-lg font-bold"><%= @article.alumni.name %></span>
         </div>
       </div>
       <div class="pt-4">
-        <h2 class="text-2xl font-bold">ARTICLE NAME</h2>
+        <h2 class="text-2xl font-bold"><%= @article.title %></h2>
       </div>
       <div class="py-4">
-        <p>
-          I tried this piece of code : try {this.config = JSON.parse(fs.readFileSync(path));
-          } catch(err) { .... to prevent errors from happening I tried this piece of code : try {this.config = JSON.parse(fs.readFileSync(path));
-          } catch(err) { to prevent errors from happening I tried this piece of code : try {this.config = happening I tried this piece happening I tried this piece happening I tried this piece SON.parse(fs.readFileSync(path));
-          } catch(err) { to prevent errors from happening I tried this piece of code : try {this.config = JSON.parse(fs.readFileSync(path));
-          } catch(err) { to prevent errors from happening I tried this piece of code : try {this.config = JSON.parse(fs.readFileSync(path));
-          } catch(err) { to prevent errors from happening
-        </p>
+        <p><%= @article.content %></p>
       </div>
     </div>
 </div>

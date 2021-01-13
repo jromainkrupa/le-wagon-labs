@@ -16,9 +16,7 @@
         <div class="flex-grow space-y-6 w-full pt-4">
           <% current_alumni.articles.each do |article| %>
             <div class="w-full flex justify-between">
-              <div>
-                <button class="text-red-500 font-medium"><%= article.title %></button>
-              </div>
+              <%= link_to "#{article.title}", article_path(article), class:"text-red-500 font-medium"%>
               <div class="space-x-1">
                 <%= link_to "✏️", edit_article_path(article) %>
                 <%= link_to '🗑️',  article ,  method: :delete, data: { confirm: 'Are you sure?' } %>
@@ -28,7 +26,7 @@
         </div>
 
           <%= link_to '+ Write a new article', new_article_path, class:"w-full text-center underline font-medium"  %>
-          <%= link_to "Library", articles_path, class:"w-full py-2 bg-red-500 text-white text-center font-bold text-lg rounded"  %>
+          <%= link_to "Library", articles_path, class:"hover:opacity-80 w-full py-2 bg-red-500 text-white text-center font-bold text-lg rounded"  %>
 
       </div>
     </div>

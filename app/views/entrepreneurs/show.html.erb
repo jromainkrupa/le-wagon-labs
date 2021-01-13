@@ -4,18 +4,18 @@
     <div class="lg:w-1/4 lg:pt-16">
       <div class="flex flex-col items-center space-y-3">
         <svg class="w-20" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67 67"><circle cx="33.5" cy="33.5" r="33.5" fill="#C4C4C4"/></svg>
-        <h1 class="font-bold text-3xl">Company Name</h1>
+        <h1 class="font-bold text-3xl"><%= @entrepreneur.company_name %></h1>
       </div>
     </div>
     <div class="lg:w-1/3">
       <div class="pt-12">
         <h2 class="text-xl text-center font-medium">ABOUT</h2>
-        <p class="pt-2 text-justify font-medium">Short description of the company Short description of the company Short description of the company Short description of the company Short description of the company Short description of the company Short description of the company Short description of the company Short description of the company.</p>
+        <p class="pt-2 text-justify font-medium"><%= @entrepreneur.about %></p>
       </div>
       <div class="pt-8 font-semibold">
         <div class="flex justify-between">
           <span>Project lead:</span>
-          <span class="text-red-500">George Dupont</span>
+          <span class="text-red-500"><%= @entrepreneur.name %></span>
         </div>
         <div class="pt-2 flex justify-between">
           <span>Position:</span>
@@ -23,10 +23,10 @@
         </div>
         <div class="pt-2 flex justify-between">
           <span>Contact:</span>
-          <span class="text-red-500">george.dupont@gmail.com</span>
+          <span class="text-red-500"><%= @entrepreneur.email %></span>
         </div>
         <div class="flex justify-end">
-          <span class="text-red-500">+33 6 01 23 45 67</span>
+          <span class="text-red-500"><%= @entrepreneur.phone %></span>
         </div>
       </div>
 
