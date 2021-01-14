@@ -15,6 +15,9 @@ class AlumnisController < ApplicationController
 
   def edit
     @alumni = Alumni.find(params[:id])
+    @lang_back = Language.where(category: "back")
+    @lang_front = Language.where(category: "front")
+    @lang_ux_ui = Language.where(category: "ui_ux")
     authorize @alumni
   end
 

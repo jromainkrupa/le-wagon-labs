@@ -1,1 +1,102 @@
-<h1>Edit profile alumni</h1>
+<div class="px-8 xl:px-72 2xl:px-80">
+  <div class="lg:flex lg:flex-wrap lg:pt-32 lg:justify-center lg:h-screen">
+    <div class="lg:w-1/3 lg:h-2/5">
+      <div class="flex flex-col items-center space-y-3">
+        <svg class="w-20" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67 67"><circle cx="33.5" cy="33.5" r="33.5" fill="#C4C4C4"/></svg>
+        <h1 class="font-bold text-3xl"><%= "#{current_alumni.first_name} #{current_alumni.last_name}" %></h1>
+      </div>
+    </div>
+
+    <div class="lg:w-1/3 lg:h-2/5">
+
+      <div class="pt-8 lg:pt-0">
+        <h2 class="text-center text-xl">EXPERTISE</h2>
+      </div>
+
+      <div class="pt-8">
+        <span class="text-gray-400 font-medium">My roles</span>
+      </div>
+      <div data-controller="languages">
+        <div class="pt-2 flex space-x-2 w-full">
+          <div class="w-1/3">
+            <button data-action="click->languages#backend" id="options-menu" data-languages-target="backend_button" class="w-full px-4 py-2 shadow border-2 border-gray-200 rounded">BACKEND</button>
+          </div>
+          <div class="w-1/3">
+            <button  data-action="click->languages#frontend" id="options-menu" data-languages-target="front_button" class="w-full px-4 py-2 shadow border-2 border-gray-200 rounded">FRONTEND</button>
+          </div>
+          <div class="w-1/3">
+            <button  data-action="click->languages#ui_ux" id="options-menu" data-languages-target="ui_ux_button" class="w-full px-4 py-2 shadow border-2 border-gray-200 rounded">UI/UX</button>
+          </div>
+        </div>
+
+        <div data-languages-target="backend_languages" class="hidden">
+          <div class="flex flex-col pt-4 space-y-2">
+            <span>Backend Languages</span>
+            <div class="inline-flex space-x-8">
+              <% @lang_back.each do |lang| %>
+                <% if lang.language_alumnis.where(alumni: current_alumni).empty? %>
+                  <%= simple_form_for [current_alumni, LanguageAlumni.new(language: lang)] do |f|%>
+                  <%= f.association :language, input_html: {class:"invisible"}, label: content_tag(:div, lang.svg.html_safe, class:'w-8')  %>
+                  <%= f.submit %>
+                  <% end %>
+                <% else %>
+                  <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8'), alumni_language_alumni_path(current_alumni, lang.language_alumnis.where(alumni: current_alumni).first), method: :delete %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+
+        <div data-languages-target="front_languages" class="hidden">
+          <div class="flex flex-col  pt-4 space-y-2">
+            <span>Frontend Languages</span>
+            <div class="inline-flex space-x-8">
+              <% @lang_front.each do |lang| %>
+                <% if lang.language_alumnis.where(alumni: current_alumni).empty? %>
+                  <%= simple_form_for [current_alumni, LanguageAlumni.new(language: lang)] do |f|%>
+                  <%= f.association :language, input_html: {class:"invisible"}, label: content_tag(:div, lang.svg.html_safe, class:'w-8')  %>
+                  <%= f.submit %>
+                  <% end %>
+                <% else %>
+                  <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8'), alumni_language_alumni_path(current_alumni, lang.language_alumnis.where(alumni: current_alumni).first), method: :delete %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+
+        </div>
+
+        <div data-languages-target="ui_ux_languages" class="hidden">
+          <div class="flex flex-col  pt-4 space-y-2">
+            <span>UI/UX Languages</span>
+            <div class="inline-flex space-x-8">
+              <% @lang_ux_ui.each do |lang| %>
+                <% if lang.language_alumnis.where(alumni: current_alumni).empty? %>
+                  <%= simple_form_for [current_alumni, LanguageAlumni.new(language: lang)] do |f|%>
+                  <%= f.association :language, input_html: {class:"invisible"}, label: content_tag(:div, lang.svg.html_safe, class:'w-8')  %>
+                  <%= f.submit %>
+                  <% end %>
+                <% else %>
+                  <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8'), alumni_language_alumni_path(current_alumni, lang.language_alumnis.where(alumni: current_alumni).first), method: :delete %>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:w-1/3 lg:px-8 lg:h-2/5">
+      <div class="pt-16 lg:pt-0">
+        <h2 class="text-center text-xl">ABOUT</h2>
+      </div>
+      <div class="pt-4">
+        <p class="text-justify">Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni .</p>
+      </div>
+    </div>
+
+    <div class="pt-12 lg:w-2/5 lg:pt-20">
+      <button class="w-full py-3 rounded bg-red-500 text-white font-bold text-lg">Save changes</button>
+    </div>
+  </div>
+</div>
