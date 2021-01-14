@@ -1,9 +1,10 @@
-<% case @project.status  %>
-  <% when "pending" %>
-  <%= render 'projects/shared/project_pending' %>
-  <% when "progress" %>
-  <%= render 'projects/shared/project_review' %>
-<% end %>
+<%# case @project.status  %>
+  <%# when "pending" %>
+  <%#= render 'projects/shared/project_pending' %>
+  <%# when "progress" %>
+  <%#= render 'projects/shared/project_review' %>
+<%# end %>
 
-<%#= render 'shared/project_review' %>
+<%#= render 'projects/shared/project_review' %>
 
+<%= render 'projects/shared/project_pending' %>
