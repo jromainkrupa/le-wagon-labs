@@ -11,7 +11,7 @@
       </div>
     </div>
     <div>
-      <div class="pt-4 lg:pt-0">
+      <div class="pt-4 lg:pt-0 ">
         <h2 class="font-medium text-center text-xl"><%= @project.entrepreneur.company_name %></h2>
       </div>
 
@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div data-controller="project_modale" class="relative">
+    <div data-controller="modale" class="relative lg:static">
       <div>
         <div class="pt-8 lg:pt-0">
           <h2 class="font-medium text-center text-xl">Project description</h2>
@@ -32,6 +32,7 @@
       <%= render 'projects/shared/project_confirm_modale' %>
 
     </div>
+
 
     <div class="lg:order-6">
       <div class="pt-8">
