@@ -8,7 +8,4 @@ export default class extends Controller {
      this.toggleableTarget.classList.toggle('hidden')
      this.invisibleTarget.classList.toggle('hidden')
    }
-
-
-
 }
