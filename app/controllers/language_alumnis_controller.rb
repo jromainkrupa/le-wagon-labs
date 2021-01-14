@@ -7,9 +7,9 @@ class LanguageAlumnisController < ApplicationController
   def create
     @language_alumni = LanguageAlumni.new
     @language_alumni.alumni = pundit_user
-    @language_alumni.language = language_alumni_params # on essaye de trouver une meilleure façon de faire ça
+    @language_alumni.language = Language.find(language_alumni_params[:language_id])
     if @language_alumni.save
-      redirect_to language_alumni_path(@language_alumni)
+      redirect_to edit_alumni_path(pundit_user)
     else
       render :new
     end
@@ -19,12 +19,12 @@ class LanguageAlumnisController < ApplicationController
     @language_alumni = LanguageAlumni.find(params[:id])
     authorize @language_alumni
     @language_alumni.destroy
-    redirect_to alumni_path(pundit_user)
+    redirect_to edit_alumni_path(pundit_user)
   end
 
   private
 
   def language_alumni_params
-    params.require(:language_alumni).permit(:language)
+    params.require(:language_alumni).permit(:language_id)
   end
 end

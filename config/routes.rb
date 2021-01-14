@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   }
 
   resources :alumnis, only: [:index, :show, :update, :edit] do
+    resources :language_alumnis
     collection do
       get 'dashboard', to: 'alumnis#dashboard'
     end
