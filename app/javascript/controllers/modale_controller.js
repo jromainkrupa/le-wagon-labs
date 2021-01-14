@@ -5,7 +5,6 @@ export default class extends Controller {
 
 
    close() {
-    console.log("toto")
      this.modaleTarget.classList.add('hidden')
      this.backgroundTarget.classList.add('hidden')
    }
