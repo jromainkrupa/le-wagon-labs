@@ -28,7 +28,12 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.find(params[:id])
-    @lr = LanguageRole.new
+    @role_back = @project.roles.where(name: 'back-end').first
+    @role_front = @project.roles.where(name: 'front-end').first
+    @role_ux_ui = @project.roles.where(name: 'UX/UI').first
+    @lang_back = Language.where(category: "back")
+    @lang_front = Language.where(category: "front")
+    @lang_ux_ui = Language.where(category: "ui_ux")
     authorize @project
   end
 
