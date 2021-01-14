@@ -9,7 +9,7 @@ class Project < ApplicationRecord
   validates :name, length: { minimum: 2, maximum: 30 }
   validates :pain, :target, :solution, length: { minimum: 20 }
   validates :description, length: { minimum: 20 }, allow_blank: true
-  validates :status, inclusion: { in: ['pending', 'progress', 'done'] }
+  validates :status, inclusion: { in: ['review', 'accepted', 'pending', 'developpment', 'done'] }
 
   def project_alumnis
     candidacies.select { |candidacy| candidacy.accepted? }
@@ -27,16 +27,24 @@ class Project < ApplicationRecord
     project_alumnis + [mentor, entrepreneur]
   end
 
-  def progress?
-    status == 'progress'
+  def review?
+    status == 'review'
   end
 
-  def done?
-    status == 'done'
+  def accepted?
+    status == 'accepted'
   end
 
   def pending?
     status == 'pending'
+  end
+
+  def developpment?
+    status == 'developpment'
+  end
+
+  def done?
+    status == 'done'
   end
 
   def completion
