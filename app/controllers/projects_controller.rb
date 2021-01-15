@@ -22,21 +22,6 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    format.json {
-      @lang_back.each do |lang|
-        if lang.language_roles.where(role: @role_back).empty?
-
-          simple_form_for [@project, @role_back, LanguageRole.new(language: lang)], remote: true do |f|
-          f.association :language, input_html: {class:"invisible"}, label: content_tag(:div, lang.svg.html_safe, class:'w-8')
-          f.submit
-          end
-
-        else
-          link_to content_tag(:div, lang.svg.html_safe, class:'w-8'), project_role_language_role_path(@project, @role_back, lang.language_roles.where(role: @role_back).first), method: :delete
-
-        end
-      end
-    }
     @project = Project.find(params[:id])
     authorize @project
   end
