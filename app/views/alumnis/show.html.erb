@@ -1,4 +1,4 @@
-<div class="px-8 xl:px-72 2xl:px-80">
+<div class="px-8 xl:px-24 2xl:px-60">
 
   <div class="lg:flex lg:flex-wrap lg:pt-32 lg:justify-center lg:h-screen">
 
@@ -22,10 +22,8 @@
     </div>
 
     <% if @alumni == current_alumni %>
-      <%= link_to edit_alumni_path(@alumni), class:"group" do %>
-        <div class="group-hover:opacity-80 pt-8 lg:w-2/5 lg:pt-20">
-          <button class="w-full py-3 rounded bg-red-500 text-white font-bold text-lg">Edit my profile</button>
-        </div>
+      <%= link_to edit_alumni_path(@alumni), class:"pt-8 lg:w-2/5 lg:pt-20 hover:opacity-80" do %>
+          <button class="py-3 w-full rounded bg-red-500 text-white font-bold text-lg">Edit my profile</button>
       <% end %>
     <% end %>
 
