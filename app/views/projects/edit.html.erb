@@ -57,7 +57,7 @@
           </div>
         </a>
 
-      <div data-project-target="backend_languages" class="hidden">
+      <div data-project-target="backend_languages" class="">
         <div class="pt-6 inline-flex space-x-8 justify-center w-full">
 
           <%= simple_form_for [@project, @role_back] do |f|%>
@@ -67,12 +67,13 @@
           <% @lang_back.each do |lang| %>
 
             <% if lang.language_roles.where(role: @role_back).empty? %>
-              <%= simple_form_for [@project, @role_back, LanguageRole.new(language: lang)] do |f|%>
-              <%= f.association :language, input_html: {class:"invisible"}, label: content_tag(:div, lang.svg.html_safe, class:'w-8')  %>
-              <%= f.submit %>
-              <% end %>
+              <%#= simple_form_for [@project, @role_back, LanguageRole.new(language: lang)] do |f|%>
+              <%#= f.association :language, input_html: {class:"invisible", id: lang.name}, label: content_tag(:div, lang.svg.html_safe, class:'w-8')  %>
+              <%#= f.submit %>
+              <%# end %>
+              <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8'), project_role_language_roles_path(@project, @role_back, lang_id: lang.id), method: :post%>
             <% else %>
-              <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8'), project_role_language_role_path(@project, @role_back, lang.language_roles.where(role: @role_back).first), method: :delete %>
+              <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8 border-2 border-black'), project_role_language_role_path(@project, @role_back, lang.language_roles.where(role: @role_back).first), method: :delete %>
             <% end %>
           <% end %>
 
@@ -103,7 +104,7 @@
             <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
           </div>
         </a>
-      <div data-project-target="frontend_languages" class="hidden">
+      <div data-project-target="frontend_languages" class="">
         <div class="pt-6 inline-flex space-x-8 justify-center w-full">
           <%= simple_form_for [@project, @role_front] do |f|%>
           <%= f.input :number %>
@@ -112,12 +113,13 @@
           <% @lang_front.each do |lang| %>
 
             <% if lang.language_roles.where(role: @role_front).empty? %>
-              <%= simple_form_for [@project, @role_front, LanguageRole.new(language: lang)] do |f|%>
-              <%= f.association :language, input_html: {class:"invisible"}, label: content_tag(:div, lang.svg.html_safe, class:'w-8')  %>
-              <%= f.submit %>
-              <% end %>
+              <%#= simple_form_for [@project, @role_front, LanguageRole.new(language: lang)] do |f|%>
+              <%#= f.association :language, input_html: {class:"invisible", id: lang.name}, label: content_tag(:div, lang.svg.html_safe, class:'w-8')  %>
+              <%#= f.submit %>
+              <%# end %>
+              <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8'), project_role_language_roles_path(@project, @role_front, lang_id: lang.id), method: :post%>
             <% else %>
-              <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8'), project_role_language_role_path(@project, @role_front, lang.language_roles.where(role: @role_front).first), method: :delete %>
+              <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8 border-2 border-black', id: lang.name), project_role_language_role_path(@project, @role_front, lang.language_roles.where(role: @role_front).first), method: :delete %>
             <% end %>
           <% end %>
         </div>
@@ -134,7 +136,7 @@
             <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
           </div>
         </a>
-      <div data-project-target="ui_ux_languages" class="hidden">
+      <div data-project-target="ui_ux_languages" class="">
         <div class="pt-6 inline-flex space-x-8 justify-center w-full">
           <%= simple_form_for [@project, @role_ux_ui] do |f|%>
           <%= f.input :number %>
@@ -143,12 +145,13 @@
           <% @lang_ux_ui.each do |lang| %>
 
             <% if lang.language_roles.where(role: @role_ux_ui).empty? %>
-              <%= simple_form_for [@project, @role_ux_ui, LanguageRole.new(language: lang)] do |f|%>
-              <%= f.association :language, input_html: {class:"invisible"}, label: content_tag(:div, lang.svg.html_safe, class:'w-8')  %>
-              <%= f.submit %>
-              <% end %>
+              <%#= simple_form_for [@project, @role_ux_ui, LanguageRole.new(language: lang)] do |f|%>
+              <%#= f.association :language, input_html: {class:"invisible", id: lang.name}, label: content_tag(:div, lang.svg.html_safe, class:'w-8')  %>
+              <%#= f.submit %>
+              <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8'), project_role_language_roles_path(@project, @role_ux_ui, lang_id: lang.id), method: :post%>
+              <%# end %>
             <% else %>
-              <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8'), project_role_language_role_path(@project, @role_ux_ui, lang.language_roles.where(role: @role_ux_ui).first), method: :delete %>
+              <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8 border-2 border-black'), project_role_language_role_path(@project, @role_ux_ui, lang.language_roles.where(role: @role_ux_ui).first), method: :delete %>
             <% end %>
           <% end %>
         </div>
