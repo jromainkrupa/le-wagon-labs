@@ -33,15 +33,20 @@
           <div class="flex flex-col pt-4 space-y-2">
             <span>Backend Languages</span>
             <div class="inline-flex space-x-8">
-              <% @lang_back.each do |lang| %>
-                <% if lang.language_alumnis.where(alumni: current_alumni).empty? %>
-                  <%= simple_form_for [current_alumni, LanguageAlumni.new(language: lang)] do |f|%>
-                  <%= f.association :language, input_html: {class:"invisible"}, label: content_tag(:div, lang.svg.html_safe, class:'w-8 h-8')  %>
-                  <%= f.submit %>
-                  <% end %>
-                <% else %>
-                  <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8 h-8'), alumni_language_alumni_path(current_alumni, lang.language_alumnis.where(alumni: current_alumni).first), method: :delete %>
-                <% end %>
+              <%# @lang_back.each do |lang| %>
+                <%# if lang.language_alumnis.where(alumni: current_alumni).empty? %>
+                  <%#= simple_form_for [current_alumni, LanguageAlumni.new(language: lang)] do |f|%>
+                  <%#= f.association :language, input_html: {class:"invisible"}, label: content_tag(:div, lang.svg.html_safe, class:'w-8 h-8')  %>
+                  <%#= f.submit %>
+                  <%# end %>
+                <%# else %>
+                  <%#= link_to content_tag(:div, lang.svg.html_safe, class:'w-8 h-8'), alumni_language_alumni_path(current_alumni, lang.language_alumnis.where(alumni: current_alumni).first), method: :delete %>
+                <%# end %>
+              <%# end %>
+
+              <%= simple_form_for current_alumni, remote: true do |f| %>
+                <%= f.input :language_tag_list, as: :check_boxes, collection: @lang_back.map{|l| l.name} %>
+                <%= f.submit %>
               <% end %>
             </div>
           </div>
