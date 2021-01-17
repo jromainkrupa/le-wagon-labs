@@ -45,7 +45,9 @@
               <%# end %>
 
               <%= simple_form_for current_alumni, remote: true do |f| %>
-                <%= f.input :language_tag_list, as: :check_boxes, collection: Language.all.map{|l| l.name} %>
+                <%= f.input :language_back_tag_list, as: :check_boxes, collection: @lang_back.map{|l| l.name} %>
+                <%= f.hidden_field :language_front_tag_list, as: :check_boxes, collection: @lang_front.map{|l| l.name} %>
+                <%= f.hidden_field :language_ux_ui_tag_list, as: :check_boxes, collection: @lang_ux_ui.map{|l| l.name} %>
                 <%= f.submit %>
               <% end %>
             </div>
@@ -57,7 +59,9 @@
             <span>Frontend Languages</span>
             <div class="inline-flex space-x-8">
               <%= simple_form_for current_alumni, remote: true do |f| %>
-                <%= f.input :language_tag_list, as: :check_boxes, collection: @lang_front.map{|l| l.name} %>
+                <%= f.hidden_field :language_back_tag_list, as: :check_boxes, collection: @lang_back.map{|l| l.name} %>
+                <%= f.input :language_front_tag_list, as: :check_boxes, collection: @lang_front.map{|l| l.name} %>
+                <%= f.hidden_field :language_ux_ui_tag_list, as: :check_boxes, collection: @lang_ux_ui.map{|l| l.name} %>
                 <%= f.submit %>
               <% end %>
             </div>
@@ -70,7 +74,9 @@
             <span>UI/UX Languages</span>
             <div class="inline-flex space-x-8">
               <%= simple_form_for current_alumni, remote: true do |f| %>
-                <%= f.input :language_tag_list, as: :check_boxes, collection: @lang_ux_ui.map{|l| l.name} %>
+                <%= f.hidden_field :language_back_tag_list, as: :check_boxes, collection: @lang_back.map{|l| l.name} %>
+                <%= f.hidden_field :language_front_tag_list, as: :check_boxes, collection: @lang_front.map{|l| l.name} %>
+                <%= f.input :language_ux_ui_tag_list, as: :check_boxes, collection: @lang_ux_ui.map{|l| l.name} %>
                 <%= f.submit %>
               <% end %>
             </div>

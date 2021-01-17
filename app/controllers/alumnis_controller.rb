@@ -23,7 +23,9 @@ class AlumnisController < ApplicationController
 
   def update
     @alumni = Alumni.find(params[:id])
-    @alumni.language_tag_list = params[:alumni][:language_tag_list]
+    @alumni.language_back_tag_list = params[:alumni][:language_back_tag_list]
+    @alumni.language_front_tag_list = params[:alumni][:language_front_tag_list]
+    @alumni.language_ux_ui_tag_list = params[:alumni][:language_ux_ui_tag_list]
     if @alumni.update(alumni_params)
       redirect_to edit_alumni_path(@alumni)
     else
@@ -34,6 +36,6 @@ class AlumnisController < ApplicationController
   private
 
   def alumni_params
-    params.require(:alumni).permit(:first_name, :last_name, :about, :language_tag_list)
+    params.require(:alumni).permit(:first_name, :last_name, :about, :language_back_tag_list, :language_front_tag_list, :language_ux_ui_tag_list)
   end
 end
