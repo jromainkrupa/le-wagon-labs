@@ -22,8 +22,11 @@ class RolesController < ApplicationController
 
   def update
     @role = Role.find(params[:id])
+    @role.language_back_tag_list = params[:role][:language_back_tag_list]
+    @role.language_front_tag_list = params[:role][:language_front_tag_list]
+    @role.language_ux_ui_tag_list = params[:role][:language_ux_ui_tag_list]
     if @role.update(role_params)
-      redirect_to role_path(@role)
+      redirect_to edit_project_path(@role.project)
     else
       render :edit
     end
@@ -31,12 +34,15 @@ class RolesController < ApplicationController
 
   def edit
     @role = Role.find(params[:id])
+    @lang_back = Language.where(category: "back")
+    @lang_front = Language.where(category: "front")
+    @lang_ux_ui = Language.where(category: "ui_ux")
     authorize @role
   end
 
   private
 
   def role_params
-    params.require(:role).permit(:name, :status, :number)
+    params.require(:role).permit(:name, :status, :number, :language_back_tag_list, :language_front_tag_list, :language_ux_ui_tag_list)
   end
 end

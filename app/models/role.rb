@@ -8,6 +8,8 @@ class Role < ApplicationRecord
   validates :name, inclusion: { in: ROLES }
   validates :status, inclusion: { in: ['pending', 'progress', 'done'] }
 
+  acts_as_taggable_on :language_back_tags, :language_front_tags, :language_ux_ui_tags
+
   def progress?
     status == 'progress'
   end
