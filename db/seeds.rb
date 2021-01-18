@@ -7,7 +7,6 @@ Alumni.destroy_all
 Project.destroy_all
 Entrepreneur.destroy_all
 Language.destroy_all
-LanguageAlumni.destroy_all
 
 puts "Creating languages..."
 
@@ -59,37 +58,6 @@ alumni_two = Alumni.create(
   city: "Lyon"
 )
 
-puts "Creating language alumnis"
-
-language1 = LanguageAlumni.create!(
-  alumni_id: alumni_one.id,
-  language_id: ruby.id
-)
-
-language2 = LanguageAlumni.create!(
-  alumni_id: alumni_two.id,
-  language_id: ruby.id
-)
-
-language3 = LanguageAlumni.create!(
-  alumni_id: alumni_mentor.id,
-  language_id: ruby.id
-)
-
-language4 = LanguageAlumni.create!(
-  alumni_id: alumni_gagou.id,
-  language_id: ruby.id
-)
-
-language5 = LanguageAlumni.create!(
-  alumni_id: alumni_mentor.id,
-  language_id: js.id
-)
-
-language6 = LanguageAlumni.create!(
-  alumni_id: alumni_gagou.id,
-  language_id: js.id
-)
 
 puts "Creating Entrepreneurs..."
 

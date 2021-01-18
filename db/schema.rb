@@ -68,15 +68,6 @@ ActiveRecord::Schema.define(version: 2021_01_17_083531) do
     t.index ["reset_password_token"], name: "index_entrepreneurs_on_reset_password_token", unique: true
   end
 
-  create_table "language_alumnis", force: :cascade do |t|
-    t.bigint "language_id", null: false
-    t.bigint "alumni_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["alumni_id"], name: "index_language_alumnis_on_alumni_id"
-    t.index ["language_id"], name: "index_language_alumnis_on_language_id"
-  end
-
   create_table "language_roles", force: :cascade do |t|
     t.bigint "role_id", null: false
     t.bigint "language_id", null: false
@@ -159,8 +150,6 @@ ActiveRecord::Schema.define(version: 2021_01_17_083531) do
   add_foreign_key "articles", "alumnis"
   add_foreign_key "candidacies", "alumnis"
   add_foreign_key "candidacies", "roles"
-  add_foreign_key "language_alumnis", "alumnis"
-  add_foreign_key "language_alumnis", "languages"
   add_foreign_key "language_roles", "languages"
   add_foreign_key "language_roles", "roles"
   add_foreign_key "projects", "entrepreneurs"
