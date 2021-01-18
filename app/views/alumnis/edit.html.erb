@@ -29,6 +29,7 @@
           </div>
         </div>
 
+        <%= simple_form_for current_alumni do |f| %>
         <div data-languages-target="backend_languages" class="hidden">
           <div class="flex flex-col pt-4 space-y-2">
             <span>Backend Languages</span>
@@ -44,12 +45,10 @@
                 <%# end %>
               <%# end %>
 
-              <%= simple_form_for current_alumni, remote: true do |f| %>
-                <%= f.input :language_back_tag_list, as: :check_boxes, collection: @lang_back.map{|l| l.name} %>
-                <%= f.hidden_field :language_front_tag_list, as: :check_boxes, collection: @lang_front.map{|l| l.name} %>
-                <%= f.hidden_field :language_ux_ui_tag_list, as: :check_boxes, collection: @lang_ux_ui.map{|l| l.name} %>
-                <%= f.submit %>
-              <% end %>
+                <%= f.input :language_back_tag_list,
+                            as: :check_boxes,
+                            collection: @lang_back.map{|l| l.name},
+                            label_method: lambda {|l| Language.find_by(name: l).svg.html_safe} %>
             </div>
           </div>
         </div>
@@ -58,12 +57,7 @@
           <div class="flex flex-col  pt-4 space-y-2">
             <span>Frontend Languages</span>
             <div class="inline-flex space-x-8">
-              <%= simple_form_for current_alumni, remote: true do |f| %>
-                <%= f.hidden_field :language_back_tag_list, as: :check_boxes, collection: @lang_back.map{|l| l.name} %>
-                <%= f.input :language_front_tag_list, as: :check_boxes, collection: @lang_front.map{|l| l.name} %>
-                <%= f.hidden_field :language_ux_ui_tag_list, as: :check_boxes, collection: @lang_ux_ui.map{|l| l.name} %>
-                <%= f.submit %>
-              <% end %>
+             <%= f.input :language_front_tag_list, as: :check_boxes, collection: @lang_front.map{|l| l.name}, label_method: lambda {|l| Language.find_by(name: l).svg.html_safe}  %>
             </div>
           </div>
 
@@ -73,12 +67,7 @@
           <div class="flex flex-col  pt-4 space-y-2">
             <span>UI/UX Languages</span>
             <div class="inline-flex space-x-8">
-              <%= simple_form_for current_alumni, remote: true do |f| %>
-                <%= f.hidden_field :language_back_tag_list, as: :check_boxes, collection: @lang_back.map{|l| l.name} %>
-                <%= f.hidden_field :language_front_tag_list, as: :check_boxes, collection: @lang_front.map{|l| l.name} %>
-                <%= f.input :language_ux_ui_tag_list, as: :check_boxes, collection: @lang_ux_ui.map{|l| l.name} %>
-                <%= f.submit %>
-              <% end %>
+            <%= f.input :language_ux_ui_tag_list, as: :check_boxes, collection: @lang_ux_ui.map{|l| l.name}, label_method: lambda {|l| Language.find_by(name: l).svg.html_safe}  %>
             </div>
           </div>
         </div>
@@ -95,7 +84,8 @@
     </div>
 
     <div class="pt-12 lg:w-2/5 lg:pt-20">
-      <button class="w-full py-3 rounded bg-red-500 text-white font-bold text-lg">Save changes</button>
+      <%= f.submit class: "w-full py-3 rounded bg-red-500 text-white font-bold text-lg"%>
     </div>
+    <% end %>
   </div>
 </div>
