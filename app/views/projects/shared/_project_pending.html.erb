@@ -2,42 +2,35 @@
 
 <div class="lg:grid lg:grid-cols-3 lg:gap-14">
 
-    <div>
-      <div class="flex flex-col items-center space-y-3">
-        <svg class="w-20" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67 67"><circle cx="33.5" cy="33.5" r="33.5" fill="#C4C4C4"/></svg>
-        <div class="lg:pt-8">
-          <h1 class="font-bold text-3xl"><%= @project.name %></h1>
-        </div>
+  <div>
+    <div class="flex flex-col items-center space-y-3">
+      <svg class="w-20" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67 67"><circle cx="33.5" cy="33.5" r="33.5" fill="#C4C4C4"/></svg>
+      <div class="lg:pt-8">
+        <h1 class="font-bold text-3xl"><%= @project.name %></h1>
       </div>
     </div>
-    <div>
-      <div class="pt-4 lg:pt-0 ">
-        <h2 class="font-medium text-center text-xl"><%= @project.entrepreneur.company_name %></h2>
-      </div>
+  </div>
 
-      <div class="pt-2 lg:pt-8">
-        <p class="text-justify font-medium"><%= @project.entrepreneur.about %></p>
-      </div>
+  <div>
+    <div class="pt-4 lg:pt-0 ">
+      <h2 class="font-medium text-center text-xl"><%= @project.entrepreneur.company_name %></h2>
     </div>
 
-    <div data-controller="modale" class="relative lg:static">
-      <div>
-        <div class="pt-8 lg:pt-0">
-          <h2 class="font-medium text-center text-xl">Project description</h2>
-        </div>
-        <div class="pt-2 lg:pt-8">
-          <p class="text-justify font-medium"><%= @project.description %></p>
-      </div>
-
-
-
-      <%#= render 'projects/shared/modals/modale_entrepreneur_accepted'%>
-
-      <%#= render 'projects/shared/modals/modale_mentor_accepted'%>
-
-      <%= render 'projects/shared/modals/modale_alumni_pending'%>
-
+    <div class="pt-2 lg:pt-8">
+      <p class="text-justify font-medium"><%= @project.entrepreneur.about %></p>
     </div>
+  </div>
+  <div>
+    <div class="pt-8 lg:pt-0">
+      <h2 class="font-medium text-center text-xl">Project description</h2>
+    </div>
+    <div class="pt-2 lg:pt-8">
+      <p class="text-justify font-medium"><%= @project.description %></p>
+    </div>
+  </div>
+
+
+
 
 
     <div class="lg:order-6">
@@ -180,4 +173,13 @@
   </div>
 </div>
 
+  <div data-controller="modale" class="relative lg:static">
+
+    <%#= render 'projects/shared/modals/modale_entrepreneur_accepted'%>
+
+    <%#= render 'projects/shared/modals/modale_mentor_accepted'%>
+
+    <%= render 'projects/shared/modals/modale_alumni_pending'%>
+  </div>
 </div>
+

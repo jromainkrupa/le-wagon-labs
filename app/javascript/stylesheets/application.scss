@@ -1,3 +1,27 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+
+.tag-item {
+  display: inline-block;
+}
+
+.tag-selector {
+  position: absolute;
+  transform: scale(0);
+}
+
+.tag-selector + .label_maison {
+  cursor: pointer;
+  display: inline-block;
+  padding: 0.65rem 0.65rem;
+  margin-right: 0.8rem;
+  margin-bottom: 0.4rem;
+}
+
+.tag-selector:checked + .label_maison {
+  border-radius: 0.75rem;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: #F3F3F3;
+}

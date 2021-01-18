@@ -7,7 +7,17 @@
       </div>
     </div>
 
-    <div class="lg:w-1/3 lg:h-2/5">
+
+    <div class="lg:w-1/3 lg:px-8 lg:h-2/5 lg:order-4">
+      <div class="pt-16 lg:pt-0">
+        <h2 class="text-center text-xl">ABOUT</h2>
+      </div>
+      <div class="pt-4">
+        <p class="text-justify">Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni .</p>
+      </div>
+    </div>
+
+    <div class="lg:w-1/3 lg:h-2/5 lg:order-3">
 
       <div class="pt-8 lg:pt-0">
         <h2 class="text-center text-xl">EXPERTISE</h2>
@@ -34,22 +44,17 @@
           <div class="flex flex-col pt-4 space-y-2">
             <span>Backend Languages</span>
             <div class="inline-flex space-x-8">
-              <%# @lang_back.each do |lang| %>
-                <%# if lang.language_alumnis.where(alumni: current_alumni).empty? %>
-                  <%#= simple_form_for [current_alumni, LanguageAlumni.new(language: lang)] do |f|%>
-                  <%#= f.association :language, input_html: {class:"invisible"}, label: content_tag(:div, lang.svg.html_safe, class:'w-8 h-8')  %>
-                  <%#= f.submit %>
-                  <%# end %>
-                <%# else %>
-                  <%#= link_to content_tag(:div, lang.svg.html_safe, class:'w-8 h-8'), alumni_language_alumni_path(current_alumni, lang.language_alumnis.where(alumni: current_alumni).first), method: :delete %>
-                <%# end %>
-              <%# end %>
 
                 <%= f.input :language_back_tag_list,
                             as: :check_boxes,
                             collection: @lang_back.map{|l| l.name},
-                            label_method: lambda {|l| Language.find_by(name: l).svg.html_safe} %>
+                            label_method: lambda {|l| content_tag(:div, Language.find_by(name: l).svg.html_safe, class:'w-12 label_maison') },
+                            label: false,
+                            input_html: { class: "tag-selector" },
+                            item_wrapper_class: 'tag-item'
+                            %>
             </div>
+
           </div>
         </div>
 
@@ -57,7 +62,14 @@
           <div class="flex flex-col  pt-4 space-y-2">
             <span>Frontend Languages</span>
             <div class="inline-flex space-x-8">
-             <%= f.input :language_front_tag_list, as: :check_boxes, collection: @lang_front.map{|l| l.name}, label_method: lambda {|l| Language.find_by(name: l).svg.html_safe}  %>
+              <%= f.input :language_front_tag_list,
+                          as: :check_boxes,
+                          collection: @lang_front.map{|l| l.name},
+                          label_method: lambda {|l| content_tag(:div, Language.find_by(name: l).svg.html_safe, class:'w-12 label_maison') },
+                          label: false,
+                          input_html: { class: "tag-selector" },
+                          item_wrapper_class: 'tag-item'
+                          %>
             </div>
           </div>
 
@@ -67,24 +79,22 @@
           <div class="flex flex-col  pt-4 space-y-2">
             <span>UI/UX Languages</span>
             <div class="inline-flex space-x-8">
-            <%= f.input :language_ux_ui_tag_list, as: :check_boxes, collection: @lang_ux_ui.map{|l| l.name}, label_method: lambda {|l| Language.find_by(name: l).svg.html_safe}  %>
+              <%= f.input :language_ux_ui_tag_list,
+                          as: :check_boxes,
+                          collection: @lang_ux_ui.map{|l| l.name},
+                          label_method: lambda {|l| content_tag(:div, Language.find_by(name: l).svg.html_safe, class:'w-12 label_maison') },
+                          label: false,
+                          input_html: { class: "tag-selector" },
+                          item_wrapper_class: 'tag-item'
+                          %>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="lg:w-1/3 lg:px-8 lg:h-2/5">
-      <div class="pt-16 lg:pt-0">
-        <h2 class="text-center text-xl">ABOUT</h2>
-      </div>
-      <div class="pt-4">
-        <p class="text-justify">Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni Short description of the alumni .</p>
-      </div>
-    </div>
-
-    <div class="pt-12 lg:w-2/5 lg:pt-20">
-      <%= f.submit class: "w-full py-3 rounded bg-red-500 text-white font-bold text-lg"%>
+    <div class="pt-12 lg:w-2/5 lg:pt-20 lg:order-5">
+      <%= f.submit "Save changes", class: "w-full py-3 rounded bg-red-500 text-white font-bold text-lg"%>
     </div>
     <% end %>
   </div>
