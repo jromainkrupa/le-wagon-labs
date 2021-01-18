@@ -76,7 +76,7 @@
               </div>
             <% else %>
               <div class="px-2 py-2 bg-gray-100 rounded-xl shadow-inner">
-                <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8 '), project_role_language_role_path(@project, @role_back, lang.language_roles.where(role: @role_back).first), method: :delete %>
+                <%= link_to content_tag(:div, lang.svg.html_safe, class:'w-8 '), project_role_language_role_path(@project, @role_back, lang.language_roles.where(role: @role_back).first), method: :delete%>
               </div>
             <% end %>
           <% end %>

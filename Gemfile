@@ -65,3 +65,5 @@ gem 'pundit'
 
 
 gem "simple_form", "~> 5.0"
+
+gem "acts-as-taggable-on", "~> 7.0"

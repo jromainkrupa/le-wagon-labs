@@ -9,6 +9,8 @@ class Alumni < ApplicationRecord
   has_many :language_alumnis, dependent: :destroy
   has_many :projects, through: :candidacies
 
+  acts_as_taggable_on :language_back_tags, :language_front_tags, :language_ux_ui_tags
+
   validates :first_name, :last_name, presence: true, length: { minimum: 2, maximum: 25 }
 
   def name
