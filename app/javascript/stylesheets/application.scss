@@ -25,3 +25,15 @@
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   background: #F3F3F3;
 }
+
+
+.progress-ring {
+
+}
+
+.progress-ring__circle {
+  transition: 0.35s stroke-dashoffset;
+  // axis compensation
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+}
