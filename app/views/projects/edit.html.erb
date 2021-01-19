@@ -61,6 +61,7 @@
       <div data-project-target="backend_languages" class="hidden">
         <div class="pt-6 inline-flex space-x-8 justify-center w-full">
           <%= simple_form_for [@project, @role_back] do |f| %>
+            <%= f.input :number %>
             <%= f.input :language_back_tag_list,
                             as: :check_boxes,
                             collection: @lang_back.map{|l| l.name},
@@ -87,6 +88,7 @@
       <div data-project-target="frontend_languages" class="hidden">
         <div class="pt-6 inline-flex space-x-8 justify-center w-full">
           <%= simple_form_for [@project, @role_front] do |f| %>
+            <%= f.input :number %>
             <%= f.input :language_front_tag_list,
                           as: :check_boxes,
                           collection: @lang_front.map{|l| l.name},
@@ -110,6 +112,7 @@
       <div data-project-target="ui_ux_languages" class="hidden">
         <div class="pt-6 inline-flex space-x-8 justify-center w-full">
           <%= simple_form_for [@project, @role_ux_ui] do |f| %>
+            <%= f.input :number %>
             <%= f.input :language_ux_ui_tag_list,
                           as: :check_boxes,
                           collection: @lang_ux_ui.map{|l| l.name},
@@ -119,6 +122,10 @@
         </div>
       </div>
     </div>
+
+    <%= simple_form_for @project do |f| %>
+
+    <% end %>
 
       <div class=" py-2">
         <%= simple_form_for @project do |f| %>
