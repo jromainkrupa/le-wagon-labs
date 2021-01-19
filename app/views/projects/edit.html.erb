@@ -45,7 +45,7 @@
                       placeholder: 'Compensation',
                       input_html: { class: "px-2 py-3 border border-gray-200 w-full text-center"} %>
 
-      <%= f.submit %>
+      <%= f.submit class: "w-full py-3 rounded bg-red-500 text-white font-bold text-lg" %>
       <% end %>
     <div data-controller="project">
         <a data-action="click->project#backend" id="options-menu" class="px-2 py-3 flex items-center border w-full focus:outline-none">
@@ -70,7 +70,7 @@
                           input_html: { class: "tag-selector" },
                           item_wrapper_class: 'tag-item'
                           %>
-            <%= f.submit %>
+            <%= f.submit class: "w-full py-3 rounded bg-red-500 text-white font-bold text-lg" %>
           <% end %>
         </div>
       </div>
@@ -101,7 +101,7 @@
                           input_html: { class: "tag-selector" },
                           item_wrapper_class: 'tag-item'
                           %>
-            <%= f.submit %>
+            <%= f.submit class: "w-full py-3 rounded bg-red-500 text-white font-bold text-lg" %>
           <% end %>
         </div>
       </div>
@@ -129,7 +129,7 @@
                           input_html: { class: "tag-selector" },
                           item_wrapper_class: 'tag-item'
                           %>
-            <%= f.submit %>
+            <%= f.submit class: "w-full py-3 rounded bg-red-500 text-white font-bold text-lg"%>
           <% end %>
         </div>
       </div>
