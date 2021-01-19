@@ -63,9 +63,13 @@
           <%= simple_form_for [@project, @role_back] do |f| %>
             <%= f.input :number %>
             <%= f.input :language_back_tag_list,
-                            as: :check_boxes,
-                            collection: @lang_back.map{|l| l.name},
-                            label_method: lambda {|l| Language.find_by(name: l).svg.html_safe} %>
+                          as: :check_boxes,
+                          collection: @lang_back.map{|l| l.name},
+                          label_method: lambda {|l| content_tag(:div, Language.find_by(name: l).svg.html_safe, class:'w-12 label_maison')},
+                          label: false,
+                          input_html: { class: "tag-selector" },
+                          item_wrapper_class: 'tag-item'
+                          %>
             <%= f.submit %>
           <% end %>
         </div>
@@ -92,7 +96,11 @@
             <%= f.input :language_front_tag_list,
                           as: :check_boxes,
                           collection: @lang_front.map{|l| l.name},
-                          label_method: lambda {|l| Language.find_by(name: l).svg.html_safe} %>
+                          label_method: lambda {|l| content_tag(:div, Language.find_by(name: l).svg.html_safe, class:'w-12 label_maison')},
+                          label: false,
+                          input_html: { class: "tag-selector" },
+                          item_wrapper_class: 'tag-item'
+                          %>
             <%= f.submit %>
           <% end %>
         </div>
@@ -116,7 +124,11 @@
             <%= f.input :language_ux_ui_tag_list,
                           as: :check_boxes,
                           collection: @lang_ux_ui.map{|l| l.name},
-                          label_method: lambda {|l| Language.find_by(name: l).svg.html_safe} %>
+                          label_method: lambda {|l| content_tag(:div, Language.find_by(name: l).svg.html_safe, class:'w-12 label_maison')},
+                          label: false,
+                          input_html: { class: "tag-selector" },
+                          item_wrapper_class: 'tag-item'
+                          %>
             <%= f.submit %>
           <% end %>
         </div>
