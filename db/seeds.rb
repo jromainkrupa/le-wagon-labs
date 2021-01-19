@@ -1,7 +1,6 @@
 puts "Cleaning Database..."
 
 Candidacy.destroy_all
-LanguageRole.destroy_all
 Role.destroy_all
 Alumni.destroy_all
 Project.destroy_all
@@ -149,28 +148,6 @@ Candidacy.create!(
   alumni_id: alumni_one.id,
   role_id: role_back.id,
   status: 'accepted'
-)
-
-puts "Creating Language_Roles..."
-
-language_roles1 = LanguageRole.create!(
-  language_id: ruby.id,
-  role_id: role_back.id
-)
-
-language_roles2 = LanguageRole.create!(
-  language_id: js.id,
-  role_id: role_back.id
-)
-
-language_roles3 = LanguageRole.create!(
-  language_id: js2.id,
-  role_id: role_front.id
-)
-
-language_roles4 = LanguageRole.create!(
-  language_id: figma.id,
-  role_id: role_ui_ux.id
 )
 
 puts "Creating Articles..."
