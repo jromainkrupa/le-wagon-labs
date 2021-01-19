@@ -10,11 +10,11 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = Task.new(completed: false)
     @task.project = Project.find(params[:project_id])
     authorize @task
     if @task.save!
-      redirect_to edit_project_path(@task.project)
+      redirect_to edit_project_path(@task.project, anchor: @task.id)
     else
       render :new
     end
@@ -23,7 +23,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      redirect_to edit_project_path(@task.project)
+      redirect_to edit_project_path(@task.project, anchor: @task.id)
     else
       render :edit
     end
@@ -32,6 +32,16 @@ class TasksController < ApplicationController
   def edit
     @task = Task.find(params[:id])
     authorize @task
+  end
+
+  def destroy
+    @task = Task.find(params[:id])
+    @task.destroy
+    if @task.project.tasks.empty?
+      redirect_to edit_project_path(@task.project)
+    else
+      redirect_to edit_project_path(@task.project, anchor: @task.project.tasks.first.id)
+    end
   end
 
   private
