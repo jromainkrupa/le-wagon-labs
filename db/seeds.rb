@@ -57,6 +57,10 @@ alumni_two = Alumni.create(
   city: "Lyon"
 )
 
+alumni_gagou.language_back_tag_list.add("Ruby")
+alumni_gagou.language_front_tag_list.add("JavaScript")
+alumni_gagou.language_ux_ui_tag_list.add("Figma")
+alumni_gagou.save!
 
 puts "Creating Entrepreneurs..."
 
@@ -128,7 +132,6 @@ role_ui_ux = Role.create!(
   number: 1,
   project_id: project.id
 )
-
 
 puts "Creating Candidacy..."
 
