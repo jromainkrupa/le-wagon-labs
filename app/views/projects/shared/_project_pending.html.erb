@@ -113,9 +113,11 @@
 
 
       <div class="pt-4 flex justify-center lg:pt-16">
-        <div class="relative">
-          <svg class="progress-ring " width="120" height="120"> <circle class= "progress-ring__circle "stroke="red" stroke-width="4" fill="transparent" r="52" cx="60" cy="60"/></svg>
-          <span class="absolute font-bold text-xl" style="top:40%; left:35%;">10%</span>
+        <div class="relative bg-red-300 rounded-full">
+          <svg class="progress-ring " width="120" height="120"> <circle class= "progress-ring__circle "stroke="#d23333" stroke-width="15" fill="transparent" r="52" cx="60" cy="60"/></svg>
+          <div class="absolute flex bg-white items-center justify-center w-24 h-24 rounded-full" style="top:10%; left:10%;">
+            <span class="font-bold text-2xl">10%</span>
+          </div>
         </div>
         <input
             value="80"
