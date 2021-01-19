@@ -11,10 +11,10 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-    @task.alumni = pundit_user
+    @task.project = Project.find(params[:project_id])
     authorize @task
-    if @task.save
-      redirect_to task_path(@task)
+    if @task.save!
+      redirect_to edit_project_path(@task.project)
     else
       render :new
     end
@@ -23,7 +23,7 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     if @task.update(task_params)
-      redirect_to task_path(@task)
+      redirect_to edit_project_path(@task.project)
     else
       render :edit
     end
