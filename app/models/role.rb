@@ -21,4 +21,8 @@ class Role < ApplicationRecord
   def pending?
     status == 'pending'
   end
+
+  def languages
+    language_back_tag_list + language_front_tag_list + language_ux_ui_tag_list
+  end
 end

@@ -22,13 +22,7 @@
             <div class="pt-2">
               <div class="flex">
               <span class="text-base text-gray-400 pr-4 font-medium">Expert in :</span>
-                <% alumni.language_back_tag_list.each do |language| %>
-                  <span class="text-base text-gray-600 pr-2 font-bold"><%= language %></span>
-                <% end %>
-                <% alumni.language_front_tag_list.each do |language| %>
-                  <span class="text-base text-gray-600 pr-2 font-bold"><%= language %></span>
-                <% end %>
-                <% alumni.language_ux_ui_tag_list.each do |language| %>
+                <% alumni.languages.each do |language| %>
                   <span class="text-base text-gray-600 pr-2 font-bold"><%= language %></span>
                 <% end %>
               </div>

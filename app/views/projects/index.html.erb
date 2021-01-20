@@ -6,34 +6,34 @@
 
   <div class="pt-16 flex flex-col space-y-12 lg:grid-cols-2 lg:grid lg:space-y-0 lg:gap-x-12 lg:gap-y-12">
     <% @projects.each do |project| %>
-    <div class="px-6 py-8 border-2 border-gray-400 border-opacity-30 rounded-xl flex flex-col shadow">
-      <div>
-        <h2 class="font-bold text-2xl"><%= project.name %></h2>
+      <div class="px-6 py-8 border-2 border-gray-400 border-opacity-30 rounded-xl flex flex-col shadow">
+        <div>
+          <h2 class="font-bold text-2xl"><%= project.name %></h2>
+        </div>
+        <div class="pt-6">
+          <span class="text-lg">by</span>
+          <span class="font-bold text-xl"><%= project.entrepreneur.company_name %> </span>
+        </div>
+        <div class="pt-1">
+          <span class="text-lg">mentored by</span>
+          <%= link_to alumni_path(project.mentor) do %>
+            <span class="font-bold text-xl"><%= project.mentor.name %></span>
+          <% end %>
+        </div>
+        <div class="pt-4">
+          <p><%= project.description %></p>
+        </div>
+        <div class="pt-6">
+          <span>This project needs :</span>
+        </div>
+        <div class="pt-4 inline-flex justify-center space-x-12">
+          <% project.roles.map{|r| r.languages}.flatten.each do |language| %>
+            <%= content_tag(:div, Language.find_by(name: language).svg.html_safe, class: "w-8" ) %>
+          <% end %>
+        </div>
+        <div class="pt-10">
+          <%= button_to "See more", project_path(project), method: :get, class: "w-full py-3 rounded bg-red-500 text-white font-bold text-lg" %>
+        </div>
       </div>
-      <div class="pt-6">
-        <span class="text-lg">by</span>
-        <span class="font-bold text-xl"><%= project.entrepreneur.company_name %> </span>
-      </div>
-      <div class="pt-1">
-        <span class="text-lg">mentored by</span>
-        <%= link_to alumni_path(project.mentor) do %>
-          <span class="font-bold text-xl"><%= project.mentor.name %></span>
-        <% end %>
-      </div>
-      <div class="pt-4">
-        <p><%= project.description %></p>
-      </div>
-      <div class="pt-6">
-        <span>This project needs :</span>
-      </div>
-      <div class="pt-4 inline-flex justify-center space-x-12">
-        <%= @languages %>
-      </div>
-      <div class="pt-10">
-        <%= link_to project_path(project), class:"group" do %>
-          <button class="group-hover:opacity-80 w-full py-3 rounded bg-red-500 text-white font-bold text-lg">See more</button>
-        <% end %>
-      </div>
-    </div>
     <% end %>
 </div>
