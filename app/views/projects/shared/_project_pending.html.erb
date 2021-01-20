@@ -111,45 +111,48 @@
       </div>
 
 
+      <% if @project.tasks.present? %>
+        <div class="pt-4 flex justify-center lg:pt-16">
+          <div class="relative bg-red-300 rounded-full">
+            <svg class="progress-ring " width="120" height="120"> <circle class= "progress-ring__circle "stroke="#d23333" stroke-width="15" fill="transparent" r="52" cx="60" cy="60"/></svg>
+            <div class="absolute flex bg-white items-center justify-center w-24 h-24 rounded-full" style="top:10%; left:10%;">
+              <span class="font-bold text-2xl"><%= @project.completion %>%</span>
+            </div>
+          </div>
+          <input
+              class = "hidden"
+              value="<%= @project.completion %>"
+              type="number"
+              step="5"
+              min="0"
+              max="100"
+              placeholder="progress"
+            >
+        </div>
 
-      <div class="pt-4 flex justify-center lg:pt-16">
-        <div class="relative bg-red-300 rounded-full">
-          <svg class="progress-ring " width="120" height="120"> <circle class= "progress-ring__circle "stroke="#d23333" stroke-width="15" fill="transparent" r="52" cx="60" cy="60"/></svg>
-          <div class="absolute flex bg-white items-center justify-center w-24 h-24 rounded-full" style="top:10%; left:10%;">
-            <span class="font-bold text-2xl"><%= @project.completion.to_i %>%</span>
+        <div class="pt-4 flex flex-col items-center lg:pt-20">
+          <div class="flex flex-col space-y-3 lg:space-y-12">
+            <div class="inline-flex items-center space-x-4">
+              <svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path clip-rule="evenodd" d="M15.667 1A5.333 5.333 0 0121 6.333v9.334A5.333 5.333 0 0115.667 21H6.333A5.333 5.333 0 011 15.667V6.333A5.333 5.333 0 016.333 1h9.334z" stroke="#96999C" stroke-width="2"/></svg>
+              <span>L’utilisateur peut créer un compte</span>
+            </div>
+            <div class="inline-flex items-center space-x-4">
+              <svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path clip-rule="evenodd" d="M15.667 1A5.333 5.333 0 0121 6.333v9.334A5.333 5.333 0 0115.667 21H6.333A5.333 5.333 0 011 15.667V6.333A5.333 5.333 0 016.333 1h9.334z" stroke="#96999C" stroke-width="2"/></svg>
+              <span>L’utilisateur peut dialoguer par chat</span>
+            </div>
+            <div class="inline-flex items-center space-x-4">
+              <svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path clip-rule="evenodd" d="M15.667 1A5.333 5.333 0 0121 6.333v9.334A5.333 5.333 0 0115.667 21H6.333A5.333 5.333 0 011 15.667V6.333A5.333 5.333 0 016.333 1h9.334z" stroke="#96999C" stroke-width="2"/></svg>
+              <span>L’utilisateur peut créer un article</span>
+            </div>
+            <div class="inline-flex items-center space-x-4">
+              <svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path clip-rule="evenodd" d="M15.667 1A5.333 5.333 0 0121 6.333v9.334A5.333 5.333 0 0115.667 21H6.333A5.333 5.333 0 011 15.667V6.333A5.333 5.333 0 016.333 1h9.334z" stroke="#96999C" stroke-width="2"/></svg>
+              <span><%#= link_to "VALIDE", complete_project_task_path(@project, @project.tasks.first)%> <%#= @project.tasks.first.name %></span>
+            </div>
           </div>
         </div>
-        <input
-            class = "hidden"
-            value="<%= @project.completion %>"
-            type="number"
-            step="5"
-            min="0"
-            max="100"
-            placeholder="progress"
-          >
-      </div>
-
-      <div class="pt-4 flex flex-col items-center lg:pt-20">
-        <div class="flex flex-col space-y-3 lg:space-y-12">
-          <div class="inline-flex items-center space-x-4">
-            <svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path clip-rule="evenodd" d="M15.667 1A5.333 5.333 0 0121 6.333v9.334A5.333 5.333 0 0115.667 21H6.333A5.333 5.333 0 011 15.667V6.333A5.333 5.333 0 016.333 1h9.334z" stroke="#96999C" stroke-width="2"/></svg>
-            <span>L’utilisateur peut créer un compte</span>
-          </div>
-          <div class="inline-flex items-center space-x-4">
-            <svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path clip-rule="evenodd" d="M15.667 1A5.333 5.333 0 0121 6.333v9.334A5.333 5.333 0 0115.667 21H6.333A5.333 5.333 0 011 15.667V6.333A5.333 5.333 0 016.333 1h9.334z" stroke="#96999C" stroke-width="2"/></svg>
-            <span>L’utilisateur peut dialoguer par chat</span>
-          </div>
-          <div class="inline-flex items-center space-x-4">
-            <svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path clip-rule="evenodd" d="M15.667 1A5.333 5.333 0 0121 6.333v9.334A5.333 5.333 0 0115.667 21H6.333A5.333 5.333 0 011 15.667V6.333A5.333 5.333 0 016.333 1h9.334z" stroke="#96999C" stroke-width="2"/></svg>
-            <span>L’utilisateur peut créer un article</span>
-          </div>
-          <div class="inline-flex items-center space-x-4">
-            <svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path clip-rule="evenodd" d="M15.667 1A5.333 5.333 0 0121 6.333v9.334A5.333 5.333 0 0115.667 21H6.333A5.333 5.333 0 011 15.667V6.333A5.333 5.333 0 016.333 1h9.334z" stroke="#96999C" stroke-width="2"/></svg>
-            <span><%= link_to "VALIDE", complete_project_task_path(@project, @project.tasks.first)%> <%= @project.tasks.first.name %></span>
-          </div>
-        </div>
-      </div>
+      <% else %>
+        <p>TU N'AS PAS DE TO DO LIST</p>
+      <% end %>
     </div>
 
 
@@ -178,22 +181,33 @@
 
   </div>
   <div class="pt-8 flex space-x-4 w-full lg:pt-24 lg:pb-8">
-    <div class="w-1/2 lg:pl-28">
-      <button class="w-full py-2 px-2 bg-red-500 text-white text-lg font-semibold rounded">Confirm project</button>
-    </div>
-    <div class="w-1/2 lg:pr-28">
-      <button class="w-full py-2 px-2 bg-red-500 text-white text-lg font-semibold rounded">Contact Mentor</button>
-    </div>
+    <% if @project.accepted? && pundit_user == @project.entrepreneur %>
+      <div class="w-1/2 lg:pl-28">
+        <%= simple_form_for @project do |f| %>
+          <% hidden_field_tag :authenticity_token, form_authenticity_token %>
+          <%= f.hidden_field :status, value: "pending" %>
+          <%= f.submit "Confirm project", class: "w-full py-2 px-2 bg-red-500 text-white text-lg font-semibold rounded" %>
+        <% end %>
+      </div>
+      <div class="w-1/2 lg:pr-28">
+        <%= link_to "Contact Mentor", alumni_path(@project.mentor), class: "w-full py-2 px-2 bg-red-500 text-white text-lg font-semibold rounded" %>
+      </div>
+    <% else %>
+      <div class="w-1/2 lg:pr-28">
+        <%= link_to "Contact Mentor", alumni_path(@project.mentor), class: "w-full py-2 px-2 bg-red-500 text-white text-lg font-semibold rounded" %>
+      </div>
+    <% end %>
   </div>
+
 </div>
-
   <div data-controller="modale" class="lg:static">
-
-    <%#= render 'projects/shared/modals/modale_entrepreneur_accepted'%>
-
-    <%#= render 'projects/shared/modals/modale_mentor_accepted'%>
-
-    <%= render 'projects/shared/modals/modale_alumni_pending'%>
+    <% if @project.accepted? && pundit_user == @project.entrepreneur %>
+      <%= render 'projects/shared/modals/modale_entrepreneur_accepted'%>
+    <% elsif @project.accepted? %>
+      <%= render 'projects/shared/modals/modale_mentor_accepted'%>
+    <% elsif @project.pending? && @applying %>
+      <%= render 'projects/shared/modals/modale_alumni_pending'%>
+    <% end %>
   </div>
 </div>
 

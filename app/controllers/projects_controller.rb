@@ -23,14 +23,17 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @applying = @project.candidacies
+                        .map(&:alumni)
+                        .include?(pundit_user)
     authorize @project
   end
 
   def edit
     @project = Project.find(params[:id])
-    @role_back = @project.roles.where(name: 'back-end').first
-    @role_front = @project.roles.where(name: 'front-end').first
-    @role_ux_ui = @project.roles.where(name: 'UX/UI').first
+    @role_back = @project.roles.find_by(name: 'back-end')
+    @role_front = @project.roles.find_by(name: 'front-end')
+    @role_ux_ui = @project.roles.find_by(name: 'UX/UI')
     @lang_back = Language.where(category: "back")
     @lang_front = Language.where(category: "front")
     @lang_ux_ui = Language.where(category: "ui_ux")
