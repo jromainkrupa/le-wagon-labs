@@ -24,8 +24,12 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @applying = @project.candidacies
+                        .select { |c| c.status == 'pending' }
                         .map(&:alumni)
                         .include?(pundit_user)
+    @role_back = @project.roles.find_by(name: 'back-end')
+    @role_front = @project.roles.find_by(name: 'front-end')
+    @role_ux_ui = @project.roles.find_by(name: 'UX/UI')
     authorize @project
   end
 
@@ -34,9 +38,9 @@ class ProjectsController < ApplicationController
     @role_back = @project.roles.find_by(name: 'back-end')
     @role_front = @project.roles.find_by(name: 'front-end')
     @role_ux_ui = @project.roles.find_by(name: 'UX/UI')
-    @lang_back = Language.where(category: "back")
-    @lang_front = Language.where(category: "front")
-    @lang_ux_ui = Language.where(category: "ui_ux")
+    @lang_back = Language.where(category: 'back')
+    @lang_front = Language.where(category: 'front')
+    @lang_ux_ui = Language.where(category: 'ui_ux')
     authorize @project
   end
 
@@ -67,7 +71,7 @@ class ProjectsController < ApplicationController
 
   def creation_roles
     Role::ROLES.each do |role|
-      Role.create(name: role, number: 0, status: "pending", project: @project)
+      Role.create(name: role, number: 0, status: 'pending', project: @project)
     end
   end
 end

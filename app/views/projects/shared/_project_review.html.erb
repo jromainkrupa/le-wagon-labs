@@ -59,7 +59,7 @@
 
         <div class="pt-4">
           <% if policy(@project).edit?  %>
-            <%= link_to "Write project page", edit_project(@project), class: "w-full py-2 px-3 bg-red-500 text-white text-lg font-medium rounded" %>
+            <%= link_to "Write project page", edit_project_path(@project), class: "w-full py-2 px-3 bg-red-500 text-white text-lg font-medium rounded" %>
           <% end %>
         </div>
       </div>
