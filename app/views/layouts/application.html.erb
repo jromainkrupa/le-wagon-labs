@@ -12,7 +12,10 @@
 
   <body>
     <%= render 'shared/navbar_mobile' %>
-    <%= yield %>
+    <main class="min-h-screen">
+      <%= yield %>
+
+    </main>
     <%= render 'shared/footer_mobile' %>
   </body>
 </html>

@@ -1,16 +1,18 @@
-<div class="px-8 py-6">
-  <div class="px-6 py-6 flex flex-col border-2 border-gray-400 border-opacity-30 rounded-xl shadow">
-      <div class="flex justify-between items-baseline w-full">
-        <div>
-          <span class="text-lg font-medium">by</span>
-          <span class="text-lg font-bold"><%= @article.alumni.name %></span>
+<div class="xl:w-screen">
+  <div class="px-8 py-6 lg:px-72 xl:w-4/5 xl:m-auto 2xl:w-4/5 2xl:px-96">
+    <div class="px-6 py-6 flex flex-col border-2 border-gray-400 border-opacity-30 rounded-xl shadow">
+        <div class="flex justify-between items-baseline w-full">
+          <div>
+            <span class="text-lg font-medium">by</span>
+            <span class="text-lg font-bold"><%= @article.alumni.name %></span>
+          </div>
+        </div>
+        <div class="pt-4">
+          <h2 class="text-2xl font-bold"><%= @article.title %></h2>
+        </div>
+        <div class="py-4">
+          <p><%= @article.content %></p>
         </div>
       </div>
-      <div class="pt-4">
-        <h2 class="text-2xl font-bold"><%= @article.title %></h2>
-      </div>
-      <div class="py-4">
-        <p><%= @article.content %></p>
-      </div>
-    </div>
+  </div>
 </div>

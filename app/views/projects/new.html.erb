@@ -1,38 +1,45 @@
-<div class="px-12 py-4">
-  <div>
-    <h1 class="font-bold text-center text-3xl">Post my project</h1>
-  </div>
+<div class="xl:w-screen">
+  <div class="px-12 py-4 lg:px-72 xl:w-4/5 xl:m-auto 2xl:w-4/5 2xl:px-96">
+    <div>
+      <h1 class="font-bold text-center text-3xl">Post my project</h1>
+    </div>
 
-  <%= simple_form_for (@project) do |f| %>
-    <%= f.error_notification %>
+    <%= simple_form_for (@project) do |f| %>
+      <%= f.error_notification %>
 
-    <div class="form-inputs pt-2 space-y-4">
-        <%= f.input :name,
+      <div class="form-inputs pt-2 space-y-4">
+          <%= f.input :name,
+                        required: false,
+                        label: false,
+                        placeholder: 'Project name*',
+                        input_html: { class: "px-2 my-2 py-2 border-2 border-gray-200 w-full"} %>
+        <p class="text-justify text-sm">In order to determine appropriate goals for our alumni to help you efficiently on your project, we need to understand where your idea comes from. Fill the 3 following sections to explain your project : </p>
+          <%= f.input :pain,
+                        required: false,
+                        label: false,
+                        placeholder: 'Pain (the problem you are facing)',
+                        input_html: { class: "px-2 my-2 pt-2 pb-12 border-2 border-gray-200 w-full"} %>
+        <%= f.input :target,
                       required: false,
                       label: false,
-                      placeholder: 'Project name*',
-                      input_html: { class: "px-2 my-2 py-2 border-2 border-gray-200 w-full"} %>
-      <p class="text-justify text-sm">In order to determine appropriate goals for our alumni to help you efficiently on your project, we need to understand where your idea comes from. Fill the 3 following sections to explain your project : </p>
-        <%= f.input :pain,
-                      required: false,
-                      label: false,
-                      placeholder: 'Pain (the problem you are facing)',
+                      placeholder: 'Target (who you are aiming at)',
                       input_html: { class: "px-2 my-2 pt-2 pb-12 border-2 border-gray-200 w-full"} %>
-      <%= f.input :target,
-                    required: false,
-                    label: false,
-                    placeholder: 'Target (who you are aiming at)',
-                    input_html: { class: "px-2 my-2 pt-2 pb-12 border-2 border-gray-200 w-full"} %>
 
-      <%= f.input :solution,
-                    required: false,
-                    label: false,
-                    placeholder: 'Solution (what your project solves)',
-                    input_html: { class: "px-2 my-2 pt-2 pb-12 border-2 border-gray-200 w-full"} %>
-    </div>
+        <%= f.input :solution,
+                      required: false,
+                      label: false,
+                      placeholder: 'Solution (what your project solves)',
+                      input_html: { class: "px-2 my-2 pt-2 pb-12 border-2 border-gray-200 w-full"} %>
+        <%= f.input :comment,
+                      required: false,
+                      label: false,
+                      placeholder: 'Comments',
+                      input_html: { class: "px-2 my-2 pt-2 pb-12 border-2 border-gray-200 w-full"} %>
+      </div>
 
-    <div class="form-actions py-4">
-      <%= f.button :submit, "Send a request", class:"w-full py-3 rounded bg-red-500 text-white font-bold text-lg" %>
-    </div>
-  <% end %>
+      <div class="form-actions py-4">
+        <%= f.button :submit, "Send a request", class:"w-full py-3 rounded bg-red-500 text-white font-bold text-lg" %>
+      </div>
+    <% end %>
+  </div>
 </div>

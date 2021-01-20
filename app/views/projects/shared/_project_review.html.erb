@@ -12,59 +12,58 @@
       </div>
     </div>
 
-    <div data-controller="modale" class="relative lg:static">
 
-      <%= render 'projects/shared/modals/modale_entrepreneur_review'%>
-
-      <div class="pt-8 flex flex-col space-y-4 lg:w-1/2">
+    <div class="pt-8 flex flex-col space-y-4 lg:w-1/2">
 
 
+      <div class="px-4 pt-4 pb-2 border-2 border-gray-300 border-opacity-40 shadow">
+        <div>
+          <h2 class="font-bold">PAIN</h2>
+        </div>
+        <div class="pt-2">
+          <p class="text-justify"><%= @project.pain %></p>
+        </div>
+      </div>
+
+      <div class="px-4 pt-4 pb-2 border-2 border-gray-300 border-opacity-40 shadow">
+        <div>
+          <h2 class="font-bold">TARGET</h2>
+        </div>
+        <div class="pt-2">
+          <p class="text-justify"><%= @project.target %></p>
+        </div>
+      </div>
+
+      <div class="px-4 pt-4 pb-2 border-2 border-gray-300 border-opacity-40 shadow">
+        <div>
+          <h2 class="font-bold">SOLUTION</h2>
+        </div>
+        <div class="pt-2">
+          <p class="text-justify"><%= @project.solution %></p>
+        </div>
+      </div>
+
+      <% if @project.comment.present? %>
         <div class="px-4 pt-4 pb-2 border-2 border-gray-300 border-opacity-40 shadow">
           <div>
-            <h2 class="font-bold">PAIN</h2>
+            <h2 class="font-bold">COMMENT</h2>
           </div>
           <div class="pt-2">
-            <p class="text-justify"><%= @project.pain %></p>
+            <p class="text-justify"><%= @project.comment %></p>
           </div>
         </div>
+      <% end %>
 
-        <div class="px-4 pt-4 pb-2 border-2 border-gray-300 border-opacity-40 shadow">
-          <div>
-            <h2 class="font-bold">TARGET</h2>
-          </div>
-          <div class="pt-2">
-            <p class="text-justify"><%= @project.target %></p>
-          </div>
-        </div>
-
-        <div class="px-4 pt-4 pb-2 border-2 border-gray-300 border-opacity-40 shadow">
-          <div>
-            <h2 class="font-bold">SOLUTION</h2>
-          </div>
-          <div class="pt-2">
-            <p class="text-justify"><%= @project.solution %></p>
-          </div>
-        </div>
-
-        <% if @project.comment.present? %>
-          <div class="px-4 pt-4 pb-2 border-2 border-gray-300 border-opacity-40 shadow">
-            <div>
-              <h2 class="font-bold">COMMENT</h2>
-            </div>
-            <div class="pt-2">
-              <p class="text-justify"><%= @project.comment %></p>
-            </div>
-          </div>
+      <div class="pt-4">
+        <% if policy(@project).edit?  %>
+          <%= link_to "Write project page", edit_project_path(@project), class: "w-full py-2 px-3 bg-red-500 text-white text-lg font-medium rounded" %>
         <% end %>
-
-        <div class="pt-4">
-          <% if policy(@project).edit?  %>
-            <%= link_to "Write project page", edit_project_path(@project), class: "w-full py-2 px-3 bg-red-500 text-white text-lg font-medium rounded" %>
-          <% end %>
-        </div>
       </div>
     </div>
 
+  </div>
+  <div data-controller="modale" class="lg:static">
+    <%= render 'projects/shared/modals/modale_entrepreneur_review'%>
   </div>
 
 </div>
