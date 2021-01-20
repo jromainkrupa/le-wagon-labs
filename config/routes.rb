@@ -26,7 +26,11 @@ Rails.application.routes.draw do
   get '/contact', to: 'pages#contact'
 
   resources :projects, except: :destroy do
-    resources :tasks
+    resources :tasks do
+      member do
+        get 'complete', to: 'tasks#complete'
+      end
+    end
     resources :roles do
       resources :language_roles
       resources :candidacies

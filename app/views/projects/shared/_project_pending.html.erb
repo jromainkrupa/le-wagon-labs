@@ -132,7 +132,7 @@
           </div>
           <div class="inline-flex items-center space-x-4">
             <svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path clip-rule="evenodd" d="M15.667 1A5.333 5.333 0 0121 6.333v9.334A5.333 5.333 0 0115.667 21H6.333A5.333 5.333 0 011 15.667V6.333A5.333 5.333 0 016.333 1h9.334z" stroke="#96999C" stroke-width="2"/></svg>
-            <span>Faire le design de la page d’accueil</span>
+            <span><%#= link_to "VALIDE", complete_project_task_path(@project, @project.tasks.first), remote: true %> <%= @project.tasks.first.name %></span>
           </div>
         </div>
       </div>
