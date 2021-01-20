@@ -18,29 +18,13 @@
         </div>
 
         <div class="pt-2 w-full flex-grow space-y-4">
-          <% current_entrepreneur.projects.each do |project| %>
-            <% case project.status %>
-            <% when "progress" %>
-              <div class="w-full flex justify-between items-baseline">
-                <%= link_to project_path(project) do %>
-                  <button class="text-red-500 underline font-semibold flex-shrink-0"><%= project.name %></button>
-                <% end %>
-                <button><svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 23 22"><path fill-rule="evenodd" clip-rule="evenodd" d="M11.966.167C4.5.167-.587 7.732 2.23 14.647l1.204 2.955a.646.646 0 01-.193.747L.694 20.395a.646.646 0 00.405 1.149h10.1c6.23 0 11.28-5.05 11.28-11.28C22.48 4.689 17.96.168 12.381.168h-.415z" fill="#10182B"/></svg></button>
-              </div>
-            <% when "pending" %>
-              <div class="w-full flex justify-between items-baseline">
-                <%= link_to project_path(project) do %>
-                  <button class="text-red-500 underline font-semibold flex-shrink-0"><%= project.name %></button>
-                <% end %>
-                <div>
-                  <span>is being reviewed by &nbsp;</span>
-                  <%= link_to alumni_path(project.mentor) do %>
-                    <button class="text-red-500 font-medium"><%= project.mentor.name %></button>
-                  <% end %>
-                </div>
-              </div>
-            <% end %>
-
+          <% current_entrepreneur.projects.reverse.each do |project| %>
+            <div class="w-full flex justify-between items-baseline">
+              <%= link_to project_path(project) do %>
+                <button class="text-red-500 underline font-semibold flex-shrink-0"><%= project.name %></button>
+              <% end %>
+              <%= render partial: 'entrepreneurs/shared/project_status', locals: {project: project} %>
+            </div>
           <% end %>
         </div>
 

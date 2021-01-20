@@ -1,5 +1,6 @@
 puts "Cleaning Database..."
 
+Task.destroy_all
 Candidacy.destroy_all
 Role.destroy_all
 Alumni.destroy_all
@@ -83,17 +84,48 @@ project = Project.create!(
   solution: 'Le wagon labs une app web ou des entrepreneurs propose des projets',
   description: 'Le wagon labs est une app web pour mettre en relation des entrepreneurs et des développeurs du Wagon',
   duration: 5,
-  compensation_in_cents:  25_000,
+  compensation_in_cents: 25_000,
   entrepreneur_id: xavier.id
 )
 
 project2 = Project.create!(
-  name: 'Le Wagon Labs 2',
+  name: 'Le Wagon Labs review',
   pain: 'Les alumnis qui sortent du wagon ont du mal à trouver une première expérience',
   target: 'Les alumnis qui sortent du wagon et qui sont trop beaux',
   solution: 'Le wagon labs une app web ou des entrepreneurs propose des projets',
   description: 'Le wagon labs 2 est une app web pour mettre en relation des entrepreneurs et des développeurs du Wagon',
-  entrepreneur_id: xavier.id
+  entrepreneur_id: xavier.id,
+  status: "review"
+)
+
+project3 = Project.create!(
+  name: 'Le Wagon Labs accepted',
+  pain: 'Les alumnis qui sortent du wagon ont du mal à trouver une première expérience',
+  target: 'Les alumnis qui sortent du wagon et qui sont trop beaux',
+  solution: 'Le wagon labs une app web ou des entrepreneurs propose des projets',
+  description: 'Le wagon labs 3 est une app web pour mettre en relation des entrepreneurs et des développeurs du Wagon',
+  entrepreneur_id: xavier.id,
+  status: "accepted"
+)
+
+project4 = Project.create!(
+  name: 'Le Wagon Labs development',
+  pain: 'Les alumnis qui sortent du wagon ont du mal à trouver une première expérience',
+  target: 'Les alumnis qui sortent du wagon et qui sont trop beaux',
+  solution: 'Le wagon labs une app web ou des entrepreneurs propose des projets',
+  description: 'Le wagon labs 2 est une app web pour mettre en relation des entrepreneurs et des développeurs du Wagon',
+  entrepreneur_id: xavier.id,
+  status: "development"
+)
+
+project5 = Project.create!(
+  name: 'Le Wagon Labs done',
+  pain: 'Les alumnis qui sortent du wagon ont du mal à trouver une première expérience',
+  target: 'Les alumnis qui sortent du wagon et qui sont trop beaux',
+  solution: 'Le wagon labs une app web ou des entrepreneurs propose des projets',
+  description: 'Le wagon labs 2 est une app web pour mettre en relation des entrepreneurs et des développeurs du Wagon',
+  entrepreneur_id: xavier.id,
+  status: "done"
 )
 
 puts "Creating Roles..."
@@ -103,6 +135,27 @@ role_mentor = Role.create!(
   status: 'done',
   number: 1,
   project_id: project.id
+)
+
+role_mentor3 = Role.create!(
+  name: 'mentor',
+  status: 'done',
+  number: 1,
+  project_id: project3.id
+)
+
+role_mentor4 = Role.create!(
+  name: 'mentor',
+  status: 'done',
+  number: 1,
+  project_id: project4.id
+)
+
+role_mentor5 = Role.create!(
+  name: 'mentor',
+  status: 'done',
+  number: 1,
+  project_id: project5.id
 )
 
 role_mentor2 = Role.create!(
@@ -133,6 +186,92 @@ role_ui_ux = Role.create!(
   project_id: project.id
 )
 
+role_back2 = Role.create!(
+  name: 'back-end',
+  status: 'pending',
+  number: 1,
+  project_id: project2.id
+)
+
+role_front2 = Role.create!(
+  name: 'front-end',
+  status: 'pending',
+  number: 1,
+  project_id: project2.id
+)
+
+role_ui_ux2 = Role.create!(
+  name: 'UX/UI',
+  status: 'pending',
+  number: 1,
+  project_id: project2.id
+)
+
+
+role_back3 = Role.create!(
+  name: 'back-end',
+  status: 'pending',
+  number: 1,
+  project_id: project3.id
+)
+
+role_front3 = Role.create!(
+  name: 'front-end',
+  status: 'pending',
+  number: 1,
+  project_id: project3.id
+)
+
+role_ui_ux3 = Role.create!(
+  name: 'UX/UI',
+  status: 'pending',
+  number: 1,
+  project_id: project3.id
+)
+
+role_back4 = Role.create!(
+  name: 'back-end',
+  status: 'pending',
+  number: 1,
+  project_id: project4.id
+)
+
+role_front4 = Role.create!(
+  name: 'front-end',
+  status: 'pending',
+  number: 1,
+  project_id: project4.id
+)
+
+role_ui_ux4 = Role.create!(
+  name: 'UX/UI',
+  status: 'pending',
+  number: 1,
+  project_id: project4.id
+)
+
+role_back5 = Role.create!(
+  name: 'back-end',
+  status: 'pending',
+  number: 1,
+  project_id: project5.id
+)
+
+role_front5 = Role.create!(
+  name: 'front-end',
+  status: 'pending',
+  number: 1,
+  project_id: project5.id
+)
+
+role_ui_ux5 = Role.create!(
+  name: 'UX/UI',
+  status: 'pending',
+  number: 1,
+  project_id: project5.id
+)
+
+
 puts "Creating Candidacy..."
 
 Candidacy.create!(
@@ -144,6 +283,25 @@ Candidacy.create!(
 Candidacy.create!(
   alumni_id: alumni_mentor.id,
   role_id: role_mentor2.id,
+  status: 'accepted'
+)
+
+Candidacy.create!(
+  alumni_id: alumni_mentor.id,
+  role_id: role_mentor3.id,
+  status: 'accepted'
+)
+
+
+Candidacy.create!(
+  alumni_id: alumni_mentor.id,
+  role_id: role_mentor4.id,
+  status: 'accepted'
+)
+
+Candidacy.create!(
+  alumni_id: alumni_mentor.id,
+  role_id: role_mentor5.id,
   status: 'accepted'
 )
 
@@ -178,4 +336,3 @@ Article.create!(
   title: "Ceci est un titre",
   content: "Ceci est un content Ceci est un content Ceci est un content Ceci est un content Ceci est un content Ceci est un content Ceci est un content"
 )
-

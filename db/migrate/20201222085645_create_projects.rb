@@ -6,7 +6,7 @@ class CreateProjects < ActiveRecord::Migration[6.0]
       t.text :target
       t.text :solution
       t.text :description
-      t.string :status, default: 'pending'
+      t.string :status, default: 'review'
       t.integer :duration
       t.integer :compensation_in_cents
       t.boolean :is_validated, default: false

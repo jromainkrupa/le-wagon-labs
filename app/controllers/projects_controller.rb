@@ -63,8 +63,8 @@ class ProjectsController < ApplicationController
   end
 
   def creation_roles
-    Role.ROLES.each do |role|
-      Role.create(name: role, number: 0, status: "pending", project: self)
+    Role::ROLES.each do |role|
+      Role.create(name: role, number: 0, status: "pending", project: @project)
     end
   end
 end
