@@ -65,7 +65,8 @@ class ProjectsController < ApplicationController
       :compensation_in_cents,
       :status,
       :is_validated,
-      :duration
+      :duration,
+      :comment
     )
   end
 
