@@ -116,11 +116,12 @@
         <div class="relative bg-red-300 rounded-full">
           <svg class="progress-ring " width="120" height="120"> <circle class= "progress-ring__circle "stroke="#d23333" stroke-width="15" fill="transparent" r="52" cx="60" cy="60"/></svg>
           <div class="absolute flex bg-white items-center justify-center w-24 h-24 rounded-full" style="top:10%; left:10%;">
-            <span class="font-bold text-2xl">70%</span>
+            <span class="font-bold text-2xl"><%= @project.completion.to_i %>%</span>
           </div>
         </div>
         <input
-            value="80"
+            class = "hidden"
+            value="<%= @project.completion %>"
             type="number"
             step="5"
             min="0"
@@ -145,7 +146,7 @@
           </div>
           <div class="inline-flex items-center space-x-4">
             <svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path clip-rule="evenodd" d="M15.667 1A5.333 5.333 0 0121 6.333v9.334A5.333 5.333 0 0115.667 21H6.333A5.333 5.333 0 011 15.667V6.333A5.333 5.333 0 016.333 1h9.334z" stroke="#96999C" stroke-width="2"/></svg>
-            <span>Faire le design de la page d’accueil</span>
+            <span><%= link_to "VALIDE", complete_project_task_path(@project, @project.tasks.first)%> <%= @project.tasks.first.name %></span>
           </div>
         </div>
       </div>
