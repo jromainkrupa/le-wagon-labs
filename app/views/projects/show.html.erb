@@ -1,10 +1,5 @@
-<%# case @project.status  %>
-  <%# when "pending" %>
-  <%#= render 'projects/shared/project_pending' %>
-  <%# when "progress" %>
-  <%#= render 'projects/shared/project_review' %>
-<%# end %>
-
-<%#= render 'projects/shared/project_review' %>
-
-<%= render 'projects/shared/project_pending' %>
+<% if @project.review? %>
+  <%= render 'projects/shared/project_review', locals: { project: @project } %>
+<% else %>
+  <%= render 'projects/shared/project_pending', locals: { project: @project } %>
+<% end %>

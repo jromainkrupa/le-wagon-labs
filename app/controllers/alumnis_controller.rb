@@ -27,7 +27,7 @@ class AlumnisController < ApplicationController
     @alumni.language_front_tag_list = params[:alumni][:language_front_tag_list]
     @alumni.language_ux_ui_tag_list = params[:alumni][:language_ux_ui_tag_list]
     if @alumni.update(alumni_params)
-      redirect_to edit_alumni_path(@alumni)
+      redirect_to alumni_path(@alumni)
     else
       render :edit
     end

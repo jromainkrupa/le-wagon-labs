@@ -21,12 +21,11 @@
       </div>
     </div>
 
-    <% if @alumni == current_alumni %>
-      <%= link_to edit_alumni_path(@alumni), class:"pt-8 lg:w-2/5 lg:pt-20 hover:opacity-80" do %>
-          <button class="py-3 w-full rounded bg-red-500 text-white font-bold text-lg">Edit my profile</button>
-      <% end %>
+    <% if policy(@alumni).edit? %>
+      <div class="pt-8 lg:w-2/5 lg:pt-20">
+        <%= button_to "Edit my profile", edit_alumni_path(@alumni), method: :get, class: "py-3 w-full rounded bg-red-500 text-white font-bold text-lg"%>
+      </div>
     <% end %>
-
 
   </div>
 </div>

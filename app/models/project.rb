@@ -9,7 +9,7 @@ class Project < ApplicationRecord
   validates :name, length: { minimum: 2, maximum: 30 }
   validates :pain, :target, :solution, length: { minimum: 20 }
   validates :description, length: { minimum: 20 }, allow_blank: true
-  validates :status, inclusion: { in: ['review', 'accepted', 'pending', 'developpment', 'done'] }
+  validates :status, inclusion: { in: ['review', 'accepted', 'pending', 'development', 'done'] }
 
   def project_alumnis
     candidacies.select { |candidacy| candidacy.accepted? }
@@ -18,6 +18,8 @@ class Project < ApplicationRecord
   end
 
   def mentor
+    return nil if candidacies.select { |candidacy| candidacy.accepted? && candidacy.alumni.is_mentor? }.empty?
+
     candidacies.select { |candidacy| candidacy.accepted? && candidacy.alumni.is_mentor? }
                .first
                .alumni
@@ -39,8 +41,8 @@ class Project < ApplicationRecord
     status == 'pending'
   end
 
-  def developpment?
-    status == 'developpment'
+  def development?
+    status == 'development'
   end
 
   def done?

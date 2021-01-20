@@ -147,7 +147,7 @@
 
       <div class=" py-2">
         <%= simple_form_for @project do |f| %>
-          <%= f.hidden_field :status %>
+          <%= f.hidden_field :status, value: 'accepted' %>
           <%= f.submit 'Create project page', class:"w-full py-3 rounded bg-red-500 text-white font-medium"  %>
         <% end %>
       </div>

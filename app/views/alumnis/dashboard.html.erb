@@ -1,10 +1,10 @@
 <div class="px-8 xl:px-56">
   <div class="lg:flex lg:space-x-8 lg:pt-14 lg:justify-center lg:h-screen">
 
-    <% if current_alumni.is_mentor == false  %>
-      <%= render 'alumnis/shared/alumnis_projects' %>
-    <% else %>
+    <% if current_alumni.is_mentor? %>
       <%= render 'alumnis/shared/mentors_projects' %>
+    <% else %>
+      <%= render 'alumnis/shared/alumnis_projects' %>
     <% end %>
 
 
