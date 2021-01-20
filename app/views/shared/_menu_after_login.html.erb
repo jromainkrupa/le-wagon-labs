@@ -1,20 +1,40 @@
 <% if current_entrepreneur %>
 
-  <div data-menu-target="toggleable" class="hidden absolute z-40 right-0 -mt-3 mr-1 w-60 flex flex-col items-start space-y-4 px-4 py-4 bg-white rounded border-2 border-black">
-    <%= link_to "My dashboard", dashboard_entrepreneurs_path %>
-    <%= link_to "My profile", entrepreneur_path(current_entrepreneur) %>
-    <%= link_to "Post a project", new_project_path %>
-    <%= pundit_user.class == 'Alumni' ? (link_to "Log out", destroy_alumni_session_path, method: :delete, class: "dropdown-item") : (link_to "Log out", destroy_entrepreneur_session_path, method: :delete, class: "dropdown-item") %>
+  <div data-menu-target="toggleable" class="hidden absolute z-40 right-0 -mt-3 mr-1 w-60 flex flex-col items-start bg-white">
+    <div class="w-full">
+      <%= button_to "My dashboard", dashboard_entrepreneurs_path, method: :get, class:'px-3 py-3 text-gray-600 text-left text-xl w-full bg-white hover:text-white hover:bg-red-500' %>
+    </div>
+    <div class="w-full">
+      <%= button_to "My profile", entrepreneur_path(current_entrepreneur), method: :get, class:'px-3 py-3 text-gray-600 text-left text-xl w-full bg-white hover:text-white hover:bg-red-500' %>
+    </div>
+    <div class="w-full">
+      <%= button_to "Post a project", new_project_path, method: :get, class:'px-3 py-3 text-gray-600 text-left text-xl w-full bg-white hover:text-white hover:bg-red-500' %>
+    </div>
+    <div class="w-full">
+      <%= pundit_user.class == 'Alumni' ? (button_to "Log out", destroy_alumni_session_path, method: :delete, class: "dropdown-item px-3 py-3 text-gray-600 text-left text-xl w-full bg-white hover:text-white hover:bg-red-500") : (button_to "Log out", destroy_entrepreneur_session_path, method: :delete, class: "dropdown-item px-3 py-3 text-gray-600 text-left text-xl w-full bg-white hover:text-white hover:bg-red-500") %>
+    </div>
   </div>
 
 <% else %>
 
-  <div data-menu-target="toggleable" class="hidden absolute z-40 right-0 -mt-3 mr-1 w-60 flex flex-col items-start space-y-4 px-4 py-4 bg-white rounded border-2 border-black">
-    <%= link_to "My dashboard", dashboard_alumnis_path %>
-    <%= link_to "My profile", alumni_path(current_alumni) %>
-    <%= link_to "Projects", projects_path %>
-    <%= link_to "Alumnis", alumnis_path %>
-    <%= link_to "Library", articles_path %>
-    <%= pundit_user.class == 'Alumni' ? (link_to "Log out", destroy_alumni_session_path, method: :delete, class: "dropdown-item") : (link_to "Log out", destroy_entrepreneur_session_path, method: :delete, class: "dropdown-item") %>
+  <div data-menu-target="toggleable" class="hidden absolute z-40 right-0 -mt-3 mr-1 w-60 flex flex-col items-start">
+    <div class="w-full">
+      <%= button_to "My dashboard", dashboard_alumnis_path, method: :get, class:'px-3 py-3 text-gray-600 text-left text-xl w-full bg-white hover:text-white hover:bg-red-500' %>
+    </div>
+    <div class="w-full">
+      <%= button_to "My profile", alumni_path(current_alumni), method: :get, class:'px-3 py-3 text-gray-600 text-left text-xl w-full bg-white hover:text-white hover:bg-red-500' %>
+    </div class="w-full">
+    <div class="w-full">
+      <%= button_to "Projects", projects_path, method: :get, class:'px-3 py-3 text-gray-600 text-left text-xl w-full bg-white hover:text-white hover:bg-red-500' %>
+    </div>
+    <div class="w-full">
+      <%= button_to "Alumnis", alumnis_path, method: :get, class:'px-3 py-3 text-gray-600 text-left text-xl w-full bg-white hover:text-white hover:bg-red-500' %>
+    </div>
+    <div class="w-full">
+      <%= button_to "Library", articles_path, method: :get, class:'px-3 py-3 text-gray-600 text-left text-xl w-full bg-white hover:text-white hover:bg-red-500' %>
+    </div>
+    <div class="w-full">
+      <%= pundit_user.class == 'Alumni' ? (button_to "Log out", destroy_alumni_session_path, method: :delete, class: "dropdown-item px-3 py-3 text-gray-600 text-left text-xl w-full bg-white hover:text-white hover:bg-red-500") : (button_to "Log out", destroy_entrepreneur_session_path, method: :delete, class: "dropdown-item px-3 py-3 text-gray-600 text-left text-xl w-full bg-white hover:text-white hover:bg-red-500") %>
+    </div>
   </div>
 <% end %>
