@@ -18,40 +18,118 @@
 
   <div class="pt-8">
     <%= simple_form_for @project do |f| %>
-    <div class="space-y-4">
-      <div>
-        <h2 class="text-center text-lg font-medium">Project description</h2>
-      </div>
-      <%= f.input :description,
-                      label: false,
-                      placeholder: 'Explain the project to the alumni...',
-                      input_html: { class: "px-2 pt-2 pb-40 border border-gray-200 w-full"} %>
+      <div class="space-y-4">
+        <div>
+          <h2 class="text-center text-xl font-medium">Project information</h2>
+        </div>
+        <%= f.input :description,
+                        label: false,
+                        placeholder: 'Explain the project to the alumni...',
+                        input_html: { class: "px-2 pt-2 pb-40 border border-gray-200 w-full focus:outline-none focus:ring-2 focus:ring-gray-400"} %>
 
-      <div>
-        <h2 class="text-center text-lg font-medium">Project information</h2>
-      </div>
+        <%= f.input :duration,
+                        required: false,
+                        label: false,
+                        placeholder: 'Estimated duration',
+                        input_html: { class: "px-2 py-3 border border-gray-200 w-full text-center focus:outline-none focus:ring-2 focus:ring-gray-400"} %>
+
+        <%= f.input :compensation_in_cents,
+                        required: false,
+                        label: false,
+                        placeholder: 'Compensation',
+                        input_html: { class: "px-2 py-3 border border-gray-200 w-full text-center focus:outline-none focus:ring-2 focus:ring-gray-400"} %>
+
+        <%= f.submit "Save project info", class: "w-full py-2 rounded bg-red-500 text-white font-bold text-lg" %>
+        <% end %>
+
+        <div class="pt-12">
+          <h2 class="text-center text-xl font-medium">Project team</h2>
+        </div>
+
+        <div data-controller="project">
+          <a data-action="click->project#backend" id="options-menu" class="px-2 py-3 flex items-center border w-full focus:outline-none">
+            <span class="text-gray-400 text-center w-full">Backend</span>
+            <div data-project-target="arrow_closed" >
+              <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+            <div data-project-target="arrow_opened" class="hidden">
+              <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+            </div>
+          </a>
+
+          <div data-project-target="backend_languages" class="hidden">
+            <%= simple_form_for [@project, @role_back] do |f| %>
+              <div class="pt-6 inline-flex space-x-8 justify-center w-full">
+                <%= f.input :language_back_tag_list,
+                                as: :check_boxes,
+                                collection: @lang_back.map{|l| l.name},
+                                label_method: lambda {|l| content_tag(:div, Language.find_by(name: l).svg.html_safe, class:'w-12 label_maison')},
+                                label: false,
+                                input_html: { class: "tag-selector" },
+                                item_wrapper_class: 'tag-item' %>
+              </div>
+              <div class="pt-4">
+                <h3 class="text-center text-gray-600 font-bold">Nombre d'alumnis</h3>
+              </div>
+              <div class="flex justify-center items-center pt-4">
+                <div class="px-2">
+                  <a class="cursor-pointer" data-action="click->project#backend_decrementer"><svg class="w-8 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></a>
+                </div>
+                <%= f.input :number,
+                            label: false,
+                            input_html: { data:{"project-target": "backend_roles"}, class:'w-28 text-center' } %>
+                <div class="px-2">
+                  <a class="cursor-pointer" data-action="click->project#backend_incrementer"><svg class="w-8 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></a>
+                </div>
+              </div>
+              <div class="pt-4">
+                <%= f.submit "Save", class: "flex m-auto px-4 py-2 rounded bg-red-500 text-white font-bold text-lg" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
 
 
+        <div data-controller="project">
+          <a data-action="click->project#frontend_menu" id="options-menu" class="px-2 py-3 flex justify-end items-center border w-full focus:outline-none ">
+            <span class="text-gray-400 text-center w-full">Frontend</span>
+            <div data-project-target="arrow_closed" >
+              <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+            <div data-project-target="arrow_opened" class="hidden">
+              <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+            </div>
+          </a>
 
-      <%= f.input :duration,
-                      required: false,
-                      label: false,
-                      placeholder: 'Estimated duration',
-                      input_html: { class: "px-2 py-3 border border-gray-200 w-full text-center"} %>
-
-      <%= f.input :compensation_in_cents,
-                      required: false,
-                      label: false,
-                      placeholder: 'Compensation',
-                      input_html: { class: "px-2 py-3 border border-gray-200 w-full text-center"} %>
-
-      <%= f.submit class: "w-full py-3 rounded bg-red-500 text-white font-bold text-lg" %>
-      <% end %>
-    <div data-controller="project">
-        <a data-action="click->project#backend" id="options-menu" class="px-2 py-3 flex items-center border w-full focus:outline-none">
-          <span class="text-gray-400 text-center w-full">Backend</span>
-          <div data-project-target="arrow_closed" >
-            <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          <div data-project-target="frontend_languages" class="hidden">
+            <%= simple_form_for [@project, @role_front] do |f| %>
+              <div class="pt-6 inline-flex space-x-8 justify-center w-full">
+                <%= f.input :language_front_tag_list,
+                                as: :check_boxes,
+                                collection: @lang_front.map{|l| l.name},
+                                label_method: lambda {|l| content_tag(:div, Language.find_by(name: l).svg.html_safe, class:'w-12 label_maison')},
+                                label: false,
+                                input_html: { class: "tag-selector" },
+                                item_wrapper_class: 'tag-item' %>
+              </div>
+              <div class="pt-4">
+                <h3 class="text-center text-gray-600 font-bold">Nombre d'alumnis</h3>
+              </div>
+              <div class="flex justify-center items-center pt-2">
+                <div class="px-2">
+                  <a class="cursor-pointer" data-action="click->project#frontend_decrementer"><svg class="w-8 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></a>
+                </div>
+                <%= f.input :number,
+                            label: false,
+                            input_html: { data:{"project-target": "frontend_roles"}, class:'w-36 text-center'} %>
+                <div class="px-2">
+                  <a class="cursor-pointer" data-action="click->project#frontend_incrementer"><svg class="w-8 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></a>
+                </div>
+              </div>
+              <div class="pt-4">
+                <%= f.submit "Save", class: "flex m-auto px-4 py-2 rounded bg-red-500 text-white font-bold text-lg" %>
+              </div>
+            <% end %>
           </div>
           <div data-project-target="arrow_opened" class="hidden">
             <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
@@ -74,86 +152,83 @@
             <%= f.submit class: "w-full py-3 rounded bg-red-500 text-white font-bold text-lg" %>
           <% end %>
         </div>
-      </div>
 
-    </div>
-
-
-
-    <div data-controller="project">
-        <a data-action="click->project#frontend" id="options-menu" class="px-2 py-3 flex justify-end items-center border w-full focus:outline-none ">
-          <span class="text-gray-400 text-center w-full">Frontend</span>
-          <div data-project-target="arrow_closed" >
-            <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        <div data-controller="project">
+          <a data-action="click->project#ui_ux" id="options-menu" class="px-2 py-3 flex justify-end items-center border w-full focus:outline-none">
+            <span class="text-gray-400 text-center w-full">UI / UX</span>
+            <div data-project-target="arrow_closed" >
+              <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+            <div data-project-target="arrow_opened" class="hidden">
+              <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+            </div>
+          </a>
+          <div data-project-target="ui_ux_languages" class="hidden">
+            <%= simple_form_for [@project, @role_ux_ui] do |f| %>
+              <div class="pt-6 inline-flex space-x-8 justify-center w-full">
+                <%= f.input :language_ux_ui_tag_list,
+                                as: :check_boxes,
+                                collection: @lang_ux_ui.map{|l| l.name},
+                                label_method: lambda {|l| content_tag(:div, Language.find_by(name: l).svg.html_safe, class:'w-12 label_maison')},
+                                label: false,
+                                input_html: { class: "tag-selector" },
+                                item_wrapper_class: 'tag-item' %>
+              </div>
+              <div class="pt-4">
+                <h3 class="text-center text-gray-600 font-bold">Nombre d'alumnis</h3>
+              </div>
+              <div class="flex justify-center items-center pt-2">
+                <div class="px-2">
+                  <a class="cursor-pointer" data-action="click->project#ui_ux_decrementer"><svg class="w-8 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></a>
+                </div>
+                <%= f.input :number,
+                             label: false,
+                             input_html: { data:{"project-target": "ui_ux_roles"}, class:'w-36 text-center'} %>
+                <div class="px-2">
+                  <a class="cursor-pointer" data-action="click->project#ui_ux_incrementer"><svg class="w-8 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></a>
+                </div>
+              </div>
+              <div class="pt-4">
+                <%= f.submit "Save", class: "flex m-auto px-4 py-2 rounded bg-red-500 text-white font-bold text-lg"%>
+              </div>
+              <% end %>
           </div>
-          <div data-project-target="arrow_opened" class="hidden">
-            <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
-          </div>
-        </a>
-      <div data-project-target="frontend_languages" class="hidden">
-        <div class="pt-6 inline-flex space-x-8 justify-center w-full">
-          <%= simple_form_for [@project, @role_front] do |f| %>
-            <%= f.input :number %>
-            <%= f.input :language_front_tag_list,
-                          as: :check_boxes,
-                          collection: @lang_front.map{|l| l.name},
-                          label_method: lambda {|l| content_tag(:div, Language.find_by(name: l).svg.html_safe, class:'w-12 label_maison')},
-                          label: false,
-                          input_html: { class: "tag-selector" },
-                          item_wrapper_class: 'tag-item'
-                          %>
-            <%= f.submit class: "w-full py-3 rounded bg-red-500 text-white font-bold text-lg" %>
-          <% end %>
         </div>
-      </div>
-    </div>
 
-    <div data-controller="project">
-        <a data-action="click->project#ui_ux" id="options-menu" class="px-2 py-3 flex justify-end items-center border w-full focus:outline-none">
-          <span class="text-gray-400 text-center w-full">UI / UX</span>
-          <div data-project-target="arrow_closed" >
-            <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-          </div>
-          <div data-project-target="arrow_opened" class="hidden">
-            <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
-          </div>
-        </a>
-      <div data-project-target="ui_ux_languages" class="hidden">
-        <div class="pt-6 inline-flex space-x-8 justify-center w-full">
-          <%= simple_form_for [@project, @role_ux_ui] do |f| %>
-            <%= f.input :number %>
-            <%= f.input :language_ux_ui_tag_list,
-                          as: :check_boxes,
-                          collection: @lang_ux_ui.map{|l| l.name},
-                          label_method: lambda {|l| content_tag(:div, Language.find_by(name: l).svg.html_safe, class:'w-12 label_maison')},
-                          label: false,
-                          input_html: { class: "tag-selector" },
-                          item_wrapper_class: 'tag-item'
-                          %>
-            <%= f.submit class: "w-full py-3 rounded bg-red-500 text-white font-bold text-lg"%>
-          <% end %>
+        <div class="pt-12">
+          <h2 class="font-medium text-center text-xl">TO-DO List</h2>
         </div>
-      </div>
-    </div>
 
-    <% @project.tasks.each do |task| %>
-      <%= simple_form_for [@project, task], remote: true do |f| %>
-        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-        <%= f.input :name, input_html: { id: "#{task.id}"} %>
+      <% @project.tasks.each do |task| %>
+        <%= simple_form_for [@project, task], remote: true do |f| %>
+          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <div class="flex justify-between items-baseline space-y-3">
+
+          <%= f.input :name,
+                          input_html: { id: task.id, class:'py-4 px-2 w-72 text-gray-600 overflow-hidden focus:outline-none focus:ring-2 focus:ring-gray-400', maxlength: 50},
+                          label: false,
+                          placeholder: "Create figma..." %>
+          <div class="flex space-x-4">
+            <%= f.submit "✅" %>
+            <% end %>
+            <%= link_to "🗑️", project_task_path(@project, task), method: :delete, remote: true %>
+          </div>
+        </div>
       <% end %>
-      <%= link_to "X", project_task_path(@project, task), method: :delete, remote: true %>
-    <% end %>
+      <div class="pt-4 flex justify-center ">
+        <%= link_to "+ Add a new task", project_tasks_path(@project, Task.new(project: @project)), method: :post, remote: true, class:'underline font-medium text-xl' %>
 
-    <%= link_to "add a new task", project_tasks_path(@project, Task.new(project: @project)), method: :post, remote: true %>
-
-      <div class=" py-2">
-        <%= simple_form_for @project do |f| %>
-          <%= f.hidden_field :status, value: 'accepted' %>
-          <%= f.submit 'Create project page', class:"w-full py-3 rounded bg-red-500 text-white font-medium"  %>
-        <% end %>
       </div>
-    </div>
+
+        <div class=" py-2">
+          <%= simple_form_for @project do |f| %>
+            <%= f.hidden_field :status, value: 'accepted' %>
+            <%= f.submit 'Create project page', class:"w-full py-3 rounded bg-red-500 text-white font-medium text-xl", data:{confirm: "Êtes-vous sur de vouloir confirmer ? Cette action est irreversible"}  %>
+          <% end %>
+        </div>
+      </div>
   </div>
 
-
 </div>
+
+
