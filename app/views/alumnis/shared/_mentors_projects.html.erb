@@ -15,7 +15,7 @@
             <span>Waiting for confirmation of <%= project.entrepreneur.first_name %></span>
           <% elsif project.pending? %>
             <% nb_cd = project.roles.map{|r| r.candidacies.count}.sum %>
-            <span><%= nb_cd == 0 ? "No candidacies yet" : "#{nb_cd} #{pluralize('candidacy', nb_cd)} pending" %></span>
+            <span><%= nb_cd == 0 ? "No candidacies yet" : "#{nb_cd} #{pluralize(nb_cd, 'candidacy')} pending" %></span>
           <% elsif project.development? %>
              <span><%= project.completion %>% completed</span>
           <% elsif project.done? %>
