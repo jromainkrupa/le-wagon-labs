@@ -203,7 +203,7 @@
         <div class=" py-2">
           <%= simple_form_for @project do |f| %>
             <%= f.hidden_field :status, value: 'accepted' %>
-            <%= f.submit 'Create project page', class:"w-full py-3 rounded bg-red-500 text-white font-medium text-xl"  %>
+            <%= f.submit 'Create project page', class:"w-full py-3 rounded bg-red-500 text-white font-medium text-xl", data:{confirm: "Êtes-vous sur de vouloir confirmer ? Cette action est irreversible"}  %>
           <% end %>
         </div>
       </div>
