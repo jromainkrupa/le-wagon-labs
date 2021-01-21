@@ -47,7 +47,11 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     if @project.update(project_params)
-      redirect_to project_path(@project)
+      if @project.accepted?
+        redirect_to project_path(@project)
+      else
+        redirect_to edit_project_path(@project)
+      end
     else
       render :edit
     end
