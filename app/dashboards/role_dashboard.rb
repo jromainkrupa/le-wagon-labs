@@ -10,7 +10,6 @@ class RoleDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     project: Field::BelongsTo,
     candidacies: Field::HasMany,
-    language_roles: Field::HasMany,
     taggings: Field::HasMany.with_options(class_name: "::ActsAsTaggableOn::Tagging"),
     base_tags: Field::HasMany.with_options(class_name: "::ActsAsTaggableOn::Tag"),
     language_back_tag_taggings: Field::HasMany.with_options(class_name: "ActsAsTaggableOn::Tagging"),
@@ -35,7 +34,6 @@ class RoleDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = %i[
   project
   candidacies
-  language_roles
   taggings
   ].freeze
 
@@ -44,7 +42,6 @@ class RoleDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = %i[
   project
   candidacies
-  language_roles
   taggings
   base_tags
   language_back_tag_taggings
@@ -67,7 +64,6 @@ class RoleDashboard < Administrate::BaseDashboard
   FORM_ATTRIBUTES = %i[
   project
   candidacies
-  language_roles
   taggings
   base_tags
   language_back_tag_taggings

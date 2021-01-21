@@ -1,7 +1,6 @@
 class Role < ApplicationRecord
   belongs_to :project
   has_many :candidacies
-  has_many :language_roles
 
   ROLES = ['back-end', 'front-end', 'UX/UI', 'mentor']
   validates :name, :number, :status, presence: true

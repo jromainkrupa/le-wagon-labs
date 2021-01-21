@@ -5,16 +5,8 @@ class TaskPolicy < ApplicationPolicy
     end
   end
 
-  def index?
-    record.project.all_users.include?(user)
-  end
-
   def create?
     user == record.project.mentor
-  end
-
-  def new?
-    create?
   end
 
   def edit?
