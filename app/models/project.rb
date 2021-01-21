@@ -50,6 +50,6 @@ class Project < ApplicationRecord
   end
 
   def completion
-    (tasks.where(completed: true).size.fdiv(tasks.size) * 100).to_i
+    tasks.empty? ? 0 : (tasks.where(completed: true).size.fdiv(tasks.size) * 100).to_i
   end
 end
