@@ -1,6 +1,6 @@
 const dynamicCircle = () => {
 
-  var circle = document.querySelector('circle');
+  var circle = document.querySelector('#progress_circle');
 
   if (circle === null)
     return
@@ -18,14 +18,8 @@ const dynamicCircle = () => {
 
   }
 
-const input = document.querySelector('input');
+const input = document.querySelector('#progress_number');
 setProgress(input.value);
-
-input.addEventListener('change', function(e) {
-  if (input.value < 101 && input.value > -1) {
-    setProgress(input.value);
-  }
-})
 
 }
 
