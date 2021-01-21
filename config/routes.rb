@@ -10,7 +10,6 @@ Rails.application.routes.draw do
   }
 
   resources :alumnis, only: [:index, :show, :update, :edit] do
-    resources :language_alumnis
     collection do
       get 'dashboard', to: 'alumnis#dashboard'
     end
@@ -32,7 +31,6 @@ Rails.application.routes.draw do
       end
     end
     resources :roles do
-      resources :language_roles
       resources :candidacies
     end
   end
