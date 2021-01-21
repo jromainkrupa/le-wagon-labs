@@ -190,7 +190,7 @@
     <% if @project.accepted? && pundit_user == @project.entrepreneur %>
       <%= render 'projects/shared/modals/modale_entrepreneur_accepted'%>
     <% elsif @project.accepted? && pundit_user == @project.mentor %>
-      <%#= render 'projects/shared/modals/modale_mentor_accepted'%>
+      <%= render 'projects/shared/modals/modale_mentor_accepted'%>
     <% elsif @project.pending? && @applying %>
       <%= render 'projects/shared/modals/modale_alumni_pending'%>
     <% end %>
