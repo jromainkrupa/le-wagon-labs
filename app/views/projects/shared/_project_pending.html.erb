@@ -101,12 +101,13 @@
       <% if @project.tasks.present? %>
         <div class="pt-4 flex justify-center lg:pt-16">
           <div class="relative bg-red-300 rounded-full">
-            <svg class="progress-ring " width="120" height="120"> <circle class= "progress-ring__circle "stroke="#d23333" stroke-width="15" fill="transparent" r="52" cx="60" cy="60"/></svg>
+            <svg class="progress-ring " width="120" height="120"> <circle id="progress_circle" class= "progress-ring__circle "stroke="#d23333" stroke-width="15" fill="transparent" r="52" cx="60" cy="60"/></svg>
             <div class="absolute flex bg-white items-center justify-center w-24 h-24 rounded-full" style="top:10%; left:10%;">
               <span class="font-bold text-2xl"><%= @project.completion %>%</span>
             </div>
           </div>
           <input
+              id = "progress_number"
               class = "hidden"
               value="<%= @project.completion %>"
               type="number"
