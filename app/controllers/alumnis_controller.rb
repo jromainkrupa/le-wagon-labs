@@ -36,6 +36,6 @@ class AlumnisController < ApplicationController
   private
 
   def alumni_params
-    params.require(:alumni).permit(:first_name, :last_name, :about, :language_back_tag_list, :language_front_tag_list, :language_ux_ui_tag_list)
+    params.require(:alumni).permit(:first_name, :last_name, :about, :photo, :language_back_tag_list, :language_front_tag_list, :language_ux_ui_tag_list)
   end
 end
