@@ -58,9 +58,10 @@
           </div>
         </a>
 
-      <div data-project-target="backend_languages" class="hidden">
+      <div data-project-target="backend_languages" class="">
         <div class="pt-6 inline-flex space-x-8 justify-center w-full">
-          <%= simple_form_for [@project, @role_back] do |f| %>
+          <%= simple_form_for [@project, @role_back], remote: true do |f| %>
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
             <%= f.input :number %>
             <%= f.input :language_back_tag_list,
                           as: :check_boxes,
