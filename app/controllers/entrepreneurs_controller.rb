@@ -30,7 +30,6 @@ class EntrepreneursController < ApplicationController
   private
 
   def entrepreneur_params
-    params.require(:entrepreneur).permit(:first_name, :last_name, :phone, :company_name, :about)
+    params.require(:entrepreneur).permit(:first_name, :last_name, :phone, :company_name, :about, :photo)
   end
-
 end
