@@ -178,12 +178,28 @@
       <div class="w-1/2 lg:pr-28">
         <%= link_to "Contact Mentor", alumni_path(@project.mentor), class: "w-full py-2 px-2 bg-red-500 text-white text-lg font-semibold rounded" %>
       </div>
-    <% else %>
+    <% elsif pundit_user == @project.entrepreneur %>
       <div class="w-full lg:pr-28">
         <%= link_to alumni_path(@project.mentor) do %>
           <button class="w-full py-2 px-2 bg-red-500 text-white text-lg font-semibold rounded">Contact Mentor</button>
         <% end %>
       </div>
+    <% elsif pundit_user == @project.mentor %>
+      <div class="w-full lg:pr-28">
+        <%= link_to root_path do %>
+          <button class="w-full py-2 px-2 bg-red-500 text-white text-lg font-semibold rounded">Show candidacies</button>
+        <% end %>
+      </div>
+    <% elsif  @project.pending? && pundit_user.instance_of?(Alumni) && !pundit_user.is_mentor? && @applyable %>
+      <% @project.roles.reject{|r| r.name == "mentor"}.each do |role| %>
+        <% if role.candidacies.find_by(alumni: pundit_user).present? && role.candidacies.find_by(alumni: pundit_user).refused? %>
+          <span>You'r not selected, bybye</span>
+        <% elsif role.candidacies.find_by(alumni: pundit_user) %>
+          <span>You have already applied</span>
+        <% else %>
+          <%= link_to "Apply to #{role.name}", project_role_candidacies_path(@project, role), method: :post,  class:'w-full py-2 px-2 bg-red-500 text-white text-lg font-semibold rounded' %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 

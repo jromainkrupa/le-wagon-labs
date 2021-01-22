@@ -14,7 +14,8 @@ class CandidacyPolicy < ApplicationPolicy
   # end
 
   def create?
-    user.instance_of?(Alumni) && user.candidacies.select { |candidacy| candidacy.project == record.project }.empty?
+    user.instance_of?(Alumni)
+    # && user.candidacies.select { |candidacy| candidacy.project == record.project }.empty?
   end
 
   def new?
