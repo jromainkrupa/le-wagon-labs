@@ -1,13 +1,4 @@
 class TasksController < ApplicationController
-  def index
-    @tasks = policy_scope(Task)
-    authorize @tasks
-  end
-
-  def new
-    @task = Task.new
-    authorize @task
-  end
 
   def create
     @task = Task.new(completed: false)

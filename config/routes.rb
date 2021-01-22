@@ -1,4 +1,18 @@
 Rails.application.routes.draw do
+
+  namespace :admin do
+    resources :alumnis
+    resources :entrepreneurs
+    resources :articles
+    resources :projects
+    resources :candidacies
+    resources :languages
+    resources :roles
+    resources :tasks
+
+    root to: "alumnis#index"
+  end
+
   devise_for :alumnis, controllers: {
     sessions: 'alumnis/sessions',
     registrations: 'alumnis/registrations'
