@@ -1,4 +1,4 @@
-<div>
+<div class="text-right">
   <% if project.review? && project.mentor.present?%>
     <span>is being reviewed by&nbsp;</span>
   <% elsif project.review? && project.mentor.nil? %>
@@ -10,7 +10,7 @@
   <% elsif project.development? %>
     <span>team lead by&nbsp;</span>
   <% elsif project.done? %>
-    <span>project leaded by&nbsp;</span>
+    <span>completed, leaded by&nbsp;</span>
   <% end %>
   <% if project.mentor.present? %>
     <%= link_to project.mentor.name,  alumni_path(project.mentor) , class: "text-red-500 font-medium" %>
