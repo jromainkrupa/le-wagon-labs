@@ -195,10 +195,16 @@
           </div>
         </div>
       <% end %>
-      <div class="pt-4 flex justify-center ">
-        <%= link_to "+ Add a new task", project_tasks_path(@project, Task.new(project: @project)), method: :post, remote: true, class:'underline font-medium text-xl' %>
 
-      </div>
+      <% if @project.tasks.last.name.nil? %>
+        <div class="pt-4 flex justify-center">
+          <span class="underline font-medium text-xl text-gray-400">+ Add a new task</span>
+        </div>
+      <% else %>
+        <div class="pt-4 flex justify-center">
+          <%= link_to "+ Add a new task", project_tasks_path(@project, Task.new(project: @project)), method: :post, remote: true, class:'underline font-medium text-xl' %>
+        </div>
+      <% end %>
 
         <div class=" py-2">
           <%= simple_form_for @project do |f| %>

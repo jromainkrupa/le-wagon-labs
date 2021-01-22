@@ -1,27 +1,17 @@
 <div class="px-4 py-8 lg:py-24">
 
   <div class="lg:flex lg:justify-center lg:space-x-36 lg:h-screen">
-    <div class="bg-gray-100 py-4 lg:h-2/3 lg:w-1/4">
-      <div class="flex flex-col items-center space-y-3">
-        <svg class="w-20" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 67 67"><circle cx="33.5" cy="33.5" r="33.5" fill="#C4C4C4"/></svg>
-        <h1 class="font-bold text-3xl"><%= current_entrepreneur.company_name %></h1>
-        <%= link_to entrepreneur_path(current_entrepreneur) do %>
-          <button class="underline font-medium">Profile</button>
-        <% end %>
-      </div>
-    </div>
-
     <div class="mt-6 pt-8 pb-3 border-2 border-gray-100 shadow rounded lg:w-2/5 lg:h-2/3 lg:mt-0">
       <div class="px-2 flex flex-col items-center space-y-4 lg:h-full">
         <div class="">
-          <h2 class="text-xl font-medium flex-shrink">MY PROJECTS</h2>
+          <h2 class="text-xl font-medium">My projects</h2>
         </div>
 
-        <div class="pt-2 w-full flex-grow space-y-4">
+        <div class="pt-2 w-full space-y-4">
           <% current_entrepreneur.projects.reverse.each do |project| %>
-            <div class="w-full flex justify-between items-baseline">
+            <div class="w-full flex justify-between items-baseline space-x-4">
               <%= link_to project_path(project) do %>
-                <button class="text-red-500 underline font-semibold flex-shrink-0"><%= project.name %></button>
+                <button class="text-red-500 underline font-semibold text-left"><%= project.name %></button>
               <% end %>
               <%= render partial: 'entrepreneurs/shared/project_status', locals: {project: project} %>
             </div>
@@ -29,8 +19,8 @@
         </div>
 
 
-        <%= link_to projects_path, class:"group w-full pt-6" do %>
-          <button class="group-hover:opacity-80 w-full py-2 bg-red-500 text-white font-bold text-lg rounded">All projects</button>
+        <%= link_to projects_path, class:"pt-6 w-full" do %>
+          <button class="w-full py-2 bg-red-500 text-white font-bold text-lg rounded">All projects</button>
         <% end %>
       </div>
     </div>

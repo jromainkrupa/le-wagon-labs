@@ -5,12 +5,12 @@
   <div>
     <div class="flex flex-col items-center space-y-3">
       <img class="w-40 h-40 rounded-full"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAwonTmeIeygx0FB_jHT9TAGHsWdE-PG6w8w&usqp=CAU" alt="">
-      <h1 class="font-bold text-3xl"><%= @project.name %></h1>
+      <h1 class="font-bold text-3xl text-center"><%= @project.name %></h1>
     </div>
   </div>
 
   <div>
-    <div class="pt-4 lg:pt-0 ">
+    <div class="pt-6 lg:pt-0 ">
       <h2 class="font-medium text-center text-xl"><%= @project.entrepreneur.company_name %></h2>
     </div>
 
@@ -36,29 +36,29 @@
         <h2 class="font-medium text-center text-xl">Project information</h2>
       </div>
 
-      <div class="px-48 pt-4 flex flex-col items-center lg:px-2 lg:pt-8">
+      <div class="px-8 pt-4 flex flex-col items-center lg:px-2 lg:pt-8">
         <div class="flex flex-col space-y-3 w-full">
           <% unless @project.duration.nil? %>
-            <div>
-              <span>Estimated duration:</span>
+            <div class="flex space-x-4 lg:space-x-0">
+              <span class="w-1/3">Estimated duration:</span>
               <span><%= @project.duration %> weeks</span>
             </div>
           <% end %>
           <% unless @project.compensation_in_cents.nil? %>
-            <div>
-              <span>Compensation :</span>
+            <div class="flex space-x-4 lg:space-x-0">
+              <span class="w-1/3">Compensation :</span>
               <span><%= @project.compensation_in_cents.fdiv(100) %> euros</span>
             </div>
           <% end %>
-          <div>
-            <span>Mentor :</span>
+          <div class="flex space-x-4 lg:space-x-0">
+            <span class="w-1/3">Mentor :</span>
             <%= link_to alumni_path(@project.mentor) do %>
-              <button class="font-bold underline"><%= @project.mentor.name %></button>
+              <button class="font-bold underline ml-4"><%= @project.mentor.name %></button>
             <% end %>
           </div>
 
           <div class="flex space-x-4 items-baseline lg:space-x-0">
-            <span class="w-1/3 flex flex-shrink-0">Backend :</span>
+            <span class="w-1/3">Backend :</span>
             <div class="flex flex-wrap">
               <% @role_back.language_back_tag_list.each do |language| %>
                 <div class="px-2 pt-2 lg:pt-4">
@@ -68,7 +68,7 @@
             </div>
           </div>
           <div class="flex space-x-4 items-baseline lg:space-x-0">
-            <span class="w-1/3 flex flex-shrink-0">Frontend :</span>
+            <span class="w-1/3">Frontend :</span>
             <div class="flex flex-wrap">
               <% @role_front.language_front_tag_list.each do |language| %>
                 <div class="px-2 pt-2 lg:pt-4">
@@ -78,7 +78,7 @@
             </div>
           </div>
           <div class="flex space-x-4 items-baseline lg:space-x-0">
-            <span class="w-1/3 flex flex-shrink-0">UI/UX :</span>
+            <span class="w-1/3">UI/UX :</span>
             <div class="flex flex-wrap">
               <% @role_ux_ui.language_ux_ui_tag_list.each do |language| %>
                 <div class="px-2 pt-2 lg:pt-4">
@@ -118,15 +118,15 @@
             >
         </div>
 
-        <div class="px-8 pt-8 flex flex-col items-center lg:pt-20">
+        <div class="px-8 pt-8 flex flex-col justify-end items-center lg:pt-20">
           <div class="flex flex-col space-y-3 lg:space-y-12">
             <% @project.tasks.each do |task| %>
               <div class="">
                 <%= link_to complete_project_task_path(@project, task), class:'inline-flex items-center' do %>
                   <% if task.completed? %>
-                    <svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.667 0A5.333 5.333 0 0120 5.333v9.334A5.333 5.333 0 0114.667 20H5.333A5.333 5.333 0 010 14.667V5.333A5.333 5.333 0 015.333 0h9.334zm-.164 6.839a.54.54 0 00-.735-.053l-.057.053-4.831 5.074-2.59-2.721a.541.541 0 00-.793 0 .61.61 0 00-.05.772l.05.06 2.987 3.137c.2.21.515.228.735.053l.057-.053 5.227-5.49a.61.61 0 000-.832z" fill="#D23333"/></svg>
+                    <svg class="w-6 flex flex-shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path fill-rule="evenodd" clip-rule="evenodd" d="M14.667 0A5.333 5.333 0 0120 5.333v9.334A5.333 5.333 0 0114.667 20H5.333A5.333 5.333 0 010 14.667V5.333A5.333 5.333 0 015.333 0h9.334zm-.164 6.839a.54.54 0 00-.735-.053l-.057.053-4.831 5.074-2.59-2.721a.541.541 0 00-.793 0 .61.61 0 00-.05.772l.05.06 2.987 3.137c.2.21.515.228.735.053l.057-.053 5.227-5.49a.61.61 0 000-.832z" fill="#D23333"/></svg>
                   <% else %>
-                    <svg class="w-6" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path clip-rule="evenodd" d="M15.667 1A5.333 5.333 0 0121 6.333v9.334A5.333 5.333 0 0115.667 21H6.333A5.333 5.333 0 011 15.667V6.333A5.333 5.333 0 016.333 1h9.334z" stroke="#96999C" stroke-width="2"/></svg>
+                    <svg class="w-6 flex flex-shrink-0" fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 22 22"><path clip-rule="evenodd" d="M15.667 1A5.333 5.333 0 0121 6.333v9.334A5.333 5.333 0 0115.667 21H6.333A5.333 5.333 0 011 15.667V6.333A5.333 5.333 0 016.333 1h9.334z" stroke="#96999C" stroke-width="2"/></svg>
                   <% end %>
                   <div class="ml-4">
                     <%= task.name %>
@@ -137,7 +137,7 @@
           </div>
         </div>
       <% else %>
-        <p>TU N'AS PAS DE TO DO LIST</p>
+        <p class="text-center pt-2 italic ">Vide pour le moment.</p>
       <% end %>
     </div>
 
@@ -147,7 +147,7 @@
         <h2 class="font-medium text-center text-xl">Alumni team</h2>
       </div>
 
-      <div class="pt-4 px-16 flex flex-col space-y-3 lg:px-10 lg:pt-8">
+      <div class="pt-4 px-8 flex flex-col space-y-3 lg:px-10 lg:pt-8">
         <div class="inline-flex items-center">
           <span>Backend:</span>
           <div class="flex justify-end space-x-2 w-full">
@@ -178,10 +178,28 @@
       <div class="w-1/2 lg:pr-28">
         <%= link_to "Contact Mentor", alumni_path(@project.mentor), class: "w-full py-2 px-2 bg-red-500 text-white text-lg font-semibold rounded" %>
       </div>
-    <% else %>
-      <div class="w-1/2 lg:pr-28">
-        <%= link_to "Contact Mentor", alumni_path(@project.mentor), class: "w-full py-2 px-2 bg-red-500 text-white text-lg font-semibold rounded" %>
+    <% elsif pundit_user == @project.entrepreneur %>
+      <div class="w-full lg:pr-28">
+        <%= link_to alumni_path(@project.mentor) do %>
+          <button class="w-full py-2 px-2 bg-red-500 text-white text-lg font-semibold rounded">Contact Mentor</button>
+        <% end %>
       </div>
+    <% elsif pundit_user == @project.mentor %>
+      <div class="w-full lg:pr-28">
+        <%= link_to root_path do %>
+          <button class="w-full py-2 px-2 bg-red-500 text-white text-lg font-semibold rounded">Show candidacies</button>
+        <% end %>
+      </div>
+    <% elsif  @project.pending? && pundit_user.instance_of?(Alumni) && !pundit_user.is_mentor? && @applyable %>
+      <% @project.roles.reject{|r| r.name == "mentor"}.each do |role| %>
+        <% if role.candidacies.find_by(alumni: pundit_user).present? && role.candidacies.find_by(alumni: pundit_user).refused? %>
+          <span>You'r not selected, bybye</span>
+        <% elsif role.candidacies.find_by(alumni: pundit_user) %>
+          <span>You have already applied</span>
+        <% else %>
+          <%= link_to "Apply to #{role.name}", project_role_candidacies_path(@project, role), method: :post,  class:'w-full py-2 px-2 bg-red-500 text-white text-lg font-semibold rounded' %>
+        <% end %>
+      <% end %>
     <% end %>
   </div>
 

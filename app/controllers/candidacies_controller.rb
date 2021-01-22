@@ -1,15 +1,16 @@
 class CandidaciesController < ApplicationController
+
   def new
     @candidacy = Candidacy.new
     authorize @candidacy
   end
 
   def create
-    @candidacy = Candidacy.new(candidacy_params)
+    @candidacy = Candidacy.new(role: Role.find(params[:role_id]))
     @candidacy.alumni = pundit_user
     authorize @candidacy
     if @candidacy.save
-      redirect_to candidacy_path(@candidacy)
+      redirect_to project_path(@candidacy.role.project)
     else
       render :new
     end

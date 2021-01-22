@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+
   def index
     @projects = policy_scope(Project)
     authorize @projects
@@ -23,6 +24,12 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+
+    @applyable = @project.candidacies
+                        .select { |c| c.status == 'accepted' }
+                        .map(&:alumni)
+                        .exclude?(pundit_user)
+
     @applying = @project.candidacies
                         .select { |c| c.status == 'pending' }
                         .map(&:alumni)

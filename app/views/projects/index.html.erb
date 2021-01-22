@@ -8,7 +8,7 @@
     <% @projects.each do |project| %>
       <div class="px-6 py-8 border-2 border-gray-400 border-opacity-30 rounded-xl flex flex-grow flex-col shadow">
         <div>
-          <h2 class="font-bold text-2xl"><%= project.name %></h2>
+          <h2 class="font-bold text-2xl"><%= project.name %><%= "(You can apply)" if project.pending? %></h2>
         </div>
         <div class="pt-6">
           <span class="text-lg">by</span>
