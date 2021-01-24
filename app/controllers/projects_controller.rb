@@ -34,17 +34,15 @@ class ProjectsController < ApplicationController
                         .select { |c| c.status == 'pending' }
                         .map(&:alumni)
                         .include?(pundit_user)
-    @role_back = @project.roles.find_by(name: 'back-end')
-    @role_front = @project.roles.find_by(name: 'front-end')
-    @role_ux_ui = @project.roles.find_by(name: 'UX/UI')
+    @language_backs = @project.roles.find_by(name: 'back-end').language_back_tag_list
+    @language_fronts = @project.roles.find_by(name: 'front-end').language_front_tag_list
+    @language_ux_uis = @project.roles.find_by(name: 'UX/UI').language_ux_ui_tag_list
     authorize @project
   end
 
   def edit
     @project = Project.find(params[:id])
-    @role_back = @project.roles.find_by(name: 'back-end')
-    @role_front = @project.roles.find_by(name: 'front-end')
-    @role_ux_ui = @project.roles.find_by(name: 'UX/UI')
+    @roles = @project.roles.reject{|r| r.name == 'mentor'}
     @lang_back = Language.where(category: 'back')
     @lang_front = Language.where(category: 'front')
     @lang_ux_ui = Language.where(category: 'ui_ux')
