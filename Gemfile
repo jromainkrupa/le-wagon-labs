@@ -69,3 +69,5 @@ gem "acts-as-taggable-on", "~> 7.0"
 gem "cloudinary", "~> 1.18"
 
 gem "administrate", "~> 0.14.0"
+
+gem "cocoon", "~> 1.2"
