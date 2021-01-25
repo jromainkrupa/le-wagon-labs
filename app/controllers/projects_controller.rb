@@ -76,7 +76,8 @@ class ProjectsController < ApplicationController
       :status,
       :is_validated,
       :duration,
-      :comment
+      :comment,
+      tasks_attributes: [:id, :name, :_destroy]
     )
   end
 
