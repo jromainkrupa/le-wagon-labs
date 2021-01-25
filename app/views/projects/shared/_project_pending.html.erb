@@ -60,7 +60,7 @@
           <div class="flex space-x-4 items-baseline lg:space-x-0">
             <span class="w-1/3">Backend :</span>
             <div class="flex flex-wrap">
-              <% @role_back.language_back_tag_list.each do |language| %>
+              <% @language_backs.each do |language| %>
                 <div class="px-2 pt-2 lg:pt-4">
                   <%= content_tag(:div, Language.find_by(name: language).svg.html_safe, class: "w-8") %>
                 </div>
@@ -70,7 +70,7 @@
           <div class="flex space-x-4 items-baseline lg:space-x-0">
             <span class="w-1/3">Frontend :</span>
             <div class="flex flex-wrap">
-              <% @role_front.language_front_tag_list.each do |language| %>
+              <% @language_fronts.each do |language| %>
                 <div class="px-2 pt-2 lg:pt-4">
                   <%= content_tag(:div, Language.find_by(name: language).svg.html_safe, class: "w-8") %>
                 </div>
@@ -80,7 +80,7 @@
           <div class="flex space-x-4 items-baseline lg:space-x-0">
             <span class="w-1/3">UI/UX :</span>
             <div class="flex flex-wrap">
-              <% @role_ux_ui.language_ux_ui_tag_list.each do |language| %>
+              <% @language_ux_uis.each do |language| %>
                 <div class="px-2 pt-2 lg:pt-4">
                   <%= content_tag(:div, Language.find_by(name: language).svg.html_safe, class: "w-8") %>
                 </div>
