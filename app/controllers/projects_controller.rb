@@ -77,6 +77,7 @@ class ProjectsController < ApplicationController
       :is_validated,
       :duration,
       :comment,
+      :roles_attributes
     )
   end
 

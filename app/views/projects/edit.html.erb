@@ -61,13 +61,32 @@
             <div data-project-target="backend_languages" class="hidden">
               <%= simple_form_for [@project, role] do |f| %>
                 <div class="pt-6 inline-flex space-x-8 justify-center w-full">
-                  <%= f.input :language_back_tag_list,
-                                  as: :check_boxes,
-                                  collection: @lang_back.map{|l| l.name},
-                                  label_method: lambda {|l| content_tag(:div, Language.find_by(name: l).svg.html_safe, class:'w-12 label_maison')},
-                                  label: false,
-                                  input_html: { class: "tag-selector" },
-                                  item_wrapper_class: 'tag-item' %>
+                  <% case role.name %>
+                  <% when 'back-end' %>
+                    <%= f.input :language_back_tag_list,
+                                    as: :check_boxes,
+                                    collection: @lang_back.map{|l| l.name},
+                                    label_method: lambda {|l| content_tag(:div, Language.find_by(name: l).svg.html_safe, class:'w-12 label_maison')},
+                                    label: false,
+                                    input_html: { class: "tag-selector" },
+                                    item_wrapper_class: 'tag-item' %>
+                  <% when 'front-end' %>
+                    <%= f.input :language_front_tag_list,
+                                      as: :check_boxes,
+                                      collection: @lang_front.map{|l| l.name},
+                                      label_method: lambda {|l| content_tag(:div, Language.find_by(name: l).svg.html_safe, class:'w-12 label_maison')},
+                                      label: false,
+                                      input_html: { class: "tag-selector" },
+                                      item_wrapper_class: 'tag-item' %>
+                  <% when 'UX/UI' %>
+                    <%= f.input :language_front_tag_list,
+                                      as: :check_boxes,
+                                      collection: @lang_ux_ui.map{|l| l.name},
+                                      label_method: lambda {|l| content_tag(:div, Language.find_by(name: l).svg.html_safe, class:'w-12 label_maison')},
+                                      label: false,
+                                      input_html: { class: "tag-selector" },
+                                      item_wrapper_class: 'tag-item' %>
+                  <% end %>
                 </div>
                 <div class="pt-4">
                   <h3 class="text-center text-gray-600 font-bold">Nombre d'alumnis</h3>
@@ -129,6 +148,14 @@
           <% end %>
         </div>
       </div>
+
+      <%#= simple_form_for(@project) do |f| %>
+        <%#= f.input :description %>
+        <%#= f.fields_for :roles do |g| %>
+          <%#= g.input :number %>
+        <%# end %>
+        <%#= f.submit "TEST" %>
+      <%# end %>
   </div>
 </div>
 
