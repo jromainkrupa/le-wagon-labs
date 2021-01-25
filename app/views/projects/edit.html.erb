@@ -47,18 +47,18 @@
         </div>
 
         <% @roles.each do |role| %>
-          <div data-controller="project">
-            <a data-action="click->project#backend" id="options-menu" class="px-2 py-3 flex items-center border w-full focus:outline-none">
+          <div data-controller="project-form">
+            <a data-action="click->project-form#toggle" class="px-2 py-3 flex items-center border w-full focus:outline-none">
               <span class="text-gray-400 text-center w-full"><%= role.name %></span>
-              <div data-project-target="arrow_closed" >
+              <div data-project-form-target="arrow_closed" >
                 <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </div>
-              <div data-project-target="arrow_opened" class="hidden">
+              <div data-project-form-target="arrow_opened" class="hidden">
                 <svg class="w-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
               </div>
             </a>
 
-            <div data-project-target="backend_languages" class="hidden">
+            <div data-project-form-target="languages_panel" class="hidden">
               <%= simple_form_for [@project, role] do |f| %>
                 <div class="pt-6 inline-flex space-x-8 justify-center w-full">
                   <% case role.name %>
@@ -93,13 +93,13 @@
                 </div>
                 <div class="flex justify-center items-center pt-4">
                   <div class="px-2">
-                    <a class="cursor-pointer" data-action="click->project#backend_decrementer"><svg class="w-8 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></a>
+                    <a class="cursor-pointer" data-action="click->project-form#decrementer"><svg class="w-8 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></a>
                   </div>
                   <%= f.input :number,
                               label: false,
-                              input_html: { data:{"project-target": "backend_roles"}, class:'w-28 text-center' } %>
+                              input_html: { data:{"project-form-target": "roles_number"}, class:'w-28 text-center' } %>
                   <div class="px-2">
-                    <a class="cursor-pointer" data-action="click->project#backend_incrementer"><svg class="w-8 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></a>
+                    <a class="cursor-pointer" data-action="click->project-form#incrementer"><svg class="w-8 text-gray-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></a>
                   </div>
                 </div>
                 <div class="pt-4">
@@ -132,8 +132,9 @@
       <% end %>
 
       <% if @project.tasks.present? && @project.tasks.last.name.nil? %>
-        <div class="pt-4 flex justify-center">
-          <span class="underline font-medium text-xl text-gray-400">+ Add a new task</span>
+        <div data-controller="project-tasks" class="pt-4 flex flex-col justify-center items-center">
+          <span data-action="mouseover->project-tasks#toggle mouseout->project-tasks#toggle" class="underline font-medium text-xl text-gray-400">+ Add a new task</span>
+          <span data-project-tasks-target="alert" class="hidden text-sm italic text-red-400">You need to save the last Task you create before creating a new one</span>
         </div>
       <% else %>
         <div class="pt-4 flex justify-center">
