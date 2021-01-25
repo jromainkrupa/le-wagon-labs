@@ -5,6 +5,8 @@ class Project < ApplicationRecord
   has_many :alumnis, through: :candidacies
   has_many :tasks
 
+  accepts_nested_attributes_for :roles, :tasks
+
   validates :name, :pain, :target, :solution, presence: true
   validates :name, length: { minimum: 2, maximum: 30 }
   validates :pain, :target, :solution, length: { minimum: 20 }
