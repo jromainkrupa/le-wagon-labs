@@ -6,7 +6,7 @@
     <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= f.error_notification %>
 
-      <div class="form-inputs space-y-4">
+      <div class="space-y-4">
         <% if resource_name == :entrepreneur %>
           <%= f.input :company_name,
                         required: false,
@@ -54,10 +54,20 @@
                       label: false,
                       input_html: { class: "px-2 py-2 border-2 border-gray-200 w-full"} %>
 
+        <div class="flex items-center">
+          <div class="mr-5 bg-gray-100 rounded-full h-12 overflow-hidden">
+            <svg class="w-12 h-12 text-gray-300" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+          </div>
+
+
         <%= f.input :photo, as: :file,
-                      label: false,
-                      input_html: { class:"w-full"},
+                      label:  "Change",
+                      label_html: { class:"bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-600"},
+                      input_html: { class:"hidden"},
                       id: "file-upload" %>
+      </div>
       </div>
 
       <div class="form-actions py-4">
